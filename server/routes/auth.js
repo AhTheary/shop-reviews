@@ -31,7 +31,7 @@ router.post(
     async(req, res, next) => {
         const { email, password } = req.body
         const result = await login(email, password)
-            // req.session.jwt = result.data.token
+        req.session.jwt = result.data.token
         res.json(result)
     },
 )
