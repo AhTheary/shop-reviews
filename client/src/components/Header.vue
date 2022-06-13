@@ -3,7 +3,12 @@
     <div class="container_nav1">
       <div class="wrapper_nav">
         <div class="logo">
-           <router-link to="/"><img src="@/assets/logo.png" alt="Logo store" /></router-link>
+          <router-link to="/"
+            ><img
+              src="../assets/LoginLogo.jpg"
+              style="margin-left: 20px"
+              alt="Logo store"
+          /></router-link>
         </div>
         <div class="search_box">
           <div class="search__container">
@@ -11,7 +16,7 @@
           </div>
         </div>
         <div class="user-info">
-          <div class="btn-signin-up" v-if="logged">
+          <div class="btn-signin-up" v-if="!userLoggedIn">
             <button>
               <router-link to="/login"><span>Log In</span></router-link>
             </button>
@@ -100,19 +105,14 @@ export default {
       logged: true,
     }
   },
-  created() {
-    window.addEventListener('resize', this.showMyDiv)
-    this.showMyDiv()
+
+  computed: {
+    userLoggedIn() {
+      return this.$store.state.userLoggedIn 
+    }
   },
-  destroyed() {
-    window.removeEventListener('resize', this.showMyDiv)
-    this.showMyDiv()
-  },
+
   methods: {
-    showMyDiv() {
-      let scroll = window.innerHeight
-      console.log(scroll)
-    },
     menuToggle() {
       const toggleMenu = document.querySelector('.menu')
       toggleMenu.classList.toggle('active')

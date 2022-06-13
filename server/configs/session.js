@@ -18,6 +18,7 @@ module.exports = async(app) => {
         cookie: {
             maxAge: 1000 * 60 * 60 * 2, // 2 hours
             secure: false,
+            httpOnly: false,
         }
     }))
 }

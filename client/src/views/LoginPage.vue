@@ -1,5 +1,7 @@
 <script>
+import Header2 from '../components/Header2.vue'
 export default {
+  components: { Header2 },
   name: 'login',
   data() {
     return {
@@ -21,7 +23,13 @@ export default {
       })
 
       const resData = await res.json()
-      if (resData.success == true) this.$router.push({ name: 'home' })
+      if (resData.success == true)  { 
+
+        //change status user logged in
+        this.$store.commit('setUserLoggedIn', true)
+
+        this.$router.push('/')
+      }
       else console.log(res)
 
       // if (this.email == 'bekkhemka@gmail.com' && this.password == '123') {
@@ -35,6 +43,7 @@ export default {
 </script>
 <template>
   <div>
+    <header-2/>
     <section class="vh-100" style="background-color: #eee;">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">

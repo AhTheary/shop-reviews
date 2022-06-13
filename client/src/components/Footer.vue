@@ -21,10 +21,22 @@
         </div>
         <div class="contact">
           <span>Connect with us</span>
-          <div class="icon-contact">
-            <i class="bx bxs-phone-call"></i>
-            <i class="bx bxl-facebook"></i>
-            <i class="bx bx-envelope"></i>
+         <div class="icon-contact">
+            <i
+              class="bx bxs-phone"
+              title="086626027"
+              style="color: #eee; background-color: #00ad00"
+            ></i>
+            <i
+              class="bx bxl-facebook-circle"
+              title="Store Review"
+              style="color: #eee; background-color: #4169e1"
+            ></i>
+            <i
+              class="bx bxs-message-detail"
+              title="storereview@hotmail.com"
+              style="color: #eee; background-color: #6D6D6D"
+            ></i>
           </div>
         </div>
       </div>

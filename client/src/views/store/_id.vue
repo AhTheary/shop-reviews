@@ -1,5 +1,39 @@
+<script>
+import Header from '../../components/Header.vue'
+import Footer from '../../components/Footer.vue'
+export default {
+  name: 'detailPage',
+  components: {
+    Header,
+    Footer
+  },
+  data() {
+    return {
+      stores: [],
+      id: this.$route.params.id 
+    }
+  },
+  methods: {
+    async created() {
+    const res = await fetch("`http://localhost:3001/store/${route.params.id}`", {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+    const resData = await res.json()
+
+    this.stores = resData.data
+    console.log(this.stores);
+  },
+  },
+}
+</script>
 <template>
   <div>
+    <Header />
     <div>{{$route.params.id}}</div>
     <div class="wrapper_reviewdetails">
       <div class="store_info">
@@ -13,8 +47,8 @@
           </div>
           <div class="img">
             <img
-              src="https://th.bing.com/th/id/R.4af8350c12ad026bf194832e0919b3b8?rik=DQZ1PcJCDOpF2g&pid=ImgRaw&r=0&sres=1&sresct=1"
-              alt=""
+              src="item.imageUrl"
+              alt="eorr"
             />
           </div>
         </div>
@@ -89,13 +123,8 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
-
-<script>
-export default {
-  
-}
-</script>
 
 <style scoped></style>

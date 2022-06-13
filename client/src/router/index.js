@@ -86,6 +86,12 @@ const router = createRouter({
                 import ('../views/BrowseStore.vue')
         },
         {
+            path: "/terms",
+            name: "Term",
+            component: () =>
+                import ("../components/Term.vue"),
+        },
+        {
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,

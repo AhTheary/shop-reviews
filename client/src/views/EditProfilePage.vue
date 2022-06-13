@@ -1,194 +1,111 @@
 <template>
-  <div>
-    <center>
-      <div class="box">
-        <div class="home_container">
-          <div class="sidebar">
-            <center>
-              <img src="https://th.bing.com/th/id/OIP.MSoKVHusQR3RGGNIeK-qnQHaHa?pid=ImgDet&rs=1" />
-              <h2>Sonic</h2>
-              <h5>sonic@gmail.com</h5>
-            </center>
-          </div>
-          <div class="container">
-            <div class="container-text">
-              <center>
-                <table id="component">
-                  <tr>
-                    <td colspan="2">
-                      <h1>Edit Profile</h1>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div>First Name</div>
-                      <input
-                        name="firstname"
-                        type="text"
-                        placeholder="Enter new first name"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <div>Last Name</div>
-                      <input
-                        name="lastname"
-                        type="text"
-                        placeholder="Enter new last name"
-                        class="form-control"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <div>Email</div>
-                      <input
-                        name="email"
-                        type="text"
-                        placeholder="Enter new email"
-                        class="email"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <div>Phone Number</div>
-                      <input
-                        name="phone"
-                        type="text"
-                        placeholder="Enter new phone number"
-                        class="phone_number"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div>New Password</div>
-                      <input
-                        name="password"
-                        type="text"
-                        placeholder="Enter new password"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <div>Confirm Password</div>
-                      <input
-                        name="confirm password"
-                        type="text"
-                        placeholder="Enter new password"
-                        class="form-control"
-                      />
-                    </td>
-                  </tr>
-                </table>
-                <div>
-                  <router-link to="/"> <button type="cancel" value="Cancel" class="cancel">
-                    Cancel
-                  </button></router-link>
-                  <button type="submit" value="Submit" class="save">
-                    Save
-                  </button>
+<div><header-2 />
+  <section class="py-5 my-5">
+        <div class="container">
+            <h1 class="mb-5">Account Setting</h1>
+            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+                <div class="profile-tab-nav border-right">
+                    <div class="p-4">
+                        <div class="img-circle text-center mb-3">
+                            <!-- <img src="@/assets/pf.png" alt="Image" class="shadow"> -->
+                        </div>
+                        <h4 class="text-center">David Beckham</h4>
+                    </div>
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
+                            <i class="fa fa-home text-center mr-1"></i> Account
+                        </a>
+                        <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
+                            <i class="fa fa-key text-center mr-1"></i> Password
+                        </a>
+                    </div>
                 </div>
-              </center>
+                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <h3 class="mb-4">Edit Profile</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" value="David">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" value="Beckham">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" value="davidbeckham@gmail.com">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Phone number</label>
+                                    <input type="text" class="form-control" value="012345678">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                        <h3 class="mb-4">Password Settings</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Old password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>New password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Confirm new password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary"><a href="/">Update</a></button>
+                            <button class="btn btn-light"><a href="/">Cancel</a></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </center>
-  </div>
+    </section>
+    </div>
 </template>
 
 <script>
-export default {}
+import 'https://code.jquery.com/jquery-3.2.1.slim.min.js';
+import Header2 from '../components/Header2.vue';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js';
+// import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js';
+
+export default {
+  components: { Header2 },
+   name: 'EditProfile',
+  mounted() {
+    // let externalScript = document.createElement('script')
+    // externalScript.setAttribute('src', 'https://code.jquery.com/jquery-3.2.1.slim.min.js')
+    // document.head.appendChild(externalScript)
+  },
+}
 </script>
 
 <style scoped>
-
-.box {
-    width: 1120px;
-    height: 500px;
-    border: 1px solid #eee;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-.home_container {
-    position: relative;
-    height: 100%;
-}
-.sidebar {
-    width: 30%;
-    height: 0px;
-    background-color: rgb(206, 27, 27);
-    position: fixed;
-    padding-top: 0px;
-}
-.sidebar img {
-    width: 200px;
-    border-radius: 100%;
-    border: 2px solid #e5e5e5;
-    margin-top: 60px;
-}
-.sidebar h2{
-    font-size: 30px;
-}
-.container {
-    height: 100vh;
-    margin-left: 22%;
-    margin-top: 0px;
-    color: rgb(8, 8, 8);
-    position: relative; 
-}
-.container_mask {
-    height: 100vh;
-}
-.container .container-text {
-    width: 100%;
-    position: absolute;
-    right: 0;
-    margin-top: 40px;
-}
-.form-control {
-    width: 300px; 
-    height: 30px;
-    margin-bottom: 20px;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: #d3d2d2;
-    padding-left: 20px;
-} 
-.email {
-    width: 620px; 
-    height: 30px; 
-    margin-bottom: 20px;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: #d3d2d2;
-    padding-left: 20px;
-} 
-.phone_number {
-    width: 620px; 
-    height: 30px; 
-    margin-bottom: 20px;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: #d3d2d2;
-    padding-left: 20px;
-}
-.save { 
-    padding: 8px 8px; 
-    border: 1px solid white;
-    border-radius: 20px;
-    background-color: blue; 
-    color: white;
-}
-.cancel { 
-    padding: 8px 4px; 
-    border: 1px solid white;
-    border-radius: 20px;
-    background-color: rgb(117, 115, 115); 
-    color: white;
-    margin-left: 500px;
-}
 </style>

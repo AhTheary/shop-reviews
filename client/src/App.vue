@@ -9,6 +9,21 @@ export default {
         components: {
     },
     name:'App',
+
+    mounted () {
+      this.checkUser()
+    },
+
+    methods: {
+    checkUser() {
+        let token =  this.$cookies.get("access_token");
+        console.log('token', token)
+
+        if(!token) return
+
+        this.$store.commit('setUserLoggedIn', true)
+      },
+    },
 }
 </script>
 <style>

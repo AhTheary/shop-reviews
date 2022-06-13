@@ -1,36 +1,52 @@
 <template>
-  <div>
-    <center>
-      <div class="box">
-        <h2>Feedback Form</h2>
-        <div>Name:</div>
-        <input name="Name" type="text" placeholder="Enter Name" class="input" />
-        <div>Email:</div>
-        <input
-          name="Email"
-          type="text"
-          placeholder="Enter Email"
-          class="input"
-        />
-        <div>Subject:</div>
-        <input
-          name="Subject"
-          type="text"
-          placeholder="Enter Subject"
-          class="input"
-        />
-        <div>Description:</div>
-        <textarea
-          name="description"
-          placeholder="Enter Message"
-          class="description"
-        ></textarea>
-        <div>
-          <button type="submit" value="Submit" class="submit">Submit</button>
+   <section class="py-5 my-5">
+        <div class="container">
+            <!-- <h1 class="mb-5">Feedback</h1> -->
+            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <h3 class="mb-4">Feedback Form</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Message</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </center>
-  </div>
+    </section>
 </template>
 
 <script>
