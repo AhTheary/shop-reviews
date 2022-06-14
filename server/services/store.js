@@ -1,7 +1,7 @@
-const Stores = require("../models/stores");
+const Stores = require('../models/stores')
 
 const findById = async(id) => {
-    return await Stores.findById(id);
+    return await Stores.findById(id)
 }
 
 const findAll = async(req, res) => {
@@ -10,28 +10,26 @@ const findAll = async(req, res) => {
     // } catch (error) {
     //     return ërror
     // }
-    const { page, item_per_page } = req.query;
+    const { page, item_per_page, category } = req.query
 
     try {
         let populates = {
-            path: "category",
+            path: 'category',
             select: { name: 1, desc: 1, imageUrl: 1 },
-        };
+        }
         let options = {
             page: 1,
-            limit: 20,
+            limit: 8,
             populate: populates,
-        };
+        }
 
-        let filter = {};
-        // if (category) {
-        //     filter.category = category
-        // }
+        let filter = {}
+        if (category) filter.category = category
 
-        if (page) options.page = page;
-        if (item_per_page) options.limit = item_per_page;
+        if (page) options.page = page
+        if (item_per_page) options.limit = item_per_page
 
-        const stores = await Stores.paginate(filter, options);
+        const stores = await Stores.paginate(filter, options)
         return { success: true, stores }
         //return await Stores.find().populate('category');
     } catch (error) {
@@ -40,40 +38,38 @@ const findAll = async(req, res) => {
 }
 
 const create = async(newStore) => {
-    const createStore = await Stores.create(newStore);
+    const createStore = await Stores.create(newStore)
     return {
         success: true,
-        message: "Ok store is Created",
-        data: createStore
-    };
+        message: 'Ok store is Created',
+        data: createStore,
+    }
 }
 
 const update = async(updateStore) => {
-
-    const { _id, storeName, ownerName, location, imageUrl, desc } = updateStore;
+    const { _id, storeName, ownerName, location, imageUrl, desc } = updateStore
     const updatenewStore = await Stores.findByIdAndUpdate(_id, {
         storeName: storeName,
         ownerName: ownerName,
         location: location,
         desc: desc,
-        imageUrl: imageUrl
-    });
+        imageUrl: imageUrl,
+    })
     return {
         success: true,
-        message: "Now Store is updated",
-        data: updatenewStore
-    };
-
+        message: 'Now Store is updated',
+        data: updatenewStore,
+    }
 }
 
 const remove = async(id) => {
-    const removeStore = await Stores.findByIdAndRemove(id);
-    console.log("Removed");
+    const removeStore = await Stores.findByIdAndRemove(id)
+    console.log('Removed')
     return {
         success: true,
-        message: "Store is delete successfull",
-        data: removeStore
-    };
+        message: 'Store is delete successfull',
+        data: removeStore,
+    }
 }
 
 module.exports = {
