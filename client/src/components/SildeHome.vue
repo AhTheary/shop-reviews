@@ -23,7 +23,7 @@ export default {
 .cover-img {
   margin: 16vh 0 32px;
   width: 100%;
-  height: 80vh;
+  height: 75vh;
   position: relative;
   background-image:  url(../assets/Home/cover1.jpg);
   /* background: linear-gradient(

@@ -5,10 +5,28 @@
         <h1>Browse by Category</h1>
       </div>
       <div class="box-card">
+                <div class="box category-card">
+          <router-link to="/browse">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3170/3170733.png"
+              alt="eror"
+            />
+            <span>Restaurant</span>
+          </router-link>
+        </div>
+        <div class="box category-card">
+          <router-link to="/browse">
+            <img
+              src="https://cdn-icons.flaticon.com/png/512/3211/premium/3211391.png?token=exp=1655222199~hmac=b65824d0e6f74eaef7b29a4470dcb6d6"
+              alt="eror"
+            />
+            <span>Clothes</span>
+          </router-link>
+        </div>
         <div class="box category-card">
             <router-link to="/browse">
               <img
-              src="https://thethaiger.com/wp-content/uploads/2022/03/photo-1604719312566-8912e9227c6a.jpg"
+              src="https://cdn-icons.flaticon.com/png/512/4284/premium/4284954.png?token=exp=1655221113~hmac=be3ba9bff08840f6c18a23e5472bf9c2"
               alt="eror"
             />
             <span>Supermarket</span>
@@ -17,56 +35,38 @@
         <div class="box category-card">
           <router-link to="/browse">
             <img
-              src="https://images.bizbuysell.com/fnw/images/295/295/8ad72ad1-6627-4326-8dd6-a6b4fc7d79c3.jpg"
+              src="https://cdn-icons.flaticon.com/png/512/2944/premium/2944415.png?token=exp=1655221136~hmac=138dd5f251e4d1a7421ee7f897ab9659"
               alt="eror"
             />
-            <span>Sports</span>
-          </router-link>
-        </div>
-        <div class="box category-card">
-          <router-link to="/browse">
-            <img
-              src="https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/90/2016/12/14041404/sofitel-phnompenh-phokeethra-dining-doforni.jpg"
-              alt="eror"
-            />
-            <span>Restaurants</span>
-          </router-link>
-        </div>
-        <div class="box category-card">
-          <router-link to="/browse">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGiGCxdfxpyonoVWwX9wJowbRiRF5omMgIRg&usqp=CAU"
-              alt="eror"
-            />
-            <span>Clothes</span>
+            <span>Sport</span>
           </router-link>
         </div>
       </div>
     </div>
     <div class="wrapper-slide-box">
       <div class="title about-us">
-        <h1><b>ABOUT US</b></h1>
+        <h1 style="margin-bottom: 50px;"><b>ABOUT US</b></h1>
       </div>
       <div class="box-card">
         <div class="box aboutus-card">
-          <img src="@/assets/Home/store.png" alt="home icon" />
-          <h3>Browns Store</h3>
+          <img src="https://cdn-icons-png.flaticon.com/512/273/273177.png" alt="home icon" />
+          <h3>Browse Store</h3>
           <span>Easy for find your favorite Store Online</span>
         </div>
         <div class="box aboutus-card">
-          <img src="@/assets/Home/social-media.png" alt="error" />
+          <img src="https://cdn-icons-png.flaticon.com/512/4207/4207277.png" alt="error" />
           <h3>Social Interraction</h3>
-          <span>Share and make interaction with other users</span>
+          <span>Make interaction with other users</span>
         </div>
         <div class="box aboutus-card">
-          <img src="@/assets/Home/review.png" alt="error" />
+          <img src="https://cdn-icons.flaticon.com/png/512/1365/premium/1365307.png?token=exp=1655222441~hmac=1f2e2b99a716cd692fe43f26c25e71d4" alt="error" />
           <h3>Review Store</h3>
-          <span>Write reviwe for your favorite store</span>
+          <span>Write reviwe and rate for your favorite store</span>
         </div>
         <div class="box aboutus-card">
-          <img src="@/assets/Home/location.png" alt="location" />
+          <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="location" />
           <h3>Location Store</h3>
-          <span>Get direction and guide to your favorite store</span>
+          <span>Get direction to your favorite store</span>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
 .wrapper-slide-box {
   position: relative;
   width: 92%;
-  height: 60vh;
+  height: 40vh;
   /* background-color: yellow; */
   margin: 16vh auto;
 }
@@ -173,12 +173,13 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 50px;
 }
 .wrapper-slide-box .aboutus-card h3 {
   margin-bottom: 12px;
 }
 .wrapper-slide-box .box img {
-  width: 40%;
+  width: 60%;
   position: relative;
   margin-bottom: 8%;
 }
@@ -192,7 +193,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 30vh;
+  margin-left: 50px;
 }
 .wrapper-slide-box .category-card  a{
   text-decoration: none;
@@ -202,7 +204,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    height: 50vh;
+    height: 30vh;
 }
 .wrapper-slide-box .category-card  img {
   width: 100%;
@@ -220,7 +222,8 @@ export default {
   -o-transform: scale(1.05);
 }
 .wrapper-slide-box .category-card img:hover {
-  box-shadow: 10px 10px 5px lightblue inset;
-  box-shadow: 0 8px 8px -4px lightblue;
+  border-radius: 50%;
+  box-shadow: 10px 10px 5px rgba(156, 154, 152, 0.572) inset;
+  box-shadow: 0 8px 8px -4px rgb(156, 154, 152, 0.572);
 }
 </style>
