@@ -1,4 +1,5 @@
 <template>
+<div>
 <Header  />
   <div class="wrapper_browse">
     <div class="filter">
@@ -70,6 +71,7 @@
         <a href="#" class="next">End</a>
       </div>
   <Footer />
+  </div>
 </template>
 
 <script>
