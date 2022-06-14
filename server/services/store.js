@@ -4,11 +4,35 @@ const findById = async(id) => {
     return await Stores.findById(id);
 }
 
-const findAll = async() => {
+const findAll = async(req, res) => {
+    // try {
+    //     return await Stores.find().populate('category');
+    // } catch (error) {
+    //     return ërror
+    // }
+    const { page, item_per_page } = req.query;
+
     try {
-        return await Stores.find().populate('category');
+        let populates = {
+            path: "category",
+            select: { name: 1, desc: 1, imageUrl: 1 },
+        };
+        let options = {
+            page: 1,
+            limit: 4,
+            populate: populates,
+        };
+
+        let filter = {};
+
+        if (page) options.page = page;
+        if (item_per_page) options.limit = item_per_page;
+
+        const stores = await Stores.paginate(filter, options);
+        return { success: true, stores }
+        //return await Stores.find().populate('category');
     } catch (error) {
-        return ërror
+        return { success: false, error: error }
     }
 }
 

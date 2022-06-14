@@ -5,36 +5,50 @@ export default {
   name: 'detailPage',
   components: {
     Header,
-    Footer
+    Footer,
   },
   data() {
     return {
-      stores: [],
-      id: this.$route.params.id 
+      store: '',
+      id: this.$route.params.id,
     }
   },
   methods: {
-    async created() {
-    const res = await fetch("`http://localhost:3001/store/${route.params.id}`", {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-
-    const resData = await res.json()
-
-    this.stores = resData.data
-    console.log(this.stores);
+    openReview() {
+      var element = document.querySelector('.review-star')
+      element.classList.add('open')
+    },
+    close() {
+      var element = document.querySelector('.review-star')
+      element.classList.remove('open')
+    },
+    submit() {
+      var element = document.querySelector('.review-star')
+      element.classList.remove('open')
+    },
   },
-  },
+  async created() {
+    let id = this.$route.params.id
+      const res = await fetch(`http://localhost:3001/store/id/${id}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        },
+      )
+
+      const resData = await res.json()
+
+      this.store = resData
+      console.log("test",this.store)
+    },
 }
 </script>
 <template>
   <div>
     <Header />
-    <div>{{$route.params.id}}</div>
     <div class="wrapper_reviewdetails">
       <div class="store_info">
         <div class="store_card">
@@ -46,10 +60,7 @@ export default {
             <!-- <span>730</span> -->
           </div>
           <div class="img">
-            <img
-              src="item.imageUrl"
-              alt="eorr"
-            />
+            <img :src="store.imageUrl" alt="eorr" />
           </div>
         </div>
         <div class="store_des">
@@ -59,8 +70,7 @@ export default {
           </div>
           <div class="title_info">
             <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima et
-              suscipit quis ab repudiandae officiis inventore quisquam
+             {{store.desc}}
             </span>
           </div>
         </div>
@@ -78,6 +88,9 @@ export default {
             <input id="rating5" type="radio" name="rating" value="5" />
             <label for="rating5"></label>
           </div>
+        </div>
+        <div>
+          Store details info
         </div>
       </div>
       <div class="user_review">
@@ -117,9 +130,25 @@ export default {
             </div>
           </div>
           <div class="post-btn">
-            <input type="text" placeholder="what are you thinkking" />
+            <input
+              type="text"
+              placeholder="what are you thinkking"
+              @click="openReview"
+            />
             <input type="submit" />
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="review-star" id="myDiv">
+      <div class="container-review">
+        <div class="star">This for star rating</div>
+        <div class="review-comment">
+          <input type="text" placeholder="Tell us about your experiec" />
+        </div>
+        <div class="btn-review">
+          <button @click="submit">Submit</button>
+          <button @click="close">Close</button>
         </div>
       </div>
     </div>
@@ -127,4 +156,42 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.review-star {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.561);
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  visibility: hidden;
+}
+.review-star.open {
+  visibility: visible;
+}
+.review-star .container-review {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 500px;
+  height: 240px;
+  overflow: visible;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.review-star .container-review .star {
+  height: 40%;
+  background-color: red;
+}
+.btn-review{
+  display: flex;
+  justify-content: end;
+ padding: 4px 8px;
+ margin: 0 8px;
+
+}
+</style>

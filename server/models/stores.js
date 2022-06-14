@@ -1,6 +1,7 @@
 "use strict"
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePagnite = require("mongoose-paginate-v2");
 
 var storeSchema = new mongoose.Schema({
     storeName: {
@@ -27,9 +28,10 @@ var storeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // review: {
-    // }
-    // ,
+    review: {
+        type: Schema.Types.ObjectId,
+        ref: 'Categories',
+    },
     countReview: {
         type: Number,
     }
@@ -37,5 +39,6 @@ var storeSchema = new mongoose.Schema({
     timestamps: true
 });
 
+storeSchema.plugin(mongoosePagnite);
 var Stores = mongoose.model('Stores', storeSchema);
 module.exports = Stores;

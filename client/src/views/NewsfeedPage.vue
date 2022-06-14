@@ -52,7 +52,7 @@
       </div>
     </div>
     </div>
-    <NewsfeedCard />
+    <NewsfeedCard :posts="posts" />
     <Footer />
   </div>
 </template>
@@ -65,7 +65,8 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      username:'bekkhem'
+      username:'bekkhem',
+      posts:[]
     }
   },
   methods: {
@@ -83,6 +84,20 @@ export default {
     post() {
       console.log('I go!')
     },
+  },
+   async mounted() {
+    const res = await fetch('http://localhost:3001/post/all', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+    const resData = await res.json()
+
+    this.posts = resData
+    console.log("Result:",this.posts)
   },
 }
 </script>

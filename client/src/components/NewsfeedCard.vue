@@ -3,7 +3,7 @@
     <div class="wrapper_body_review">
       <div
         class="box_card_feed"
-        v-for="feedcard in feedcards"
+        v-for="feedcard in posts"
         :key="feedcard._id"
       >
         <div class="box_card_left">
@@ -13,11 +13,11 @@
             </div>
             <div class="username_location">
               <div class="username">
-                <span>{{ feedcard.usernamePost }}</span>
+                <span>{{ feedcard.userId }}</span>
               </div>
               <div class="location">
                   <img src="../assets/locator_post.png" alt="" />
-                  <div style="font-weight:500; font-size:12px; margin-left: 2px">Tk, PP</div>
+                  <div style="font-weight:500; font-size:12px; margin-left: 2px">  {{feedcard.location}} </div>
               </div>
             </div>
             <div class="icon-like" @click="like">
@@ -29,12 +29,12 @@
           </div> -->
           <div class="descrition-post" style="margin-top: 4px">
             <span>
-              {{ feedcard.userPostdec }}
+              {{ feedcard.status }}
             </span>
           </div>
           <div class="img-post">
             <img
-              :src="feedcard.src"
+              :src="feedcard.image"
               alt="erorUserpost"
               style="width: 100%; height: 100%;"
             />
@@ -50,14 +50,14 @@
           <div class="other-user-comment">
             <div class="user-info">
               <div class="user-info-acc">
-                <div class="icon-user"><i class="bx bxs-user-circle"></i></div>
-                <span>{{ feedcard.usernameComment }}</span>
+                <!-- <div class="icon-user"><i class="bx bxs-user-circle"></i></div> -->
+                <!-- <span>{{ feedcard.usernameComment }}</span> -->
               </div>
               <div class="user-info-comment">
-                <span>{{ feedcard.userCommentdec }}</span>
+                <!-- <span>{{ feedcard.userCommentdec }}</span>
                 <span v-for="comment in comments" :key="comment._id">
                   {{ comment.msg }}
-                </span>
+                </span> -->
               </div>
             </div>
           </div>
@@ -73,52 +73,52 @@ import CommentPost from './CommentPost.vue'
 export default {
   components: { CommentPost },
   name: 'NewsfeedCard',
-
+  props: ['posts'],
   data() {
-    return {
-      comments: [
-        {
-          _id: 1,
-          msg: 'Hello',
-        },
-        {
-          _id: 2,
-          msg: 'Hello',
-        },
-        {
-          _id: 3,
-          msg: 'Hello',
-        },
-      ],
-      feedcards: [
-        {
-          _id: 1,
-          usernamePost: 'Leap',
-          userPostdec: 'Nice shop ever',
-          src: 'https://i.ytimg.com/vi/nSDkB_ruin8/maxresdefault.jpg',
-          usernameComment: 'Theary',
-          userCommentdec: 'Why don call me !',
-        },
-        {
-          _id: 2,
-          usernamePost: 'Neymar',
-          userPostdec: 'New wapon!',
-          src:
-            'https://th.bing.com/th/id/R.cdc25dd2a687f0e1e5b6ffb79ebb45c8?rik=wvOLbw7iVuheEg&pid=ImgRaw&r=0',
-          usernameComment: 'Sancho',
-          userCommentdec: 'Come to man utd bro!',
-        },
-        {
-          _id: 3,
-          usernamePost: 'Somnear',
-          userPostdec: 'With my brother!',
-          src:
-            'https://static.businessinsider.com/image/57b57cd7dd089566768b4aa8/image.jpg',
-          usernameComment: 'Rotanak',
-          userCommentdec: 'gg ah b',
-        },
-      ],
-    }
+    // return {
+    //   comments: [
+    //     {
+    //       _id: 1,
+    //       msg: 'Hello',
+    //     },
+    //     {
+    //       _id: 2,
+    //       msg: 'Hello',
+    //     },
+    //     {
+    //       _id: 3,
+    //       msg: 'Hello',
+    //     },
+    //   ],
+    //   feedcards: [
+    //     {
+    //       _id: 1,
+    //       usernamePost: 'Leap',
+    //       userPostdec: 'Nice shop ever',
+    //       src: 'https://i.ytimg.com/vi/nSDkB_ruin8/maxresdefault.jpg',
+    //       usernameComment: 'Theary',
+    //       userCommentdec: 'Why don call me !',
+    //     },
+    //     {
+    //       _id: 2,
+    //       usernamePost: 'Neymar',
+    //       userPostdec: 'New wapon!',
+    //       src:
+    //         'https://th.bing.com/th/id/R.cdc25dd2a687f0e1e5b6ffb79ebb45c8?rik=wvOLbw7iVuheEg&pid=ImgRaw&r=0',
+    //       usernameComment: 'Sancho',
+    //       userCommentdec: 'Come to man utd bro!',
+    //     },
+    //     {
+    //       _id: 3,
+    //       usernamePost: 'Somnear',
+    //       userPostdec: 'With my brother!',
+    //       src:
+    //         'https://static.businessinsider.com/image/57b57cd7dd089566768b4aa8/image.jpg',
+    //       usernameComment: 'Rotanak',
+    //       userCommentdec: 'gg ah b',
+    //     },
+    //   ],
+    // }
   },
   methods: {
     like() {

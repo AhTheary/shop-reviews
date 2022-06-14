@@ -8,6 +8,10 @@ app.use(cors({
     credentials: true
 }))
 
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json

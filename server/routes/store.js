@@ -4,7 +4,7 @@ const {} = require('../schemas');
 var router = express.Router();
 
 const storeService = require('../services/store');
-router.get('/id/:id', auth.ensureSignedIn, async function(req, res, next) {
+router.get('/id/:id', async function(req, res, next) {
     const { id } = req.params;
     const result = await storeService.findById(id);
     res.json(result);
@@ -19,7 +19,7 @@ router.post('/create', async(req, res, next) => {
 
 // all itens
 router.get('/all', async(req, res) => {
-    const result = await storeService.findAll()
+    const result = await storeService.findAll(req, res)
     res.json({ success: true, data: result });
 })
 

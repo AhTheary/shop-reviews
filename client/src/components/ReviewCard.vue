@@ -47,15 +47,15 @@
       </div>
     </div>
     <div class="page">
-        <a href="#" class="previous">&laquo; Previous</a>
+        <a class="previous">&laquo; Previous</a>
         <a href="#" class="previous">1</a>
         <a href="#" class="previous">2</a>
         <a href="#" class="previous">3</a>
         <a href="#" class="previous">4</a>
         <a href="#" class="previous">5</a>
         <a href="#" class="previous">6</a>
-        <a href="#" class="previous">Next &raquo;</a>
-        <a href="#" class="next">End</a>
+        <!-- <a href="#" class="previous">Next &raquo;</a>
+        <a href="#" class="next">End</a> -->
     </div>
   </div>
 </template>

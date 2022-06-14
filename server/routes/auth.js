@@ -21,7 +21,7 @@ router.get('/me', auth.ensureSignedIn, auth.currentUser, async function(
 
 router.post('/logout', auth.ensureSignedIn, async(req, res) => {
     const result = logout(req.session)
-    return res.json(result)
+    return res.clearCookie('access_token').json(result)
 })
 
 router.post(

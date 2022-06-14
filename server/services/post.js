@@ -11,6 +11,7 @@ const findAll = async() => {
 
 const create = async(newPost) => {
     const createPost = await Posts.create(newPost);
+    console.log(createPost);
     return {
         success: true,
         message: "New Post is done!",

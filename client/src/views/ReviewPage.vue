@@ -18,18 +18,18 @@ export default {
     }
   },
   async created() {
-    // const res = await fetch('http://localhost:3001/store/all', {
-    //   method: 'GET',
-    //   credentials: 'include',
-    //   headers: {
-    //     'Content-type': 'application/json',
-    //   },
-    // })
+    const res = await fetch('http://localhost:3001/store/all', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
 
-    // const resData = await res.json()
+    const resData = await res.json()
 
-    // this.stores = resData.data
-    // console.log(this.stores)
+    this.stores = resData.data
+    console.log(this.stores)
   },
 }
 </script>
