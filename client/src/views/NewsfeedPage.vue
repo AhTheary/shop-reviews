@@ -118,7 +118,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E2BA54;
+  background-color: #eee;
   border-radius: 4px;
 }
 

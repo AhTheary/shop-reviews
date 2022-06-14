@@ -24,6 +24,9 @@ const findAll = async(req, res) => {
         };
 
         let filter = {};
+        // if (category) {
+        //     filter.category = category
+        // }
 
         if (page) options.page = page;
         if (item_per_page) options.limit = item_per_page;

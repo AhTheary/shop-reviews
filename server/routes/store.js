@@ -11,8 +11,8 @@ router.get('/id/:id', async function(req, res, next) {
 })
 
 router.post('/create', async(req, res, next) => {
-    const { storeName, ownerName, category, location, imageUrl, desc, countReview } = req.body;
-    const result = await storeService.create({ storeName, ownerName, category, location, imageUrl, desc, countReview })
+    const { storeName, ownerName, category, location, imageUrl, desc, review, countReview } = req.body;
+    const result = await storeService.create({ storeName, ownerName, category, location, imageUrl, desc, review, countReview })
     res.json(result);
 })
 

@@ -25,7 +25,7 @@
             <br />
             <span>
               {{item.desc}}
-             <a :href="`/store/${item._id}`">see more</a>
+             <a :href="'/store/'+item._id">see more</a>
             </span>
           </div>
           <div class="location-news">

@@ -30,7 +30,7 @@ var storeSchema = new mongoose.Schema({
     },
     review: {
         type: Schema.Types.ObjectId,
-        ref: 'Categories',
+        ref: 'Reviews',
     },
     countReview: {
         type: Number,

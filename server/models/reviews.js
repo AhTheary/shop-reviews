@@ -4,14 +4,13 @@ const Schema = mongoose.Schema;
 
 var reviewsSchema = new mongoose.Schema({
     userId: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'Users',
         required: true
     },
     storeId: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'Stores',
-        required: true
     },
     star: {
         type: String,
@@ -20,7 +19,6 @@ var reviewsSchema = new mongoose.Schema({
     comment: {
         type: String,
         unique: true,
-        required: true
     },
 }, {
     timestamps: true,
