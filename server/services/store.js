@@ -19,7 +19,7 @@ const findAll = async(req, res) => {
         };
         let options = {
             page: 1,
-            limit: 4,
+            limit: 20,
             populate: populates,
         };
 
