@@ -8,7 +8,7 @@
                 <div class="box category-card">
           <router-link to="/browse">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/3170/3170733.png"
+              src="../assets/Home/cutlery.png"
               alt="eror"
             />
             <span>Restaurant</span>
@@ -17,7 +17,7 @@
         <div class="box category-card">
           <router-link to="/browse">
             <img
-              src="https://cdn-icons.flaticon.com/png/512/3211/premium/3211391.png?token=exp=1655222199~hmac=b65824d0e6f74eaef7b29a4470dcb6d6"
+              src="../assets/Home/shirt.png"
               alt="eror"
             />
             <span>Clothes</span>
@@ -26,7 +26,7 @@
         <div class="box category-card">
             <router-link to="/browse">
               <img
-              src="https://cdn-icons.flaticon.com/png/512/4284/premium/4284954.png?token=exp=1655221113~hmac=be3ba9bff08840f6c18a23e5472bf9c2"
+              src="../assets/Home/supermarket.png"
               alt="eror"
             />
             <span>Supermarket</span>
@@ -35,7 +35,7 @@
         <div class="box category-card">
           <router-link to="/browse">
             <img
-              src="https://cdn-icons.flaticon.com/png/512/2944/premium/2944415.png?token=exp=1655221136~hmac=138dd5f251e4d1a7421ee7f897ab9659"
+              src="../assets/Home/sports.png"
               alt="eror"
             />
             <span>Sport</span>
@@ -49,22 +49,22 @@
       </div>
       <div class="box-card">
         <div class="box aboutus-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/273/273177.png" alt="home icon" />
+          <img src="../assets/Home/shops.png" alt="home icon" />
           <h3>Browse Store</h3>
           <span>Easy for find your favorite Store Online</span>
         </div>
         <div class="box aboutus-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/4207/4207277.png" alt="error" />
+          <img src="../assets/Home/social-media.png" alt="error" />
           <h3>Social Interraction</h3>
           <span>Make interaction with other users</span>
         </div>
         <div class="box aboutus-card">
-          <img src="https://cdn-icons.flaticon.com/png/512/1365/premium/1365307.png?token=exp=1655222441~hmac=1f2e2b99a716cd692fe43f26c25e71d4" alt="error" />
+          <img src="../assets/Home/rating.png" alt="error" />
           <h3>Review Store</h3>
           <span>Write reviwe and rate for your favorite store</span>
         </div>
         <div class="box aboutus-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="location" />
+          <img src="../assets/Home/map.png" alt="location" />
           <h3>Location Store</h3>
           <span>Get direction to your favorite store</span>
         </div>
