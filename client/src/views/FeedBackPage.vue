@@ -1,4 +1,5 @@
 <template>
+<div><header-2 />
    <section class="py-5 my-5">
         <div class="container">
             <!-- <h1 class="mb-5">Feedback</h1> -->
@@ -47,13 +48,28 @@
             </div>
         </div>
     </section>
+ </div>
 </template>
 
 <script>
-export default {}
+import 'https://code.jquery.com/jquery-3.2.1.slim.min.js';
+import Header2 from '../components/Header2.vue';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js';
+// import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js';
+
+export default {
+  components: { Header2 },
+   name: 'EditProfile',
+  mounted() {
+    // let externalScript = document.createElement('script')
+    // externalScript.setAttribute('src', 'https://code.jquery.com/jquery-3.2.1.slim.min.js')
+    // document.head.appendChild(externalScript)
+  },
+}
 </script>
 
 <style scoped>
+
 .box {
     width: 570px;
     height: 600px;

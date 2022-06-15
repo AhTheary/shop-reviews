@@ -27,11 +27,11 @@
           </div>
           <div class="user-favorite" v-else>
             <a class="user" @click="menuToggle">
-              <i class="bx bxs-user-circle"></i>
+              <i class="bx bxs-user-circle" style="color: white;"></i>
             </a>
             <a>
               <label for="slide-menu-right" class="menu-button">
-                <i class="bx bxs-heart"></i>
+                <i class='bx bxs-heart' ></i>
               </label>
             </a>
           </div>

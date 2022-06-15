@@ -12,6 +12,7 @@
                 <span>{{ feedcard.userId }}</span>
               </div>
               <div class="location">
+<<<<<<< HEAD
                 <img 
                   src="../assets/locator_post.png" 
                   style="opacity: 50%; height: 25%" 
@@ -21,6 +22,17 @@
                   style="
                     font-weight: 500;
             	      font-size: 11px;
+=======
+                <img
+                  src="../assets/locator_post.png"
+                  style="opacity: 50%; height: 25%"
+                  alt=""
+                />
+                <div
+                  style="
+                    font-weight: 500;
+                    font-size: 11px;
+>>>>>>> 02e1119a6793d2a4bc9ee9d79585394dc1d188cc
                     margin-left: 2px;
                     opacity: 50%;
                   "
@@ -208,7 +220,7 @@ export default {
 
 .box_card_left .user-name .username_location .username {
   margin: 0;
-  height: 50%;
+  height: 20%;
 }
 
 .box_card_left .user-name .username_location .location {
