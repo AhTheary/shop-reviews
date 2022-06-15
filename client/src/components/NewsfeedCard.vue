@@ -12,12 +12,25 @@
               <i class="bx bxs-user-circle"></i>
             </div>
             <div class="username_location">
-              <div class="username">
+              <div class="username" style="margin-top: 1.5%;">
                 <span>{{ feedcard.userId }}</span>
               </div>
               <div class="location">
-                  <img src="../assets/locator_post.png" alt="" />
-                  <div style="font-weight:500; font-size:12px; margin-left: 2px">  {{feedcard.location}} </div>
+                <img
+                  src="../assets/locator_post.png"
+                  style="opacity: 50%; height: 25%"
+                  alt=""
+                />
+                <div
+                  style="
+                    font-weight: 500;
+                    font-size: 11px;
+                    margin-left: 2px;
+                    opacity: 50%;
+                  "
+                >
+                  Tube Coffee, Boeung Keng Kang
+                </div>
               </div>
             </div>
             <div class="icon-like" @click="like">
@@ -194,7 +207,7 @@ export default {
 }
 .box_card_left .user-name .username_location .username {
   margin: 0;
-  height: 50%;
+  height: 20%;
 }
 .box_card_left .user-name .username_location .location  {
   height: 60%;

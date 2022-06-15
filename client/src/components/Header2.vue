@@ -61,8 +61,8 @@ export default {};
   align-items: center;
 }
 .wrapper_nav2 .close i {
-  font-size: 28px;
-  background-color: rgba(238, 238, 238, 0.463);
+  font-size: 35px;
+  background-color: rgba(255, 249, 249, 0.688);
   padding: 4px 26px;
   border-radius: 4px;
   color: red;
