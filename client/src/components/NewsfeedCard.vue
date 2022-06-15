@@ -1,23 +1,32 @@
 <template>
   <div>
     <div class="wrapper_body_review">
-      <div
-        class="box_card_feed"
-        v-for="feedcard in posts"
-        :key="feedcard._id"
-      >
+      <div class="box_card_feed" v-for="feedcard in posts" :key="feedcard._id">
         <div class="box_card_left">
           <div class="user-name">
             <div class="icon-user">
               <i class="bx bxs-user-circle"></i>
             </div>
             <div class="username_location">
-              <div class="username">
+              <div class="username" style="margin-top: 1.5%;">
                 <span>{{ feedcard.userId }}</span>
               </div>
               <div class="location">
-                  <img src="../assets/locator_post.png" alt="" />
-                  <div style="font-weight:500; font-size:12px; margin-left: 2px">  {{feedcard.location}} </div>
+                <img 
+                  src="../assets/locator_post.png" 
+                  style="opacity: 50%; height: 25%" 
+                  alt="" 
+                />
+                <div 
+                  style="
+                    font-weight: 500;
+            	      font-size: 11px;
+                    margin-left: 2px;
+                    opacity: 50%;
+                  "
+                >
+                  Tube Coffee, Boeung Keng Kang
+                </div>
               </div>
             </div>
             <div class="icon-like" @click="like">
@@ -33,11 +42,11 @@
             </span>
           </div>
           <div class="img-post">
-            <img
-              :src="feedcard.image"
-              alt="erorUserpost"
-              style="width: 100%; height: 100%;"
-            />
+            <img 
+              :src="feedcard.image" 
+              alt="erorUserpost" 
+              style="width: 100%; height: 100%;" 
+              />
           </div>
         </div>
         <div class="box_card_right">
@@ -164,12 +173,14 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .box_card_left .location_post {
   height: 5%;
   width: 100%;
   padding-left: 25px;
   opacity: 80%;
 }
+
 .box_card_left .location_post img {
   height: 100%;
 }
@@ -181,10 +192,12 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .box_card_left .user-name .icon-user .bx {
   font-size: 50px;
   cursor: pointer;
 }
+
 .box_card_left .user-name .username_location {
   width: 75%;
   height: 100%;
@@ -192,22 +205,27 @@ export default {
   margin: 0 !important;
   flex-direction: column;
 }
+
 .box_card_left .user-name .username_location .username {
   margin: 0;
   height: 50%;
 }
-.box_card_left .user-name .username_location .location  {
+
+.box_card_left .user-name .username_location .location {
   height: 60%;
- display: flex;
- align-items: center;
+  display: flex;
+  align-items: center;
 }
-.box_card_left .user-name .username_location .location  img{
- height: 50%;
- margin-left: 20px;
+
+.box_card_left .user-name .username_location .location img {
+  height: 50%;
+  margin-left: 20px;
 }
- .box_card_left .user-name .username_location .location .location_des {
+
+.box_card_left .user-name .username_location .location .location_des {
   /* width: 85%; */
-  } 
+}
+
 /* .box_card_left .user-name .username_location .location .location_des span{
   font-size: 8px;
 } */
@@ -236,7 +254,7 @@ export default {
   width: 100%;
   height: 15%;
   padding-left: 30px;
-  
+
 }
 
 .box_card_left .img-post {
