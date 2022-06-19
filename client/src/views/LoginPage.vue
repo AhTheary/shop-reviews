@@ -7,6 +7,7 @@ export default {
     return {
       email: '',
       password: '',
+      message: '',
     }
   },
   methods: {
@@ -23,14 +24,15 @@ export default {
       })
 
       const resData = await res.json()
-      if (resData.success == true)  { 
-
+      if (resData.success == true) {
         //change status user logged in
         this.$store.commit('setUserLoggedIn', true)
 
         this.$router.push('/')
+      } else {
+        this.message = error.toString()
+        console.log(res)
       }
-      else console.log(res)
 
       // if (this.email == 'bekkhemka@gmail.com' && this.password == '123') {
       //   this.$router.push({ name: 'home' })
@@ -43,7 +45,7 @@ export default {
 </script>
 <template>
   <div>
-    <header-2/>
+    <header-2 />
     <section class="vh-100" style="background-color: #eee;">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -82,6 +84,15 @@ export default {
                           />
                         </div>
                       </div>
+                      <div class="form-group">
+                        <div
+                          v-if="message"
+                          class="alert alert-danger"
+                          role="alert"
+                        >
+                          {{ message }}
+                        </div>
+                      </div>
                       <div
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
@@ -90,7 +101,7 @@ export default {
                         </button>
                       </div>
                       <div class="account">
-                        <a href="#">Forgot account?</a>
+                        <a href="/forget">Forgot account?</a>
                         <a href="/register">&nbsp; Sign Up</a>
                       </div>
                     </form>

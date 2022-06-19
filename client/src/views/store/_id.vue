@@ -1,52 +1,91 @@
 <script>
-import Header from '../../components/Header.vue'
-import Footer from '../../components/Footer.vue'
+import Header from "../../components/Header.vue";
+import Footer from "../../components/Footer.vue";
 export default {
-  name: 'detailPage',
+  name: "detailPage",
   components: {
     Header,
     Footer,
   },
   data() {
     return {
-      store: '',
+      store: "",
       id: this.$route.params.id,
-      commentReview: '',
-    }
+      commentReview: "",
+      rating_star: 0,
+      reviewUser: "",
+    };
   },
   methods: {
     openReview() {
-      var element = document.querySelector('.review-star')
-      element.classList.add('open')
+      var element = document.querySelector(".review-star");
+      element.classList.add("open");
     },
     close() {
-      var element = document.querySelector('.review-star')
-      element.classList.remove('open')
+      var element = document.querySelector(".review-star");
+      element.classList.remove("open");
     },
     submit() {
-      var element = document.querySelector('.review-star')
-      element.classList.remove('open')
+      var element = document.querySelector(".review-star");
+      element.classList.remove("open");
     },
-    subReview() {
-      console.log(this.commentReview)
+
+    //create review
+    async subReview() {
+      console.log("TEST", this.commentReview, this.rating_star);
+      const res = await fetch(`http://localhost:3001/review/create`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          storeId: this.id,
+          comment: this.commentReview,
+          star: this.rating_star,
+        }),
+      });
+
+      const resData = await res.json();
+      if (resData) this.getReview();
+    },
+
+    //get review
+    async getReview() {
+      const res = await fetch(
+        `http://localhost:3001/review/all?storeId=${this.id}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
+
+      const resData = await res.json();
+      this.reviewUser = resData.data;
+
+      console.log("SAVED", this.reviewUser);
     },
   },
   async created() {
-    let id = this.$route.params.id
+    this.getReview();
+    let id = this.$route.params.id;
     const res = await fetch(`http://localhost:3001/store/id/${id}`, {
-      method: 'GET',
-      credentials: 'include',
+      method: "GET",
+      credentials: "include",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
-    })
+    });
 
-    const resData = await res.json()
+    const resData = await res.json();
 
-    this.store = resData
-    console.log('test', this.store)
+    this.store = resData;
+    console.log("test", this.store);
   },
-}
+};
 </script>
 <template>
   <div>
@@ -92,26 +131,32 @@ export default {
             <i class="bx bx-dots-vertical-rounded"></i>
           </div>
         </div>
+
+        <!--  Review display  -->
         <div class="user_review_post">
           <div class="title">
             <span>REVIEW</span>
           </div>
           <div class="user_comment_review">
-            <div class="username">
-              <i class="bx bxs-user-circle"></i>
-              <div><b>Sonic</b></div>
-            </div>
-            <div class="star">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-            </div>
-            <div class="comment">
-              <span>
-                i am review
-              </span>
+            <div v-for="review in reviewUser" :key="review._id">
+              <div class="username">
+                <i class="bx bxs-user-circle"></i>
+                <div>
+                  <b>{{
+                    review.userId.firstName + " " + review.userId.lastName
+                  }}</b>
+                </div>
+              </div>
+              <div class="star d-flex flex-row">
+                <i
+                  class="bx bxs-star"
+                  v-for="i in parseInt(review.star)"
+                  :key="i"
+                ></i>
+              </div>
+              <div class="comment">
+                <span> {{ review.comment }} </span>
+              </div>
             </div>
           </div>
           <div class="post-btn">
@@ -138,12 +183,13 @@ export default {
             <form class="form">
               <h2>Review</h2>
 
-              <p>Click on start to rate</p>
+              <p>Click on star to rate</p>
               <input
                 class="star star-5"
                 id="star-5-2"
                 type="radio"
                 name="star"
+                @click="rating_star = 5"
               />
               <label class="star star-5" for="star-5-2"></label>
               <input
@@ -151,6 +197,7 @@ export default {
                 id="star-4-2"
                 type="radio"
                 name="star"
+                @click="rating_star = 4"
               />
               <label class="star star-4" for="star-4-2"></label>
               <input
@@ -158,6 +205,7 @@ export default {
                 id="star-3-2"
                 type="radio"
                 name="star"
+                @click="rating_star = 3"
               />
               <label class="star star-3" for="star-3-2"></label>
               <input
@@ -165,6 +213,7 @@ export default {
                 id="star-2-2"
                 type="radio"
                 name="star"
+                @click="rating_star = 2"
               />
               <label class="star star-2" for="star-2-2"></label>
               <input
@@ -172,6 +221,7 @@ export default {
                 id="star-1-2"
                 type="radio"
                 name="star"
+                @click="rating_star = 1"
               />
               <label class="star star-1" for="star-1-2"></label>
               <div class="rev-box">
@@ -265,7 +315,7 @@ label.star {
 }
 
 input.star:checked ~ label.star:before {
-  content: '\f005';
+  content: "\f005";
   color: #fd4;
   transition: all 0.25s;
 }
@@ -284,7 +334,7 @@ label.star:hover {
 }
 
 label.star:before {
-  content: '\f006';
+  content: "\f006";
   font-family: FontAwesome;
 }
 
@@ -350,7 +400,7 @@ button:hover {
 .close:after {
   position: absolute;
   left: 0px;
-  content: ' ';
+  content: " ";
   height: 33px;
   width: 2px;
   background-color: red;

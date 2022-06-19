@@ -1,11 +1,11 @@
 var session = require('express-session')
-//<<<<<<< HEAD
+
 // let RedisStore = require("connect-redis")(session)
 // const { createClient } = require("redis")
-//=======
-    // let RedisStore = require("connect-redis")(session)
-    // const { createClient } = require("redis")
-// >>>>>>> 02e1119a6793d2a4bc9ee9d79585394dc1d188cc
+
+// let RedisStore = require("connect-redis")(session)
+// const { createClient } = require("redis")
+
 
 module.exports = async(app) => {
     // let redisClient = createClient({ url: 'redis://localhost:6379', legacyMode: true })
@@ -18,7 +18,8 @@ module.exports = async(app) => {
         secret: 'my-secret',
         resave: true,
         rolling: true,
-        saveUninitialized: true,
+        //saveUninitialized: true,
+        saveUninitialized: false,
         name: 'access_token',
         cookie: {
             maxAge: 1000 * 60 * 60 * 2, // 2 hours

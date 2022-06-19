@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper_body_review">
-    <div class="box_card_review"  v-for="item in stores" :key="item._id">
+    <div class="box_card_review" v-for="item in stores" :key="item._id">
       <div class="box_card_left">
         <div class="shop-name">
           <span>
@@ -11,26 +11,28 @@
           <img
             :src="item.imageUrl"
             alt="erorUserpost"
-            style="width: 100%; height: 100%;"
+            style="width: 100%; height: 100%"
           />
         </div>
       </div>
       <div class="box_card_right">
         <div class="like">
-          <div class="icon" @click="fovorite"><i class="bx bxs-heart" @click="fovorite"></i></div>
+          <div class="icon" @click="fovorite">
+            <i class="bx bxs-heart" @click="fovorite"></i>
+          </div>
         </div>
         <div class="card-detail">
           <div class="description-post">
             <span>Description:</span>
             <br />
             <span>
-              {{item.desc}}
-             <a :href="'/store/'+item._id">see more</a>
+              {{ item.desc }}
+              <a :href="'/store/' + item._id">see more</a>
             </span>
           </div>
           <div class="location-news">
             <span>Location: </span>
-             <span> {{item.location}}</span>
+            <span> {{ item.location }}</span>
           </div>
           <div class="star-user">
             <span>
@@ -41,51 +43,57 @@
               <i class="bx bxs-star-half"></i>
             </span>
             &nbsp; &nbsp; &nbsp;
-            <span>{{ item.countReview}} Review</span>
+            <span>{{ item.countReview }} Review</span>
           </div>
         </div>
       </div>
     </div>
     <div class="page">
-        <a class="previous">&laquo; Previous</a>
-        <a href="#" class="previous">1</a>
-        <a href="#" class="previous">2</a>
-        <a href="#" class="previous">3</a>
-        <a href="#" class="previous">4</a>
-        <a href="#" class="previous">5</a>
-        <a href="#" class="previous">6</a>
-        <!-- <a href="#" class="previous">Next &raquo;</a>
-        <a href="#" class="next">End</a> -->
+      <a class="previous">&laquo; Previous</a>
+      <a
+        href="#"
+        class="previous"
+        v-for="i in totalPage"
+        :key="i"
+        @click="$router.push(`/review?page=${i}`)"
+        >{{ i }}</a
+      >
+
+      <a href="#" class="previous">Next &raquo;</a>
+      <a
+        href="#"
+        class="next"
+        @click="$router.push(`/review?page=${totalPage}`)"
+        >End</a
+      >
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ReviewCard',
-  props: ['stores'],
+  name: "ReviewCard",
+  props: ["stores", "totalPage"],
   data() {
     return {
-      inputcomment: '',
-     
-    }
+      inputcomment: "",
+    };
   },
   methods: {
     post() {
-      alert('U wanna post somthing!')
-      return this.inputcomment
+      alert("U wanna post somthing!");
+      return this.inputcomment;
     },
     fovorite() {
-      alert('You add me to Fovorite cart! ')
+      alert("You add me to Fovorite cart! ");
     },
   },
-}
+};
 </script>
 <style>
-
-.page{
-    margin: 15px auto 0;
-    width: 100%;
+.page {
+  margin: 15px auto 0;
+  width: 100%;
 }
 .page a {
   text-decoration: none;
@@ -104,7 +112,7 @@ export default {
   color: black;
 }
 .page .next {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
 }
 .wrapper_body_review {
@@ -151,22 +159,22 @@ export default {
   display: flex;
   align-items: center;
   padding-left: 25px;
-   transition: transform .2s;
+  transition: transform 0.2s;
 }
-.box_card_left .img-post img{
-   transition: transform .2s;
+.box_card_left .img-post img {
+  transition: transform 0.2s;
 }
-.box_card_left .img-post img:hover{
-      -ms-transform: scale(1.05);
-    /*IE9*/
-    -webkit-transform: scale(1.05);
-    /*Safari3-8*/
-    transform: scale(1);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -o-transform: scale(1.05);
-    box-shadow: 10px 10px 5px lightblue inset;
-    box-shadow: 0 8px 8px -4px lightblue;
+.box_card_left .img-post img:hover {
+  -ms-transform: scale(1.05);
+  /*IE9*/
+  -webkit-transform: scale(1.05);
+  /*Safari3-8*/
+  transform: scale(1);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  box-shadow: 10px 10px 5px lightblue inset;
+  box-shadow: 0 8px 8px -4px lightblue;
 }
 
 .box_card_right {

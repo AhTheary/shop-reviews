@@ -1,28 +1,27 @@
-"use strict"
-var mongoose = require('mongoose');
+"use strict";
+var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var reviewsSchema = new mongoose.Schema({
     userId: {
         type: String,
-        ref: 'Users',
-        required: true
+        ref: "Users",
+        required: true,
     },
     storeId: {
         type: String,
-        ref: 'Stores',
+        ref: "Stores",
     },
     star: {
         type: String,
-        required: true
+        required: true,
     },
     comment: {
         type: String,
-        unique: true,
     },
 }, {
     timestamps: true,
 });
 
-var Reviews = mongoose.model('Reviews', reviewsSchema);
+var Reviews = mongoose.model("Reviews", reviewsSchema);
 module.exports = Reviews;

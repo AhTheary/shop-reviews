@@ -56,6 +56,19 @@ const router = createRouter({
                 import ('../views/RegisterPage.vue')
         },
         {
+            path: '/forget',
+            name: 'forget',
+            component: () =>
+                import ('../views/Forget.vue')
+        },
+        
+        {
+            path: '/reset',
+            name: 'reset',
+            component: () =>
+                import ('../views/Reset.vue')
+        },
+        {
             path: '/store/:id',
             name: 'store',
             component: () =>

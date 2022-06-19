@@ -25,6 +25,8 @@ require('./configs/db')();
 
 app.use(require('./routes'));
 
+
+
 app.use((err, req, res, next) => {
     return res.json({
         success: false,

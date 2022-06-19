@@ -6,7 +6,7 @@
           <router-link to="/">
             <img
               src="../assets/LoginLogo.jpg"
-              style="margin-left: 20px;"
+              style="margin-left: 20px"
               alt="Logo store"
             />
           </router-link>
@@ -27,11 +27,11 @@
           </div>
           <div class="user-favorite" v-else>
             <a class="user" @click="menuToggle">
-              <i class="bx bxs-user-circle" style="color: white;"></i>
+              <i class="bx bxs-user-circle" style="color: white"></i>
             </a>
             <a>
               <label for="slide-menu-right" class="menu-button">
-                <i class='bx bxs-heart' ></i>
+                <i class="bx bxs-heart"></i>
               </label>
             </a>
           </div>
@@ -42,14 +42,16 @@
           <ul>
             <router-link to="/">Home</router-link>
             <router-link to="/newsfeed">New Feeds</router-link>
-            <router-link to="/review">Review</router-link>
+            <router-link to="/review?page=1">Review</router-link>
             <router-link to="/location">Location</router-link>
           </ul>
         </div>
       </div>
     </div>
     <div class="menu">
-      <h3><b>Bekkhem</b></h3>
+      <h3>
+        <b> {{ me.username }} </b>
+      </h3>
       <ul>
         <li>
           <!-- <i class="bx bx-edit-alt"></i>
@@ -104,45 +106,56 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: "Header",
   data() {
     return {
       user: true,
-      username: '',
+      username: "",
       logged: true,
-    }
+      me: "",
+    };
   },
 
   computed: {
     userLoggedIn() {
-      return this.$store.state.userLoggedIn
+      return this.$store.state.userLoggedIn;
     },
   },
 
   methods: {
     menuToggle() {
-      const toggleMenu = document.querySelector('.menu')
-      toggleMenu.classList.toggle('active')
+      const toggleMenu = document.querySelector(".menu");
+      toggleMenu.classList.toggle("active");
     },
     async onLogout() {
-      console.log('test')
-      const res = await fetch('http://localhost:3001/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
+      console.log("test");
+      const res = await fetch("http://localhost:3001/auth/logout", {
+        method: "POST",
+        credentials: "include",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
         body: JSON.stringify(),
-      })
-      const resData = await res.json()
-      console.log(resData)
+      });
 
-      if (resData) {
-        this.$router.push({ name: 'home' })
-        this.logged = false
-      }
+      const resData = await res.json();
+      console.log(resData);
+      this.$router.go("/");
     },
   },
-}
+  async created() {
+    const res = await fetch("http://localhost:3001/auth/me", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    const resData = await res.json();
+    this.me = resData;
+    console.log("User", this.me);
+  },
+};
 </script>
 <style></style>

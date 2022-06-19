@@ -2,40 +2,40 @@ const Reviews = require("../models/reviews");
 
 const findById = async(id) => {
     return await Stores.findById(id);
-}
+};
 
 const findAll = async(req, res) => {
+    const { storeId } = req.query;
     try {
-        return await Reviews.find().populate('category');
+        return await Reviews.find({ storeId: storeId }).populate([
+            { path: "userId", select: { firstName: 1, lastName: 1 } },
+        ]);
     } catch (error) {
-        return ërror
+        return error;
     }
-
-}
+};
 
 const create = async(newStore) => {
     const createStore = await Reviews.create(newStore);
     return {
         success: true,
         message: "Ok store is Created",
-        data: createStore
+        data: createStore,
     };
-}
+};
 
 const update = async(updateReview) => {
-
     const { _id, star, comment } = updateReview;
     const updatenewReviews = await Reviews.findByIdAndUpdate(_id, {
         star: star,
-        comment: comment
+        comment: comment,
     });
     return {
         success: true,
         message: "Now Store is updated",
-        data: updatenewReviews
+        data: updatenewReviews,
     };
-
-}
+};
 
 const remove = async(id) => {
     const removeStore = await Reviews.findByIdAndRemove(id);
@@ -43,9 +43,9 @@ const remove = async(id) => {
     return {
         success: true,
         message: "Store is delete successfull",
-        data: removeStore
+        data: removeStore,
     };
-}
+};
 
 module.exports = {
     findById,
@@ -53,4 +53,4 @@ module.exports = {
     remove,
     findAll,
     create,
-}
+};

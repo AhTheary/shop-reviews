@@ -14,43 +14,49 @@
     </div>
     <div id="bg">
       <div class="container-popup">
-      <div class="wrapper">
-        <section class="post">
-          <header>
-            <div class="text">Create Post</div>
-            <div class="close" @click="closePopup"><i class="bx bx-x"></i></div>
-          </header>
-          <form action="#">
-            <div class="content">
-              <img src="../assets/icons/logo.svg" alt="logo" />
-              <div class="details">
-                <p> {{username}} </p>
+        <div class="wrapper">
+          <section class="post">
+            <header>
+              <div class="text">Create Post</div>
+              <div class="close" @click="closePopup">
+                <i class="bx bx-x"></i>
               </div>
-            </div>
-            <textarea
-              placeholder="What's on your mind?"
-              spellcheck="false"
-              required
-            ></textarea>
-            <div class="theme-emoji">
-              <img src="../assets/icons//theme.svg" alt="theme" />
-              <img src="../assets/icons//smile.svg" alt="smile" />
-            </div>
-            <div class="options">
-              <p>Add to Your Post</p>
-              <ul class="list">
-                <li><img src="../assets/icons/gallery.svg" alt="gallery" /></li>
-                <!-- <li><img src="icons/tag.svg" alt="gallery" style="display: none;"></li> -->
-                <li><img src="../assets/icons//emoji.svg" alt="gallery" /></li>
-                <li><img src="../assets/icons//mic.svg" alt="gallery" /></li>
-                <li><img src="../assets/icons//more.svg" alt="gallery" /></li>
-              </ul>
-            </div>
-            <button @click="post">Post</button>
-          </form>
-        </section>
+            </header>
+            <form action="#">
+              <div class="content">
+                <img src="../assets/icons/logo.svg" alt="logo" />
+                <div class="details">
+                  <p>{{ me.username }}</p>
+                </div>
+              </div>
+              <textarea
+                placeholder="What's on your mind?"
+                spellcheck="false"
+                required
+              ></textarea>
+              <div class="theme-emoji">
+                <img src="../assets/icons//theme.svg" alt="theme" />
+                <img src="../assets/icons//smile.svg" alt="smile" />
+              </div>
+              <div class="options">
+                <p>Add to Your Post</p>
+                <ul class="list">
+                  <li>
+                    <img src="../assets/icons/gallery.svg" alt="gallery" />
+                  </li>
+                  <!-- <li><img src="icons/tag.svg" alt="gallery" style="display: none;"></li> -->
+                  <li>
+                    <img src="../assets/icons//emoji.svg" alt="gallery" />
+                  </li>
+                  <li><img src="../assets/icons//mic.svg" alt="gallery" /></li>
+                  <li><img src="../assets/icons//more.svg" alt="gallery" /></li>
+                </ul>
+              </div>
+              <button @click="post">Post</button>
+            </form>
+          </section>
+        </div>
       </div>
-    </div>
     </div>
     <NewsfeedCard :posts="posts" />
     <Footer />
@@ -65,8 +71,9 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      username:'bekkhem',
-      posts:[]
+      posts: [],
+      me: '',
+      username: '',
     }
   },
   methods: {
@@ -74,18 +81,18 @@ export default {
       const openpopup = document.querySelector('.container-popup')
       openpopup.classList.add('open-container')
       //add background
-      document.getElementById('bg').classList.add('bg');
+      document.getElementById('bg').classList.add('bg')
     },
     closePopup() {
       const openpopup = document.querySelector('.container-popup')
       openpopup.classList.remove('open-container')
-            document.getElementById('bg').classList.remove('bg');
+      document.getElementById('bg').classList.remove('bg')
     },
     post() {
       console.log('I go!')
     },
   },
-   async mounted() {
+  async mounted() {
     const res = await fetch('http://localhost:3001/post/all', {
       method: 'GET',
       credentials: 'include',
@@ -97,7 +104,20 @@ export default {
     const resData = await res.json()
 
     this.posts = resData
-    console.log("Result:",this.posts)
+    console.log('Result:', this.posts)
+  },
+  async created() {
+    const res = await fetch('http://localhost:3001/auth/me', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+    const resData = await res.json()
+    this.me = resData
+    console.log('User', this.me)
   },
 }
 </script>
@@ -112,7 +132,7 @@ export default {
 
 .btn_create_review {
   position: relative;
-   margin: 17vh auto 16px;
+  margin: 17vh auto 16px;
   width: 80%;
   height: 60px;
   display: flex;
@@ -121,7 +141,6 @@ export default {
   background-color: #eee;
   border-radius: 4px;
 }
-
 
 .btn_create_review i {
   position: relative;
@@ -175,7 +194,7 @@ opacity: 0.5;
   z-index: 999;
 }
 .container-popup.open-container {
- visibility: visible;
+  visibility: visible;
 }
 
 .container-popup.active {
@@ -355,16 +374,16 @@ form textarea:valid ~ button:hover {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .bg {
   width: 100%;
-    height: 100%;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.561);
-    top: 0px;
-    left: 0px;
-    z-index: 999;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.561);
+  top: 0px;
+  left: 0px;
+  z-index: 999;
 }
 </style>
