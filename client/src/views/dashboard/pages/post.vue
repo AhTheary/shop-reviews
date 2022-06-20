@@ -15,15 +15,13 @@
                         <th>Location</th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <a target="_blank" href="resturants.jpg">
-                                <img src="../../../assets/NewFeed&review/resturants.jpg" alt="users_post" />
-                            </a>
+                    <tr v-for="post in posts" :key="post._id">
+                        <td>   
+                                <img :src=" post.image " alt="users_post" />
                         </td>
-                        <td>5 star</td>
-                        <td>50</td>
-                        <td>TK, PP</td>
+                        <td> {{post.username}} </td>
+                        <td> {{post.like}}</td>
+                        <td> {{post.location}}</td>
 
                         <td>
                             <span class="material-symbols-outlined" style="color: rgb(241, 16, 16)">
@@ -31,54 +29,7 @@
                             </span>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a target="_blank" href="resturants.jpg">
-                                <img src="../../../assets/NewFeed&review/resturants.jpg" alt="users_post" />
-                            </a>
-                        </td>
-                        <td>5 star</td>
-                        <td>50</td>
-                        <td>TK, PP</td>
-
-                        <td>
-                            <span class="material-symbols-outlined" style="color: rgb(241, 16, 16)">
-                                delete
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a target="_blank" href="resturants.jpg">
-                                <img src="../../../assets/NewFeed&review/resturants.jpg" alt="users_post" />
-                            </a>
-                        </td>
-                        <td>5 star</td>
-                        <td>50</td>
-                        <td>TK, PP</td>
-
-                        <td>
-                            <span class="material-symbols-outlined" style="color: rgb(241, 16, 16)">
-                                delete
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a target="_blank" href="resturants.jpg">
-                                <img src="../../../assets/NewFeed&review/resturants.jpg" alt="users_post" />
-                            </a>
-                        </td>
-                        <td>5 star</td>
-                        <td>50</td>
-                        <td>TK, PP</td>
-
-                        <td>
-                            <span class="material-symbols-outlined" style="color: rgb(241, 16, 16)">
-                                delete
-                            </span>
-                        </td>
-                    </tr>
+                    
                 </table>
             </div>
         </section>
@@ -86,7 +37,18 @@
 
 <script>
     export default {
-        
+        data() {
+            return {
+                posts:[
+                    {
+                        username:"bekkhem",
+                        image:"https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F6083aefe-1558-11eb-bca5-e85774a5f3b9.jpg?crop=2369%2C1333%2C566%2C264&resize=1180",
+                        location:"Vietnam",
+                        like:"5"
+                    }
+                ]
+            }
+        },
     }
 </script>
 

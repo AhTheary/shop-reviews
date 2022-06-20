@@ -16,81 +16,21 @@
           <th>Name</th>
           <th>Category</th>
           <th>Location</th>
-          <th>Description</th>
+          <th>Image</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td>0001</td>
-          <td>Tube caffee</td>
-          <td>cafe</td>
-          <td>TK</td>
-          <td>Coffee here so good</td>
+        <tr v-for="store in stores" :key="store._id">
+          <td>{{ store._id }}</td>
+          <td>{{ store.name }}</td>
+          <td>{{ store.category }}</td>
+          <td>{{ store.location }}</td>
           <td>
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(24, 127, 201);"
-            >
-              edit
-            </span>
-
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(241, 16, 16);"
-            >
-              delete
-            </span>
+            <img
+              :src="store.storeIMG"
+              alt="erorUserpost"
+              style="width: 60%;"
+            />
           </td>
-        </tr>
-        <tr>
-          <td>0001</td>
-          <td>Tube caffee</td>
-          <td>cafe</td>
-          <td>TK</td>
-          <td>Coffee here so good</td>
-          <td>
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(24, 127, 201);"
-            >
-              edit
-            </span>
-
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(241, 16, 16);"
-            >
-              delete
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>0001</td>
-          <td>Tube caffee</td>
-          <td>cafe</td>
-          <td>TK</td>
-          <td>Coffee here so good</td>
-          <td>
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(24, 127, 201);"
-            >
-              edit
-            </span>
-
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(241, 16, 16);"
-            >
-              delete
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>0001</td>
-          <td>Tube caffee</td>
-          <td>cafe</td>
-          <td>TK</td>
-          <td>Coffee here so good</td>
           <td>
             <span
               class="material-symbols-outlined"
@@ -109,9 +49,11 @@
         </tr>
       </table>
     </div>
+    <!-- open add store-->
     <div class="popup">
       <form action="#">
-        <label for="img">Store image:</label> <br>
+        <label for="img">Store image:</label>
+        <br />
         <input type="file" id="img" name="img" accept="image/*" />
         <br />
         <br />
@@ -144,7 +86,7 @@
         <br />
         <br />
         <input type="submit" value="Confirm" @click="confirmStore" />
-        <input type="submit" value="Cancel" @click="cancel"/>
+        <input type="submit" value="Cancel" @click="cancel" />
       </form>
     </div>
   </section>
@@ -152,21 +94,38 @@
 
 <script>
 export default {
-    data() {
-        return {
-            
-        }
-    },
-    methods: {
-        addStore(){
-            const openpopup = document.querySelector('.popup')
-            openpopup.classList.add('popup-open')
+  data() {
+    return {
+      stores: [
+        {
+          _id: 1,
+          name: 'KFC',
+          category: 'Sport',
+          location: 'BKK,PP',
+          storeIMG:
+            'https://www.khmertimeskh.com/wp-content/uploads/2022/03/Cambodias-first-HM-wows-the-crowds-on-opening-day.jpg',
         },
-        cancel(){
-          const closePopup = document.querySelector('.popup')
-          closePopup.classList.remove('popup-open')
-        }
+         {
+          _id: 2,
+          name: 'Buger King',
+          category: 'Sport',
+          location: 'TK,PP',
+          storeIMG:
+            'https://th.bing.com/th/id/OIP.i3X-dRani-pe3-_MXZbaqwHaFP?pid=ImgDet&rs=1',
+        },
+      ],
     }
+  },
+  methods: {
+    addStore() {
+      const openpopup = document.querySelector('.popup')
+      openpopup.classList.add('popup-open')
+    },
+    cancel() {
+      const closePopup = document.querySelector('.popup')
+      closePopup.classList.remove('popup-open')
+    },
+  },
 }
 </script>
 
@@ -180,15 +139,15 @@ export default {
   left: 0px;
   visibility: hidden;
 }
-.popup.popup-open{
-    visibility: visible;
+.popup.popup-open {
+  visibility: visible;
 }
 
 form {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: block;
   border: 1px solid rgb(196, 196, 196);
   padding: 12px;

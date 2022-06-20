@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const app = express();
+const path = require("path");
 
 app.use(cors({
     origin: 'http://localhost:3000',
@@ -16,6 +17,11 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+app.use(express.json({
+    limit: '50mb'
+}));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // Connect session
 require('./configs/session')(app);
@@ -24,6 +30,8 @@ require('./configs/session')(app);
 require('./configs/db')();
 
 app.use(require('./routes'));
+
+
 
 app.use((err, req, res, next) => {
     return res.json({

@@ -10,15 +10,15 @@ var postsSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        required: true
+        required: false
     },
     location: {
         type: String,
-        required: true
+        required: false
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     comment: {
         type: String,

@@ -2,6 +2,7 @@ var express = require('express');
 const auth = require('../middlewares/auth');
 const {} = require('../schemas');
 var router = express.Router();
+const Jwt = require("jsonwebtoken");
 
 const postService = require('../services/post');
 
@@ -12,7 +13,10 @@ router.get('/id/:id', auth.ensureSignedIn, async function(req, res, next) {
 })
 
 router.post('/create', auth.ensureSignedIn, async(req, res, next) => {
-    const { userId, status, location, image, comment } = req.body;
+    const user = Jwt.verify(req.session.jwt, "jwt-secret");
+    console.log(user);
+    const { status, location, image, comment } = req.body;
+    let userId = user._id;
     const result = await postService.create({ userId, status, location, image, comment })
     res.json(result);
 })
@@ -25,8 +29,8 @@ router.get('/all', async(req, res) => {
 })
 
 router.post('/update', auth.ensureSignedIn, async(req, res, next) => {
-    const { _id, userId, status, location, image, comment } = req.body;
-    const result = await postService.update({ _id, userId, status, location, image, comment });
+    const { _id, userpostId, status, location, image, comment } = req.body;
+    const result = await postService.update({ _id, userpostId, status, location, image, comment });
     res.json(result);
 })
 

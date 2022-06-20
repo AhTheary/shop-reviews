@@ -9,35 +9,24 @@
             </div>
             <div class="username_location">
               <div class="username" style="margin-top: 1.5%;">
-                <span>{{ feedcard.userId }}</span>
+                <span>{{ feedcard.userId.username }}</span>
               </div>
               <div class="location">
-<<<<<<< HEAD
+
                 <img 
                   src="../assets/locator_post.png" 
                   style="opacity: 50%; height: 25%" 
                   alt="" 
                 />
-                <div 
-                  style="
-                    font-weight: 500;
-            	      font-size: 11px;
-=======
-                <img
-                  src="../assets/locator_post.png"
-                  style="opacity: 50%; height: 25%"
-                  alt=""
-                />
                 <div
                   style="
                     font-weight: 500;
                     font-size: 11px;
->>>>>>> 02e1119a6793d2a4bc9ee9d79585394dc1d188cc
                     margin-left: 2px;
                     opacity: 50%;
                   "
                 >
-                  Tube Coffee, Boeung Keng Kang
+                   {{ feedcard.location }}
                 </div>
               </div>
             </div>
@@ -96,50 +85,6 @@ export default {
   name: 'NewsfeedCard',
   props: ['posts'],
   data() {
-    // return {
-    //   comments: [
-    //     {
-    //       _id: 1,
-    //       msg: 'Hello',
-    //     },
-    //     {
-    //       _id: 2,
-    //       msg: 'Hello',
-    //     },
-    //     {
-    //       _id: 3,
-    //       msg: 'Hello',
-    //     },
-    //   ],
-    //   feedcards: [
-    //     {
-    //       _id: 1,
-    //       usernamePost: 'Leap',
-    //       userPostdec: 'Nice shop ever',
-    //       src: 'https://i.ytimg.com/vi/nSDkB_ruin8/maxresdefault.jpg',
-    //       usernameComment: 'Theary',
-    //       userCommentdec: 'Why don call me !',
-    //     },
-    //     {
-    //       _id: 2,
-    //       usernamePost: 'Neymar',
-    //       userPostdec: 'New wapon!',
-    //       src:
-    //         'https://th.bing.com/th/id/R.cdc25dd2a687f0e1e5b6ffb79ebb45c8?rik=wvOLbw7iVuheEg&pid=ImgRaw&r=0',
-    //       usernameComment: 'Sancho',
-    //       userCommentdec: 'Come to man utd bro!',
-    //     },
-    //     {
-    //       _id: 3,
-    //       usernamePost: 'Somnear',
-    //       userPostdec: 'With my brother!',
-    //       src:
-    //         'https://static.businessinsider.com/image/57b57cd7dd089566768b4aa8/image.jpg',
-    //       usernameComment: 'Rotanak',
-    //       userCommentdec: 'gg ah b',
-    //     },
-    //   ],
-    // }
   },
   methods: {
     like() {
@@ -233,14 +178,6 @@ export default {
   height: 50%;
   margin-left: 20px;
 }
-
-.box_card_left .user-name .username_location .location .location_des {
-  /* width: 85%; */
-}
-
-/* .box_card_left .user-name .username_location .location .location_des span{
-  font-size: 8px;
-} */
 
 .box_card_left .user-name .icon-like {
   width: 10%;

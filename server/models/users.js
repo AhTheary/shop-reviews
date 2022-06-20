@@ -7,10 +7,6 @@ var userSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true,
-        validate: {
-            validator: async val => Users.doesntExist({ username: val }),
-            message: ({ value }) => `Username ${value} has already been taken.`
-        }
     },
     firstName: {
         type: String,
@@ -22,6 +18,11 @@ var userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
+        required: true
+    },
+    phone: {
+        type: Number,
         unique: true,
         required: true
     },

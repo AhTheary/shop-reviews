@@ -29,6 +29,7 @@ li {
 .navigation {
     position: fixed;
     background: #d4d4d4;
+    /* background-color: #E2BA54; */
     width: 20vw;
     min-height: 100vh;
     display: flex;
@@ -38,13 +39,14 @@ li {
 .navigation .logo {
     text-align: center;
     display: flex;
+    justify-content: center;
 }
 
 .navigation .logo img {
     display: flex;
     text-align: center;
-    width: 70%;
-    height: 50%;
+    width: 100%;
+    cursor: pointer;
 }
 
 .navigation li {

@@ -19,22 +19,45 @@ router.get('/me', auth.ensureSignedIn, auth.currentUser, async function(
     res.json(result)
 })
 
-router.post('/logout', auth.ensureSignedIn, async(req, res) => {
+router.post('/logout', async(req, res) => {
     const result = logout(req.session)
     return res.clearCookie('access_token').json(result)
 })
+
+// router.post(
+//     '/login',
+//     auth.ensureSignedOut,
+//     joiValidation(signInSchema),
+//     async(req, res, next) => {
+//         try {
+//             const { email, password } = req.body
+//             const result = await login(email, password)
+//             req.session.jwt = result.data.token
+//             res.json({ success: true, result })
+//         } catch (err) {
+//             res.json({ success: false })
+//         }
+//     },
+// )
+
 
 router.post(
     '/login',
     auth.ensureSignedOut,
     joiValidation(signInSchema),
     async(req, res, next) => {
-        const { email, password } = req.body
-        const result = await login(email, password)
-        req.session.jwt = result.data.token
-        res.json(result)
+        try {
+            const { username, password } = req.body
+            const result = await login(username, password)
+            console.log(result);
+            req.session.jwt = result.data.token
+            res.json({ success: true, result })
+        } catch (err) {
+            res.json({ success: false })
+        }
     },
 )
+
 
 router.post(
     '/register',
