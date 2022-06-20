@@ -61,7 +61,11 @@ const router = createRouter({
             component: () =>
                 import ('../views/Forget.vue')
         },
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
         {
             path: '/reset',
             name: 'reset',

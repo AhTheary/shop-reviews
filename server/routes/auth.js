@@ -47,9 +47,14 @@ router.post(
     joiValidation(signInSchema),
     async(req, res, next) => {
         try {
+<<<<<<< HEAD
             const { username, password } = req.body
             const result = await login(username, password)
             console.log(result);
+=======
+            const { email, password } = req.body
+            const result = await login(email, password)
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
             req.session.jwt = result.data.token
             res.json({ success: true, result })
         } catch (err) {

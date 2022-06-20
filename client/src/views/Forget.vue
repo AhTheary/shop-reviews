@@ -19,7 +19,11 @@
               type="email"
               class="form-control"
               id="inputEmail"
+<<<<<<< HEAD
               placeholder="email"
+=======
+              placeholder="Phone"
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
             />
           </div>
 

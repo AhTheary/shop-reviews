@@ -6,7 +6,11 @@ var router = express.Router();
 const userService = require('../services/user');
 const forgotService = require('../services/forgot')
 
+<<<<<<< HEAD
 router.get('/user/:id', async function(req, res, next) {
+=======
+router.get('/:id', async function(req, res, next) {
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     const { id } = req.params;
     const result = await userService.findById(id);
     res.json(result);
@@ -31,6 +35,17 @@ router.delete('/delete', auth.ensureSignedIn, async(req, res, next) => {
     const { _id } = req.body;
     const result = await userService.remove(_id);
     res.json(result);
+})
+
+router.post("/reset-password", async(req, res, next) => {
+    const { email } = req.body;
+    const result = await forgotService.reset(email)
+    res.json(result)
+})
+
+router.post("/change-password", async(req, res, next) => {
+    const result = await forgotService.changePassword(req.body)
+    res.json(result)
 })
 
 router.post("/reset-password", async(req, res, next) => {

@@ -14,7 +14,10 @@ export default {
       commentReview: "",
       rating_star: 0,
       reviewUser: "",
+<<<<<<< HEAD
       username:""
+=======
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     };
   },
   methods: {
@@ -67,7 +70,11 @@ export default {
       const resData = await res.json();
       this.reviewUser = resData.data;
 
+<<<<<<< HEAD
       console.log("SAVED review", this.reviewUser);
+=======
+      console.log("SAVED", this.reviewUser);
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     },
   },
   async created() {
@@ -84,7 +91,11 @@ export default {
     const resData = await res.json();
 
     this.store = resData;
+<<<<<<< HEAD
     console.log("All store", this.store);
+=======
+    console.log("test", this.store);
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
   },
 };
 </script>
@@ -143,6 +154,7 @@ export default {
             <div v-for="review in reviewUser" :key="review._id">
               <div class="username">
                 <i class="bx bxs-user-circle"></i>
+<<<<<<< HEAD
                 <div v-if="review.userId">
                   <!-- <b>{{
                     review.userId.firstName + " " + review.userId.lastName
@@ -152,6 +164,13 @@ export default {
                   }}</b>
                 </div>
                 <div v-else><b>User is deleted!</b></div>
+=======
+                <div>
+                  <b>{{
+                    review.userId.firstName + " " + review.userId.lastName
+                  }}</b>
+                </div>
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
               </div>
               <div class="star d-flex flex-row">
                 <i

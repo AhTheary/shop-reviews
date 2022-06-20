@@ -59,7 +59,11 @@ export default {
 
       const resData = await res.json()
       console.log('change password', resData)
+<<<<<<< HEAD
       this.$router.push('/login')
+=======
+
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     },
   },
 }

@@ -8,7 +8,11 @@ const findAll = async(req, res) => {
     const { storeId } = req.query;
     try {
         return await Reviews.find({ storeId: storeId }).populate([
+<<<<<<< HEAD
             { path: "userId", select: { firstName: 1, lastName: 1, username: 1 } },
+=======
+            { path: "userId", select: { firstName: 1, lastName: 1 } },
+>>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
         ]);
     } catch (error) {
         return error;
