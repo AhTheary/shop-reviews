@@ -9,7 +9,7 @@ const userService = require('../services/user')
 const { logout } = require('../services/logout')
 var jwt = require('jsonwebtoken');
 
-router.get('/me', auth.ensureSignedIn, auth.currentUser, async function(
+router.post('/me', auth.ensureSignedIn, auth.currentUser, async function(
     req,
     res,
     next,
@@ -42,6 +42,28 @@ router.post(
     },
 )
 
+
+router.post(
+    '/adminLogin',
+    auth.ensureSignedOut,
+    joiValidation(signInSchema),
+    async(req, res, next) => {
+        try {
+            const { username, password } = req.body
+            const result = await login(username, password)
+            console.log(result);
+            //check if user is admin role
+            if (result.data.user.role === 'admin') {
+                req.session.jwt = result.data.token
+                res.json({ success: true, data: result.data })
+            } else {
+                res.json({ success: false, error: "user not admin" })
+            }
+        } catch (err) {
+            res.json({ success: false, error: err })
+        }
+    },
+)
 
 router.post(
     '/register',
