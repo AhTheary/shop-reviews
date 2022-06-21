@@ -1,3 +1,4 @@
+const { populate } = require("../models/comments");
 const Comments = require("../models/comments");
 
 const findById = async(id) => {
@@ -7,9 +8,12 @@ const findById = async(id) => {
 const findAll = async(req, res) => {
     const { userpostId } = req.query;
     try {
-        return await Comments.find({ userpostId: userpostId }).populate([
-            { path: "userId", select: { firstName: 1, lastName: 1, username: 1 } },
-        ]);
+        const comments = await Comments.find({ userpostId: userpostId }).populate({
+            path: 'usercommentId',
+            select: { username: 1 }
+        })
+        console.log('comments', comments)
+        return comments;
     } catch (error) {
         return error;
     }

@@ -3,13 +3,8 @@ var session = require('express-session')
 // let RedisStore = require("connect-redis")(session)
 // const { createClient } = require("redis")
 
-<<<<<<< HEAD
 let RedisStore = require("connect-redis")(session)
 const { createClient } = require("redis")
-=======
-// let RedisStore = require("connect-redis")(session)
-// const { createClient } = require("redis")
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
 
 
 module.exports = async(app) => {

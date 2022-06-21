@@ -31,18 +31,11 @@ export default {
       if (resData.success == true) {
         //change status user logged in
         this.$store.commit('setUserLoggedIn', true)
-
         this.$router.push('/dashboard')
       } else {
-        // this.message = error.toString()
+      
         console.log(res)
       }
-
-      // if (this.email == 'bekkhemka@gmail.com' && this.password == '123') {
-      //   this.$router.push({ name: 'home' })
-      // } else {
-      //   return (this.incorrect = 'This is wrong')
-      // }
     },
   },
 }
@@ -107,11 +100,11 @@ export default {
   </div>
 </template>
 <style>
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 body {
     background: #f9f9f9;
     font-family: "Roboto", sans-serif;
-} 
+}
 
 .shadow {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;

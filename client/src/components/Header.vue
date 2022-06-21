@@ -127,24 +127,15 @@ export default {
       const toggleMenu = document.querySelector(".menu");
       toggleMenu.classList.toggle("active");
     },
-<<<<<<< HEAD
      async onLogout() {
       console.log('test')
       const res = await fetch('http://localhost:3001/auth/logout', {
         method: 'POST',
         credentials: 'include',
-=======
-    async onLogout() {
-      console.log("test");
-      const res = await fetch("http://localhost:3001/auth/logout", {
-        method: "POST",
-        credentials: "include",
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify(),
-<<<<<<< HEAD
       })
 
       const resData = await res.json()
@@ -164,27 +155,6 @@ export default {
     const resData = await res.json()
     this.me = resData
     console.log("User",this.me);
-=======
-      });
-
-      const resData = await res.json();
-      console.log(resData);
-      this.$router.go("/");
-    },
-  },
-  async created() {
-    const res = await fetch("http://localhost:3001/auth/me", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    const resData = await res.json();
-    this.me = resData;
-    console.log("User", this.me);
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
   },
 };
 </script>

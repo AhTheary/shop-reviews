@@ -22,11 +22,7 @@
                 <i class="bx bx-x"></i>
               </div>
             </header>
-<<<<<<< HEAD
             <form @submit.prevent="post">
-=======
-            <form action="#">
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
               <div class="content">
                 <img src="../assets/icons/logo.svg" alt="logo" />
                 <div class="details">
@@ -37,7 +33,6 @@
                 placeholder="What's on your mind?"
                 spellcheck="false"
                 required
-<<<<<<< HEAD
                 id="status"
                 name="status"
               ></textarea>
@@ -45,9 +40,6 @@
                 <img width="200" :src="image" alt="preview">
                 <div @click="resetFile" style="position: absolute; top: 0; right: 0; cursor: pointer">X</div>
               </div>
-=======
-              ></textarea>
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
               <div class="theme-emoji">
                 <img src="../assets/icons//theme.svg" alt="theme" />
                 <img src="../assets/icons//smile.svg" alt="smile" />
@@ -55,7 +47,6 @@
               <div class="options">
                 <p>Add to Your Post</p>
                 <ul class="list">
-<<<<<<< HEAD
                   <li style="position: relative">
                     <input 
                     @input="handlerImage" 
@@ -66,10 +57,6 @@
                     id="imageUpload"
                     >
                     <img style="position: absolute;" src="../assets/icons/gallery.svg" alt="gallery" />
-=======
-                  <li>
-                    <img src="../assets/icons/gallery.svg" alt="gallery" />
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
                   </li>
                   <!-- <li><img src="icons/tag.svg" alt="gallery" style="display: none;"></li> -->
                   <li>
@@ -79,11 +66,7 @@
                   <li><img src="../assets/icons//more.svg" alt="gallery" /></li>
                 </ul>
               </div>
-<<<<<<< HEAD
               <button type="submit">Post</button>
-=======
-              <button @click="post">Post</button>
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
             </form>
           </section>
         </div>
@@ -105,11 +88,8 @@ export default {
       posts: [],
       me: '',
       username: '',
-<<<<<<< HEAD
       fileImage: '',
       image: '',
-=======
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     }
   },
   methods: {
@@ -154,7 +134,6 @@ export default {
 
       const userData = await user.json()
       console.log('user', userData)
-
       const user_id = userData._id
 
       
@@ -210,14 +189,10 @@ export default {
     }
   },
   async mounted() {
-<<<<<<< HEAD
     this.getPosts()
   },
   async created() {
     const res = await fetch('http://localhost:3001/auth/me', {
-=======
-    const res = await fetch('http://localhost:3001/post/all', {
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -226,23 +201,6 @@ export default {
     })
 
     const resData = await res.json()
-<<<<<<< HEAD
-=======
-
-    this.posts = resData
-    console.log('Result:', this.posts)
-  },
-  async created() {
-    const res = await fetch('http://localhost:3001/auth/me', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-
-    const resData = await res.json()
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     this.me = resData
     console.log('User', this.me)
   },

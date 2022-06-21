@@ -34,20 +34,8 @@ export default {
 
         this.$router.push('/')
       } else {
-<<<<<<< HEAD
         console.log(res)
       }
-=======
-        this.message = error.toString()
-        console.log(res)
-      }
-
-      // if (this.email == 'bekkhemka@gmail.com' && this.password == '123') {
-      //   this.$router.push({ name: 'home' })
-      // } else {
-      //   return (this.incorrect = 'This is wrong')
-      // }
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
     },
   },
 }
@@ -55,7 +43,6 @@ export default {
 <template>
   <div>
     <header-2 />
-<<<<<<< HEAD
     <section class="py-5 my-5">
       <div class="container">
         <div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -91,67 +78,6 @@ export default {
                         required
                       />
                     </div>
-=======
-    <section class="vh-100" style="background-color: #eee;">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style="border-radius: 25px;">
-              <div class="card-body p-md-5">
-                <div class="row justify-content-center">
-                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Login
-                    </p>
-
-                    <form class="mx-1 mx-md-4" @submit="onSubmit" method="post">
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            v-model="email"
-                            type="email"
-                            id="form3Example3c"
-                            class="form-control"
-                            placeholder="Your Email"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            v-model="password"
-                            type="password"
-                            id="form3Example4c"
-                            class="form-control"
-                            placeholder="Password"
-                          />
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div
-                          v-if="message"
-                          class="alert alert-danger"
-                          role="alert"
-                        >
-                          {{ message }}
-                        </div>
-                      </div>
-                      <div
-                        class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
-                      >
-                        <button type="submit" class="btn btn-primary btn-lg">
-                          <a class="login">Login</a>
-                        </button>
-                      </div>
-                      <div class="account">
-                        <a href="/forget">Forgot account?</a>
-                        <a href="/register">&nbsp; Sign Up</a>
-                      </div>
-                    </form>
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">

@@ -6,11 +6,7 @@ var router = express.Router();
 const userService = require('../services/user');
 const forgotService = require('../services/forgot')
 
-<<<<<<< HEAD
-router.get('/user/:id', async function(req, res, next) {
-=======
-router.get('/:id', async function(req, res, next) {
->>>>>>> ac0cc60450b1c4b4df0909e4629a8efe24d9602b
+router.get('/id/:id', async function(req, res, next) {
     const { id } = req.params;
     const result = await userService.findById(id);
     res.json(result);
