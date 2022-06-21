@@ -37,17 +37,17 @@ export default {
       })
       const resData = await res.json()
       console.log(resData)
-
+      this.$router.push('/login')
       alert('Successfully registered~')
     },
   },
 }
 </script>
 <template>
-  <div>
+  <div style="overflow-y: hidden;">
     <Header2 />
     <section class="py-5 my-5">
-      <div class="container">
+      <div class="container" style="margin-top:5%;">
         <div class="bg-white shadow rounded-lg d-block d-sm-flex">
           <div class="profile-tab-nav border-right">
             <div class="p-4">
@@ -68,7 +68,7 @@ export default {
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
                       <label>First Name</label>
                       <input
                         v-model="firstName"
@@ -80,7 +80,7 @@ export default {
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
                       <label>Last Name</label>
                       <input
                         v-model="lastName"
@@ -92,7 +92,7 @@ export default {
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
                       <label>Username</label>
                       <input
                         v-model="username"
@@ -104,7 +104,7 @@ export default {
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-phone" aria-hidden="true"></i>
+                      <i class="fa fa-phone" aria-hidden="true"></i>&ensp;
                       <label>Phone number</label>
                       <input
                         v-model="phone"
@@ -116,7 +116,7 @@ export default {
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                      <i class="fa fa-envelope" aria-hidden="true"></i>&ensp;
                       <label>Email</label>
                       <input
                         v-model="email"
@@ -129,7 +129,7 @@ export default {
 
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
                       <label>Password</label>
                       <input
                         v-model="pwd"
@@ -141,7 +141,7 @@ export default {
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
                       <label>Confirm Password</label>
                       <input
                         v-model="repeatPws"
@@ -183,7 +183,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 body {
-    background: #f9f9f9;
+    background: rgba(239, 239, 239, 0.746);
     font-family: "Roboto", sans-serif;
 }
 

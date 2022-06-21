@@ -181,7 +181,7 @@ export default {
 
 .box_card_left .user-name .username_location .username {
   margin: 0;
-  height: 30%;
+  height: 20%;
 }
 
 .box_card_left .user-name .username_location .location {

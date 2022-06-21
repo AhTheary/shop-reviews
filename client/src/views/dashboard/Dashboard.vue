@@ -11,28 +11,29 @@
         <div class="branch">
           <li>
             <router-link to="/dashboard/user">
-              <span class="material-symbols-outlined"> person </span>&nbsp;
-              User</router-link
-            >
+              <span class="material-symbols-outlined">person</span>
+              &nbsp; User
+            </router-link>
           </li>
           <li>
             <router-link to="/dashboard/store">
               <span class="material-symbols-outlined">
                 &nbsp;&nbsp; add_business
               </span>
-              STORE</router-link
-            >
+              STORE
+            </router-link>
           </li>
           <li>
-            <router-link to="/dashboard/post"
-              ><span class="material-symbols-outlined"> post_add </span>&nbsp;
-              POST</router-link
-            >
+            <router-link to="/dashboard/post">
+              <span class="material-symbols-outlined">post_add</span>
+              &nbsp; POST
+            </router-link>
           </li>
         </div>
         <div class="logout">
           <li>
-            Logout &nbsp;<span class="material-symbols-outlined"> logout </span>
+            Logout &nbsp;
+            <span class="material-symbols-outlined">logout</span>
           </li>
         </div>
       </section>
@@ -41,38 +42,72 @@
       </section>
       <!-- Navigation End -->
     </div>
-    <div v-else>You are not admin</div>
+    <div v-else>
+      <div style="overflow-y: hidden;">
+        <Header2 />
+        <div class="container">
+          <h2>Sorry, you are not admin</h2>
+          <img
+            src="../../assets/img-acc/Online Review-bro.png"
+            alt=""
+            width="300"
+            height="300"
+          />
+          <button type="submit" class="btn btn-primary">
+            <a href="/" style="color: white;">GO BACK</a>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "dashboard",
-  data(){
+  name: 'dashboard',
+  data() {
     return {
-        dataAdmin: ''
+      dataAdmin: '',
     }
   },
-  methods: {
-  },
- async created() {
+  methods: {},
+  async created() {
     const res = await fetch('http://localhost:3001/auth/me', {
       method: 'POST',
-        credentials: 'include',
-        headers: {
+      credentials: 'include',
+      headers: {
         'Content-type': 'application/json',
-        }
+      },
     })
 
-    const resData = await res.json();
-    this.dataAdmin = resData 
-    console.log("DATA",this.dataAdmin);
-},
-};
+    const resData = await res.json()
+    this.dataAdmin = resData
+    console.log('DATA', this.dataAdmin)
+  },
+}
 </script>
 <style scoped>
 a {
   text-decoration: none;
   color: #fff;
+}
+body {
+  background: rgba(237, 235, 235, 0.926);
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; */
+  background: rgba(255, 255, 255, 0.746);
+  max-width: 30%;
+  border-radius: 10px;
+  border: 1px solid rgba(145, 145, 145, 0.557);
+  padding: 40px;
+  text-align: center;
 }
 </style>

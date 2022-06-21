@@ -10,6 +10,16 @@ const { logout } = require('../services/logout')
 var jwt = require('jsonwebtoken');
 
 router.post('/me', auth.ensureSignedIn, auth.currentUser, async function(
+        req,
+        res,
+        next,
+    ) {
+        const { currentUser } = req
+        const result = await userService.findById(currentUser)
+        res.json(result)
+    })
+    // for user
+router.get('/me', auth.ensureSignedIn, auth.currentUser, async function(
     req,
     res,
     next,

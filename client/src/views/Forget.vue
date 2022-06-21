@@ -1,14 +1,17 @@
 <template>
-  <div class="container">
-    <h1 class="form-heading">login Form</h1>
+<div>
+  <header-2 />
+  <div class="container" style="overflow-y: hidden;">
+    <!-- <h1 class="form-heading">login Form</h1> -->
     <div class="login-form">
       <div class="main-div">
         <div class="panel">
+          <img src="../assets/img-acc/forgetPass.png" alt="" width="80" height="80">
+          <br/>
+          <br/>
           <h2>Forget Password</h2>
-          <br />
           <p>
-            Please enter the email address you register your account with. We
-            will send you reset password confirmation to this email
+            Please enter the email address you register your account with.
           </p>
         </div>
         <form id="Login" @submit.prevent="onSubmit">
@@ -19,7 +22,7 @@
               type="email"
               class="form-control"
               id="inputEmail"
-              placeholder="email"
+              placeholder="Email"
             />
           </div>
 
@@ -28,13 +31,16 @@
           </button>
         </form>
       </div>
-      <p class="botto-text">Designed by Sunil Rajput</p>
     </div>
+  </div>
   </div>
 </template>
 
 <script>
+import Header2 from '../components/Header2.vue'
+
 export default {
+  components: { Header2 },
   name: 'forget',
   data() {
     return {
@@ -61,4 +67,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+body{
+  background: rgba(239, 239, 239, 0.746);
+}
+.main-div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: 1px solid rgba(145, 145, 145, 0.557); 
+  padding:35px
+
+}
+</style>
