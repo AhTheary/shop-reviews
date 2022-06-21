@@ -127,34 +127,34 @@ export default {
       const toggleMenu = document.querySelector(".menu");
       toggleMenu.classList.toggle("active");
     },
-    async onLogout() {
-      console.log("test");
-      const res = await fetch("http://localhost:3001/auth/logout", {
-        method: "POST",
-        credentials: "include",
+     async onLogout() {
+      console.log('test')
+      const res = await fetch('http://localhost:3001/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify(),
-      });
+      })
 
-      const resData = await res.json();
-      console.log(resData);
-      this.$router.go("/");
+      const resData = await res.json()
+      console.log(resData)
+      this.$router.go('/')
     },
   },
-  async created() {
-    const res = await fetch("http://localhost:3001/auth/me", {
-      method: "GET",
-      credentials: "include",
+ async created() {
+    const res = await fetch('http://localhost:3001/auth/me', {
+      method: 'GET',
+      credentials: 'include',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
       },
-    });
+    })
 
-    const resData = await res.json();
-    this.me = resData;
-    console.log("User", this.me);
+    const resData = await res.json()
+    this.me = resData
+    console.log("User",this.me);
   },
 };
 </script>

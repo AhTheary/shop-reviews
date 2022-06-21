@@ -1,10 +1,10 @@
 const Users = require("../models/users");
 const { createASessionToken } = require('../services/utils');
 
-const login = async(email, password) => {
+const login = async(username, password) => {
     try {
         // check if email existed
-        const user = await Users.findOne({ email })
+        const user = await Users.findOne({ username })
         if (!user)
             throw 'The user is not found~'
 
@@ -12,7 +12,7 @@ const login = async(email, password) => {
             throw "The user's information is incorrect~"
         }
 
-        const token = createASessionToken(user._id, user.email);
+        const token = createASessionToken(user._id, user.username);
         return {
             success: true,
             data: {

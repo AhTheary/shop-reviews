@@ -185,6 +185,7 @@
 .user_review_post .user_comment_review .star {
     display: flex;
     margin: 4px 0;
+    color: rgba(255, 255, 0, 0.842);
 }
 
 .user_review .post-btn {

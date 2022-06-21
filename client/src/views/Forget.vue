@@ -19,7 +19,7 @@
               type="email"
               class="form-control"
               id="inputEmail"
-              placeholder="Phone"
+              placeholder="email"
             />
           </div>
 

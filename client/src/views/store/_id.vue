@@ -14,6 +14,7 @@ export default {
       commentReview: "",
       rating_star: 0,
       reviewUser: "",
+      username:""
     };
   },
   methods: {
@@ -62,11 +63,10 @@ export default {
           },
         }
       );
-
       const resData = await res.json();
       this.reviewUser = resData.data;
 
-      console.log("SAVED", this.reviewUser);
+      console.log("SAVED review", this.reviewUser);
     },
   },
   async created() {
@@ -83,7 +83,7 @@ export default {
     const resData = await res.json();
 
     this.store = resData;
-    console.log("test", this.store);
+    console.log("All store", this.store);
   },
 };
 </script>
@@ -94,7 +94,8 @@ export default {
       <div class="store_info">
         <div class="store_card">
           <div class="icon">
-            <i class="bx bx-info-circle"></i>
+            <i>  {{ store.storeName }} </i>
+            <!-- <i class="bx bx-info-circle"></i> -->
             <i class="bx bx-heart">
               <!-- <span>730</span> -->
             </i>
@@ -167,12 +168,6 @@ export default {
             </div>
           </div>
           <div class="post-btn">
-            <!-- <input
-              type="text"
-              placeholder="what are you thinkking"
-              @click="openReview"
-            />
-            <input type="submit" /> -->
             <div class="main">
               <button class="rev_button" @click="openReview">
                 Write a review

@@ -6,7 +6,10 @@ const findById = async(id) => {
 
 const findAll = async() => {
     // return await Posts.find().populate('category');
-    return await Posts.find().populate('');
+    return await Posts.find().populate({
+        path: 'userId',
+        select: { username: 1 }
+    });
 }
 
 const create = async(newPost) => {

@@ -59,7 +59,7 @@ export default {
 
       const resData = await res.json()
       console.log('change password', resData)
-
+      this.$router.push('/login')
     },
   },
 }

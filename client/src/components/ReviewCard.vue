@@ -87,6 +87,8 @@ export default {
     fovorite() {
       alert("You add me to Fovorite cart! ");
     },
+
+    
   },
 };
 </script>

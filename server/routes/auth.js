@@ -24,14 +24,16 @@ router.post('/logout', async(req, res) => {
     return res.clearCookie('access_token').json(result)
 })
 
+
 router.post(
     '/login',
     auth.ensureSignedOut,
     joiValidation(signInSchema),
     async(req, res, next) => {
         try {
-            const { email, password } = req.body
-            const result = await login(email, password)
+            const { username, password } = req.body
+            const result = await login(username, password)
+            console.log(result);
             req.session.jwt = result.data.token
             res.json({ success: true, result })
         } catch (err) {
@@ -39,6 +41,7 @@ router.post(
         }
     },
 )
+
 
 router.post(
     '/register',

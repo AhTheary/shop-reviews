@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrapper_body_review">
-      <div class="box_card_feed" v-for="feedcard in posts" :key="feedcard._id">
+      <div class="box_card_feed" v-for="feedcard in postInfo" :key="feedcard._id">
         <div class="box_card_left">
           <div class="user-name">
             <div class="icon-user">
@@ -9,7 +9,7 @@
             </div>
             <div class="username_location">
               <div class="username" style="margin-top: 1.5%;">
-                <span>{{ feedcard.userId }}</span>
+                <span>{{ feedcard.userId.username }}</span>
               </div>
               <div class="location">
 
@@ -34,9 +34,6 @@
               <i class="bx bxs-like"></i>
             </div>
           </div>
-          <!-- <div class="location_post">
-            <img src="../assets/locator_post.png" alt="">
-          </div> -->
           <div class="descrition-post" style="margin-top: 4px">
             <span>
               {{ feedcard.status }}
@@ -58,20 +55,17 @@
             </div>
           </div>
           <div class="other-user-comment">
-            <div class="user-info">
+            <div class="user-info"  v-for="comment in feedcard.comments" :key="comment._id">
               <div class="user-info-acc">
-                <!-- <div class="icon-user"><i class="bx bxs-user-circle"></i></div> -->
-                <!-- <span>{{ feedcard.usernameComment }}</span> -->
+                <div class="icon-user"><i class="bx bxs-user-circle"></i></div>
+                <span>{{ comment.usercommentId.username }}</span>
               </div>
               <div class="user-info-comment">
-                <!-- <span>{{ feedcard.userCommentdec }}</span>
-                <span v-for="comment in comments" :key="comment._id">
-                  {{ comment.msg }}
-                </span> -->
+                {{ comment.comment  }}
               </div>
             </div>
           </div>
-          <comment-post />
+          <comment-post :feedcard="feedcard" />
         </div>
       </div>
     </div>
@@ -85,51 +79,29 @@ export default {
   name: 'NewsfeedCard',
   props: ['posts'],
   data() {
-    // return {
-    //   comments: [
-    //     {
-    //       _id: 1,
-    //       msg: 'Hello',
-    //     },
-    //     {
-    //       _id: 2,
-    //       msg: 'Hello',
-    //     },
-    //     {
-    //       _id: 3,
-    //       msg: 'Hello',
-    //     },
-    //   ],
-    //   feedcards: [
-    //     {
-    //       _id: 1,
-    //       usernamePost: 'Leap',
-    //       userPostdec: 'Nice shop ever',
-    //       src: 'https://i.ytimg.com/vi/nSDkB_ruin8/maxresdefault.jpg',
-    //       usernameComment: 'Theary',
-    //       userCommentdec: 'Why don call me !',
-    //     },
-    //     {
-    //       _id: 2,
-    //       usernamePost: 'Neymar',
-    //       userPostdec: 'New wapon!',
-    //       src:
-    //         'https://th.bing.com/th/id/R.cdc25dd2a687f0e1e5b6ffb79ebb45c8?rik=wvOLbw7iVuheEg&pid=ImgRaw&r=0',
-    //       usernameComment: 'Sancho',
-    //       userCommentdec: 'Come to man utd bro!',
-    //     },
-    //     {
-    //       _id: 3,
-    //       usernamePost: 'Somnear',
-    //       userPostdec: 'With my brother!',
-    //       src:
-    //         'https://static.businessinsider.com/image/57b57cd7dd089566768b4aa8/image.jpg',
-    //       usernameComment: 'Rotanak',
-    //       userCommentdec: 'gg ah b',
-    //     },
-    //   ],
-    // }
+    return {
+      commentUsers: '',
+      postInfo: []
+    }
   },
+
+  watch: {
+    posts: {
+      handler(posts){
+        let all_posts = posts;
+        console.log('watch post', posts)
+        for(let i =0; i< posts.length; i++){
+          fetch(`http://localhost:3001/comment/all?userpostId=${posts[i]._id}`)
+          .then( async (res) => {
+            const resData = await res.json();
+            all_posts[i].comments = resData.data; 
+          })
+        }
+        this.postInfo = all_posts
+      }, immediate: true,
+    }
+  },
+
   methods: {
     like() {
       alert('Thanks for your like!')

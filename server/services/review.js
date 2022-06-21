@@ -8,7 +8,7 @@ const findAll = async(req, res) => {
     const { storeId } = req.query;
     try {
         return await Reviews.find({ storeId: storeId }).populate([
-            { path: "userId", select: { firstName: 1, lastName: 1 } },
+            { path: "userId", select: { firstName: 1, lastName: 1, username: 1 } },
         ]);
     } catch (error) {
         return error;
@@ -42,7 +42,7 @@ const remove = async(id) => {
     console.log("Removed");
     return {
         success: true,
-        message: "Store is delete successfull",
+        message: "Delete user review history",
         data: removeStore,
     };
 };
