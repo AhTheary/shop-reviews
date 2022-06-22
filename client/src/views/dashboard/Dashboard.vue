@@ -30,7 +30,7 @@
             </router-link>
           </li>
         </div>
-        <div class="logout">
+        <div class="logout" @click="onLogout">
           <li>
             Logout &nbsp;
             <span class="material-symbols-outlined">logout</span>
@@ -53,6 +53,7 @@
             width="300"
             height="300"
           />
+          <br>
           <button type="submit" class="btn btn-primary">
             <a href="/" style="color: white;">GO BACK</a>
           </button>
@@ -70,7 +71,23 @@ export default {
       dataAdmin: '',
     }
   },
-  methods: {},
+  methods: {
+    async onLogout() {
+      console.log('test')
+      const res = await fetch('http://localhost:3001/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(),
+      })
+
+      const resData = await res.json()
+      console.log(resData)
+      this.$router.go('/')
+    },
+  },
   async created() {
     const res = await fetch('http://localhost:3001/auth/me', {
       method: 'POST',
@@ -91,10 +108,11 @@ a {
   text-decoration: none;
   color: #fff;
 }
-body {
-  background: rgba(237, 235, 235, 0.926);
-}
+/* body {
+  background: rgba(145, 145, 145, 0.557);
+} */
 .container {
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -103,7 +121,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column; */
-  background: rgba(255, 255, 255, 0.746);
+  background-color: #fff;
   max-width: 30%;
   border-radius: 10px;
   border: 1px solid rgba(145, 145, 145, 0.557);

@@ -49,6 +49,23 @@ export default {
     this.stores = resData.data.stores.docs
     console.log(this.stores);
   },
+  watch: {
+     stores(store) {
+      console.log('watch store', store )
+      for(let i=0; i<store.length; i++){
+        fetch(`http://localhost:3001/review/all?storeId=${store[i]._id}`, {
+          method: 'GET',
+          credentials: 'include',
+        }).then( async (res) => {
+          const resData = await res.json();
+          const total_review = resData.data.length;
+          console.log('watch get total review', store[i], total_review)
+          this.stores[i].countReview = total_review
+        })
+      }
+     
+    }
+  }
 }
 </script>
 

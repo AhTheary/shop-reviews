@@ -21,30 +21,24 @@
         </tr>
         <tr v-for="store in stores" :key="store._id">
           <td>{{ store._id }}</td>
-          <td>{{ store.name }}</td>
-          <td>{{ store.category }}</td>
+          <td>{{ store.storeName }}</td>
+          <td>{{ store.category.name }}</td>
           <td>{{ store.location }}</td>
           <td>
             <img
-              :src="store.storeIMG"
+              :src="store.imageUrl"
               alt="erorUserpost"
               style="width: 60%;"
             />
           </td>
           <td>
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(24, 127, 201);"
-            >
-              edit
-            </span>
+            <a href="#" @click="editItem" class="material-symbols-outlined">
+              <span><i class="fas fa-edit" style="color:blue"></i></span>
+            </a>
 
-            <span
-              class="material-symbols-outlined"
-              style="color: rgb(241, 16, 16);"
-            >
-              delete
-            </span>
+            <a @click="deleteItem(store)" class="material-symbols-outlined">
+              <span><i class="fas fa-trash-alt" style="color:red"></i></span>
+            </a>
           </td>
         </tr>
       </table>
@@ -97,22 +91,6 @@ export default {
   data() {
     return {
       stores: [
-        {
-          _id: 1,
-          name: 'KFC',
-          category: 'Sport',
-          location: 'BKK,PP',
-          storeIMG:
-            'https://www.khmertimeskh.com/wp-content/uploads/2022/03/Cambodias-first-HM-wows-the-crowds-on-opening-day.jpg',
-        },
-         {
-          _id: 2,
-          name: 'Buger King',
-          category: 'Sport',
-          location: 'TK,PP',
-          storeIMG:
-            'https://th.bing.com/th/id/OIP.i3X-dRani-pe3-_MXZbaqwHaFP?pid=ImgDet&rs=1',
-        },
       ],
     }
   },
@@ -125,7 +103,46 @@ export default {
       const closePopup = document.querySelector('.popup')
       closePopup.classList.remove('popup-open')
     },
+    editItem() {
+      const openpopup = document.querySelector('.popup')
+      openpopup.classList.add('popup-open')
+    },
+    async deleteItem(store){
+      console.log('delete item', store)
+      const res = await fetch('http://localhost:3001/store/delete', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ _id: store._id })
+    })
+
+    const resData = await res.json()
+    console.log('delete store', resData)
+
+    this.getStore()
+    },
+
+    async getStore(){
+      const res = await fetch('http://localhost:3001/store/all', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              'Content-type': 'application/json',
+            },
+          })
+
+          const resData = await res.json()
+          this.stores = resData.data.stores.docs
+          console.log(this.stores);
+    }
   },
+
+  created() {
+    this.getStore()  
+  }
+
 }
 </script>
 
@@ -154,4 +171,5 @@ form {
   background-color: white;
   /* text-align: center; */
 }
+
 </style>

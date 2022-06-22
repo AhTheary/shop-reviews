@@ -56,43 +56,54 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>First Name</label>
-                    {{ me.firstName }}
                     <input
                       type="text"
                       class="form-control"
-                      :value="text"
-                      @input="(event) => (text = event.target.value)"
+                      name="firstName"
+                      id="firstName"
+                      v-model="me.firstName"
                     />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Last Name</label>
-                    {{ me.firstName }}
-                    <input type="text" class="form-control" value="" />
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    v-model="me.lastName"
+                    name="lastName"
+                    id="lastName"
+                     />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Email</label>
-                    {{ me.email }}
                     <input
                       type="text"
                       class="form-control"
-                      value="davidbeckham@gmail.com"
+                      :value="me.email"
+                      readonly
                     />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Phone number</label>
-                     {{ me.phone }}
-                    <input type="text" class="form-control" value="" />
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      :value="me.phone" 
+                      readonly
+                      name="phone"
+                      id="phone"
+                    />
                   </div>
                 </div>
               </div>
               <div>
-                <button class="btn btn-primary">Update</button>
+                <button @click="updateUser" class="btn btn-primary">Update</button>
                 <button class="btn btn-light">Cancel</button>
               </div>
             </div>
@@ -154,9 +165,27 @@ export default {
       username: '',
     }
   },
-  mounted() {},
-  async created() {
-    const res = await fetch('http://localhost:3001/auth/me', {
+  methods: {
+    async updateUser() {
+      console.log('update user', this.me)
+      const res = await fetch('http://localhost:3001/user/update', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          _id: this.me._id,
+          firstName: this.me.firstName,
+          lastName: this.me.lastName
+        })
+      }) 
+      console.log(res.json())
+      this.getMe()
+    },
+
+   async  getMe(){
+const res = await fetch('http://localhost:3001/auth/me', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -167,6 +196,11 @@ export default {
     const resData = await res.json()
     this.me = resData
     console.log('User', this.me)
+    }
+  },
+  mounted() {},
+  async created() {
+    this.getMe()
   },
 }
 </script>

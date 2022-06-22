@@ -33,11 +33,10 @@
           </div>
           <div class="star-review">
             <div class="star">
-              <!-- {{ item.rating }} --> rating
-              <i class="bx bx-star"></i>
+               <b style="color: red">Total user review : </b> 
             </div>
             <div class="count-review">
-              <span>{{item.countReview}} Review</span>
+              <span>{{item.countReview}} Reviews</span>
             </div>
           </div>
           <div class="des">

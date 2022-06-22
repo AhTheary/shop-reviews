@@ -26,9 +26,7 @@ router.post('/update-password', auth.ensureSignedIn, auth.currentUser, async(req
 })
 
 router.post('/update', auth.ensureSignedIn, async(req, res, next) => {
-    // to do
-    const { _id } = req.body;
-    const result = await userService.update(_id);
+    const result = await userService.update(req.body);
     res.json(result);
 })
 

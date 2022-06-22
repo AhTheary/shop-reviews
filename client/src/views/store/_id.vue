@@ -95,11 +95,8 @@ export default {
         <div class="store_card">
           <div class="icon">
             <i>  {{ store.storeName }} </i>
-            <!-- <i class="bx bx-info-circle"></i> -->
             <i class="bx bx-heart">
-              <!-- <span>730</span> -->
             </i>
-            <!-- <span>730</span> -->
           </div>
           <div class="img">
             <img :src="store.imageUrl" alt="eorr" />
@@ -123,28 +120,15 @@ export default {
         </div>
       </div>
       <div class="user_review">
-        <!-- <div class="icon"> -->
-          <!-- <div class="space"></div> -->
-           <!-- <div class="icon_info">
-            &emsp;&emsp;&ensp;<i class="bx bx-refresh"></i>
-            <i class='bx bx-repost'></i>
-            <i class="bx bx-share-alt"></i>
-            <i class="bx bx-dots-vertical-rounded"></i>
-          </div> -->
-        <!-- </div> -->
         <!--  Review display  -->
         <div class="user_review_post">
           <div class="title">
             <div style="width : 93%"><span style="font-size:30px">REVIEW</span>
             </div>
            <div> 
-            <!-- <div class="icon_info"><button onclick="location.reload();"><i class="bx bx-refresh"></i></button> -->
             <i class="bx bx-refresh fa-2x" onclick="location.reload();"></i>
-            <!-- <i class="bx bx-dots-vertical-rounded"></i> -->
-            <!-- </div> -->
           </div>
-          
-            
+                  
           </div>
           <!-- Review comment -->
           <div class="user_comment_review" style = " overflow-y: scroll">

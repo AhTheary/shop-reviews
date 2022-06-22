@@ -31,13 +31,16 @@ const updatePass = async(updateUserpass) => {
 
 const update = async(updateUserinfo) => {
     // to info user
-    const { _id, firstName, lastName, email, phone } = updateUserinfo;
-    const updateUserInfo = await Users.findByIdAndUpdate(_id, {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        phone: phone,
-    });
+    const { _id, firstName, lastName, phone } = updateUserinfo;
+
+    let updateUserInfo = await Users.findById(_id);
+
+    if (firstName) updateUserInfo.firstName = firstName
+    if (lastName) updateUserInfo.lastName = lastName
+    if (phone) updateUserInfo.phone = phone
+
+    await updateUserInfo.save();
+
     return {
         success: true,
         message: "Now Store is updated",

@@ -36,11 +36,7 @@
           </div>
           <div class="star-user">
             <span>
-              <i class="bx bx-star"></i>
-              <i class="bx bx-star"></i>
-              <i class="bx bx-star"></i>
-              <i class="bx bxs-star-half"></i>
-              <i class="bx bxs-star-half"></i>
+               <b style="color: red">Total user review : </b> 
             </span>
             &nbsp; &nbsp; &nbsp;
             <span>{{ item.countReview }} Reviews</span>

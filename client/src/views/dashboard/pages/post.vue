@@ -11,7 +11,7 @@
                     <tr>
                         <th>Image</th>
                         <th>User name</th>
-                        <th>Like</th>
+                        <th>Status</th>
                         <th>Location</th>
                         <th>Actions</th>
                     </tr>
@@ -19,8 +19,8 @@
                         <td>   
                                 <img :src=" post.image " alt="users_post" />
                         </td>
-                        <td> {{post.username}} </td>
-                        <td> {{post.like}}</td>
+                        <td> {{post.userId.username?post.userId.username: 'user'}} </td>
+                        <td> {{post.status}}</td>
                         <td> {{post.location}}</td>
 
                         <td>
@@ -39,15 +39,21 @@
     export default {
         data() {
             return {
-                posts:[
-                    {
-                        username:"bekkhem",
-                        image:"https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F6083aefe-1558-11eb-bca5-e85774a5f3b9.jpg?crop=2369%2C1333%2C566%2C264&resize=1180",
-                        location:"Vietnam",
-                        like:"5"
-                    }
-                ]
+                posts:[]
             }
+        },
+        async created() {
+            const res = await fetch('http://localhost:3001/post/all', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              'Content-type': 'application/json',
+            },
+          })
+
+          const resData = await res.json()
+          this.posts = resData
+          console.log('post'+this.posts);
         },
     }
 </script>

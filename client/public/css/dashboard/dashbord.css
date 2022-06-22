@@ -104,9 +104,9 @@ li {
 }
 
 .main-dashboard .table-store {
-    position: fixed;
+    position: absolute;
     top: 6vw;
-    right: 1vw;
+    right: 0vw;
     width: 78vw;
     height: 100vh;
     background: white;

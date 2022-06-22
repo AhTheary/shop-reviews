@@ -88,7 +88,7 @@ export default {
   watch: {
     posts: {
       handler(posts){
-        let all_posts = posts;
+        let all_posts = posts.reverse();
         console.log('watch post', posts)
         for(let i =0; i< posts.length; i++){
           fetch(`http://localhost:3001/comment/all?userpostId=${posts[i]._id}`)
