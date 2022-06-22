@@ -13,6 +13,7 @@ export default {
       lastName: '',
       pwd: '',
       repeatPws: '',
+      phone: '',
     }
   },
   methods: {
@@ -31,150 +32,147 @@ export default {
           lastName: this.lastName,
           password: this.pwd,
           repeat_password: this.repeatPws,
+          phone: this.phone,
         }),
       })
       const resData = await res.json()
       console.log(resData)
-
+      this.$router.push('/login')
       alert('Successfully registered~')
     },
   },
 }
 </script>
 <template>
-  <div>
+  <div style="overflow-y: hidden;">
     <Header2 />
-    <section class="vh-100" style="background-color: #eee;">
-      <div class="container h-80">
-        <div class="row d-flex justify-content-center align-items-center h-80">
-          <div class="col-lg-12 col-xl-11">
-            <div
-              class="card text-black"
-              style="border-radius: 25px; margin-top: 5.4%;"
-            >
-              <div class="card-body p-md-5">
-                <div class="row justify-content-center">
-                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Sign up
-                    </p>
-                    <form class="mx-1 mx-md-4" @submit="onSubmit" method="post">
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="text"
-                            id="form3Example1c"
-                            class="form-control"
-                            placeholder="First Name"
-                            v-model="firstName"
-                          />
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="text"
-                            id="form3Example1c"
-                            class="form-control"
-                            placeholder="Last Name"
-                            v-model="lastName"
-                          />
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="text"
-                            id="form3Example1c"
-                            class="form-control"
-                            placeholder="Username"
-                            v-model="username"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="email"
-                            id="form3Example3c"
-                            class="form-control"
-                            placeholder="Your Email"
-                            v-model="email"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="password"
-                            id="form3Example4c"
-                            class="form-control"
-                            placeholder="Password"
-                            v-model="pwd"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input
-                            type="password"
-                            id="form3Example4cd"
-                            class="form-control"
-                            placeholder="Repeat your password"
-                            v-model="repeatPws"
-                          />
-                        </div>
-                      </div>
-
-                      <div
-                        class="form-check d-flex justify-content-center mb-5"
-                      >
-                        <input
-                          class="form-check-input me-2"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3c"
-                        />
-                        <label class="form-check-label" for="form2Example3">
-                          I agree all statements in
-                          <a href="/terms">Terms of service</a>
-                        </label>
-                      </div>
-
-                      <div
-                        class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
-                      >
-                        <button type="submit" class="btn btn-primary btn-lg">
-                          Register
-                        </button>
-                      </div>
-                      <div class="account">
-                        <a href="/login">Already have an account?</a>
-                      </div>
-                    </form>
+    <section class="py-5 my-5">
+      <div class="container" style="margin-top:5%;">
+        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+          <div class="profile-tab-nav border-right">
+            <div class="p-4">
+              <div class="img-circle text-center mb-3">
+                <img src="../assets/img-acc/register.png" alt="Image" class="" />
+              </div>
+            </div>
+          </div>
+          <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+            <form class="mx-1 mx-md-4" @submit="onSubmit" method="post">
+              <div
+                class="tab-pane fade show active"
+                id="account"
+                role="tabpanel"
+                aria-labelledby="account-tab"
+              >
+                <h3 class="mb-4">Register</h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
+                      <label>First Name</label>
+                      <input
+                        v-model="firstName"
+                        type="text"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
+                      <label>Last Name</label>
+                      <input
+                        v-model="lastName"
+                        type="text"
+                        class="form-control"
+                       
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
+                      <label>Username</label>
+                      <input
+                        v-model="username"
+                        type="text"
+                        class="form-control"
+                       
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-phone" aria-hidden="true"></i>&ensp;
+                      <label>Phone number</label>
+                      <input
+                        v-model="phone"
+                        type="text"
+                        class="form-control"
+                        placeholder="855"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <i class="fa fa-envelope" aria-hidden="true"></i>&ensp;
+                      <label>Email</label>
+                      <input
+                        v-model="email"
+                        type="email"
+                        class="form-control"
+                       
+                      />
+                    </div>
                   </div>
 
-                  <div
-                    class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
-                  >
-                    <img
-                      src="@/assets/Form/Signup.png/"
-                      class="img-fluid"
-                      alt="Sample image"
-                    />
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
+                      <label>Password</label>
+                      <input
+                        v-model="pwd"
+                        type="password"
+                        class="form-control"
+                      
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
+                      <label>Confirm Password</label>
+                      <input
+                        v-model="repeatPws"
+                        type="password"
+                        class="form-control"
+                       
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input position-static"
+                    type="checkbox"
+                    id="blankCheckbox"
+                    value="option1"
+                    aria-label="..."
+                  />
+                  I agree all statements in
+                  <a href="/terms">Terms of service</a>
+                </div>
+                <div class="mt-2">
+                  <button class="btn btn-primary" style="width: 150px;">
+                    Register
+                  </button>
+                  <div class="mt-2">
+                    <a href="/login">Already have an account?</a>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -183,24 +181,44 @@ export default {
 </template>
 
 <style>
-.wrapper-menu,
-.footer {
-  display: none;
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+body {
+    background: rgba(239, 239, 239, 0.746);
+    font-family: "Roboto", sans-serif;
 }
-.form-control,
-#form3Example1c {
-  width: 300px;
+
+.shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
 }
-.account {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+
+.profile-tab-nav {
+    min-width: 250px;
 }
-.img-fluid {
-  position: absolute;
-  margin-top: -8.5%;
-  margin-left: -10%;
-  width: 800px;
-  height: 800px;
+
+.tab-content {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    color: #333;
+}
+
+.nav-pills a.nav-link i {
+    width: 20px;
+}
+
+.img-circle img {
+    margin-top: 15%;
+    height: 400px;
+    width: 400px;
+    /* border-radius: 100%; */
+    border: 5px solid #fff;
 }
 </style>

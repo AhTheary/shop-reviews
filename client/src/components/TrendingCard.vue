@@ -20,7 +20,7 @@
               <span>{{ item.storeName }}</span>
             </div>
             <div class="hearth">
-              <i class="bx bxs-heart" @click="addFovorite"></i>
+              <i style="z-index: 10" class="bx bxs-heart"></i>
               <!-- <img src="../assets/love.png" alt="" style="width:100%"> -->
             </div>
           </div>
@@ -81,8 +81,8 @@ export default {
   },
 
   methods: {
-    addFovorite(){
-      alert('You add me to Fovorite Card!')
+    addFovorite(store){
+      console.log('store', store)
     }
   },
 }

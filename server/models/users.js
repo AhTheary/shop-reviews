@@ -21,10 +21,27 @@ var userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    phone: {
+        type: Number,
+        unique: true,
+        required: true
+    },
     password: {
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        required: true,
+        default: 'customer',
+        //prevent to update user role 
+        validate: {
+            validator: function(el) {
+                if (el != "customer") return false;
+            },
+            message: "You not allow to define user role",
+        },
+    }
 }, {
     timestamps: true,
     toJSON: {

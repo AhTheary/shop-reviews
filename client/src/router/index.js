@@ -3,7 +3,7 @@ import Home from '../views/HomePage.vue';
 import Dashboard from '../views/dashboard/Dashboard.vue';
 import Post from '../views/dashboard/pages/post.vue'
 import Store from '../views/dashboard/pages/store.vue'
-import Category from '../views/dashboard/pages/category.vue'
+import Category from '../views/dashboard/pages/user.vue'
 
 const router = createRouter({
     history: createWebHistory(
@@ -61,7 +61,6 @@ const router = createRouter({
             component: () =>
                 import ('../views/Forget.vue')
         },
-        
         {
             path: '/reset',
             name: 'reset',
@@ -103,6 +102,13 @@ const router = createRouter({
             name: "Term",
             component: () =>
                 import ("../components/Term.vue"),
+        },
+        {
+            path: "/adminLogin",
+            name: "adminLogin",
+            component: () =>
+                import ("../views/dashboard/AdminLogin.vue"),
+
         },
         {
             path: '/dashboard',

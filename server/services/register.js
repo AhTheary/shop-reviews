@@ -2,7 +2,7 @@ const Users = require("../models/users");
 
 const register = async(params) => {
     try {
-        const { email, username, firstName, lastName, password } = params;
+        const { email, username, firstName, lastName, password, phone } = params;
 
         // check if email existed
         const existed = await Users.findOne({ email });
@@ -16,7 +16,8 @@ const register = async(params) => {
             username,
             firstName,
             lastName,
-            password
+            password,
+            phone
         }
 
         const createdUser = await Users.create(newUser);

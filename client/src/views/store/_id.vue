@@ -14,6 +14,7 @@ export default {
       commentReview: "",
       rating_star: 0,
       reviewUser: "",
+      username:""
     };
   },
   methods: {
@@ -62,11 +63,10 @@ export default {
           },
         }
       );
-
       const resData = await res.json();
       this.reviewUser = resData.data;
 
-      console.log("SAVED", this.reviewUser);
+      console.log("SAVED review", this.reviewUser);
     },
   },
   async created() {
@@ -83,7 +83,7 @@ export default {
     const resData = await res.json();
 
     this.store = resData;
-    console.log("test", this.store);
+    console.log("All store", this.store);
   },
 };
 </script>
@@ -94,7 +94,8 @@ export default {
       <div class="store_info">
         <div class="store_card">
           <div class="icon">
-            <i class="bx bx-info-circle"></i>
+            <i>  {{ store.storeName }} </i>
+            <!-- <i class="bx bx-info-circle"></i> -->
             <i class="bx bx-heart">
               <!-- <span>730</span> -->
             </i>
@@ -108,51 +109,58 @@ export default {
           <div class="title">
             <i class="bx bx-menu-alt-left"></i>
             <span>
-              <b>Descriptions:</b>
+              <b> Descriptions:</b>
               {{ store.desc }}
             </span>
           </div>
           <div class="title_info">
             <i class="bx bxs-store"></i>
             <span>
-              <b>Location:</b>
+              <b> Location:</b>
               {{ store.location }}
             </span>
           </div>
         </div>
       </div>
       <div class="user_review">
-        <div class="icon">
-          <div class="space"></div>
-          <div class="icon_info">
-            <i class="bx bx-refresh"></i>
-            <!-- <i class='bx bx-repost'></i> -->
+        <!-- <div class="icon"> -->
+          <!-- <div class="space"></div> -->
+           <!-- <div class="icon_info">
+            &emsp;&emsp;&ensp;<i class="bx bx-refresh"></i>
+            <i class='bx bx-repost'></i>
             <i class="bx bx-share-alt"></i>
             <i class="bx bx-dots-vertical-rounded"></i>
-          </div>
-        </div>
-
+          </div> -->
+        <!-- </div> -->
         <!--  Review display  -->
         <div class="user_review_post">
           <div class="title">
-            <span>REVIEW</span>
+            <div style="width : 93%"><span style="font-size:30px">REVIEW</span>
+            </div>
+           <div> 
+            <!-- <div class="icon_info"><button onclick="location.reload();"><i class="bx bx-refresh"></i></button> -->
+            <i class="bx bx-refresh fa-2x" onclick="location.reload();"></i>
+            <!-- <i class="bx bx-dots-vertical-rounded"></i> -->
+            <!-- </div> -->
           </div>
-          <div class="user_comment_review">
-            <div v-for="review in reviewUser" :key="review._id">
+          
+            
+          </div>
+          <!-- Review comment -->
+          <div class="user_comment_review" style = " overflow-y: scroll">
+            <div class="comment-box" v-for="review in reviewUser" :key="review._id">
               <div class="username">
                 <i class="bx bxs-user-circle"></i>
-                <div>
+                <div v-if="review.userId">
                   <b>{{
-                    review.userId.firstName + " " + review.userId.lastName
+                      review.userId.username ? review.userId.username : "User"
                   }}</b>
                 </div>
-              </div>
-              <div class="star d-flex flex-row">
-                <i
-                  class="bx bxs-star"
-                  v-for="i in parseInt(review.star)"
-                  :key="i"
-                ></i>
+                <div v-else><b>User is deleted!</b></div>
+
+                &emsp;<div class="star d-flex flex-row">
+                  <i class="bx bxs-star" v-for="i in parseInt(review.star)" :key="i"></i>
+                </div>
               </div>
               <div class="comment">
                 <span> {{ review.comment }} </span>
@@ -160,12 +168,6 @@ export default {
             </div>
           </div>
           <div class="post-btn">
-            <!-- <input
-              type="text"
-              placeholder="what are you thinkking"
-              @click="openReview"
-            />
-            <input type="submit" /> -->
             <div class="main">
               <button class="rev_button" @click="openReview">
                 Write a review
@@ -184,54 +186,19 @@ export default {
               <h2>Review</h2>
 
               <p>Click on star to rate</p>
-              <input
-                class="star star-5"
-                id="star-5-2"
-                type="radio"
-                name="star"
-                @click="rating_star = 5"
-              />
+              <input class="star star-5" id="star-5-2" type="radio" name="star" @click="rating_star = 5" />
               <label class="star star-5" for="star-5-2"></label>
-              <input
-                class="star star-4"
-                id="star-4-2"
-                type="radio"
-                name="star"
-                @click="rating_star = 4"
-              />
+              <input class="star star-4" id="star-4-2" type="radio" name="star" @click="rating_star = 4" />
               <label class="star star-4" for="star-4-2"></label>
-              <input
-                class="star star-3"
-                id="star-3-2"
-                type="radio"
-                name="star"
-                @click="rating_star = 3"
-              />
+              <input class="star star-3" id="star-3-2" type="radio" name="star" @click="rating_star = 3" />
               <label class="star star-3" for="star-3-2"></label>
-              <input
-                class="star star-2"
-                id="star-2-2"
-                type="radio"
-                name="star"
-                @click="rating_star = 2"
-              />
+              <input class="star star-2" id="star-2-2" type="radio" name="star" @click="rating_star = 2" />
               <label class="star star-2" for="star-2-2"></label>
-              <input
-                class="star star-1"
-                id="star-1-2"
-                type="radio"
-                name="star"
-                @click="rating_star = 1"
-              />
+              <input class="star star-1" id="star-1-2" type="radio" name="star" @click="rating_star = 1" />
               <label class="star star-1" for="star-1-2"></label>
               <div class="rev-box">
-                <textarea
-                  class="review"
-                  col="30"
-                  name="review"
-                  placeholder="Comment"
-                  v-model="commentReview"
-                ></textarea>
+                <textarea class="review" col="30" name="review" placeholder="Comment"
+                  v-model="commentReview"></textarea>
                 <p>Write your review here</p>
                 <button @click="subReview">Submit form</button>
               </div>
@@ -245,26 +212,36 @@ export default {
 </template>
 
 <style scoped>
+.comment-box {
+  /* border: 1px solid grey; */
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 2px 2px 10px #aaaaaa;
+  margin-top: 8px;
+}
+
 .review-star {
   width: 100%;
   height: 100%;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.561);
+  background-color: rgba(97, 97, 97, 0.561);
   top: 0px;
   left: 0px;
   z-index: 999;
   visibility: hidden;
 }
+
 .review-star.open {
   visibility: visible;
 }
+
 .container-review {
   position: fixed;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
-  width: 500px;
+  width: 400px;
   height: 240px;
 }
 
@@ -274,7 +251,7 @@ export default {
   text-align: center;
   margin: 4% auto;
   padding: 30px 0;
-  background: #eee;
+  background: rgb(255, 255, 255);
   color: #000;
   border-radius: 15px;
   border: thin solid #444;
@@ -314,18 +291,18 @@ label.star {
   transition: all 0.2s;
 }
 
-input.star:checked ~ label.star:before {
+input.star:checked~label.star:before {
   content: "\f005";
   color: #fd4;
   transition: all 0.25s;
 }
 
-input.star-5:checked ~ label.star:before {
+input.star-5:checked~label.star:before {
   color: #fe7;
   text-shadow: 0 0 20px #952;
 }
 
-input.star-1:checked ~ label.star:before {
+input.star-1:checked~label.star:before {
   color: #f62;
 }
 
@@ -361,7 +338,7 @@ label.review {
   transition: opacity 0.25s;
 }
 
-input.star:checked ~ .rev-box {
+input.star:checked~.rev-box {
   height: 125px;
   overflow: visible;
 }
@@ -393,9 +370,11 @@ button:hover {
   height: 20px;
   opacity: 0.3;
 }
+
 .close:hover {
   opacity: 1;
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -405,9 +384,11 @@ button:hover {
   width: 2px;
   background-color: red;
 }
+
 .close:before {
   transform: rotate(45deg);
 }
+
 .close:after {
   transform: rotate(-45deg);
 }
