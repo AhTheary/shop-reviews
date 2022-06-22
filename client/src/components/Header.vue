@@ -132,6 +132,7 @@ export default {
       console.log(resData)
       this.$router.go('/')
     },
+<<<<<<< HEAD
 
     async getFavorite(){
         const user = await fetch('http://localhost:3001/auth/me', {
@@ -171,6 +172,18 @@ export default {
       },
     })
 
+=======
+  },
+ async created() {
+    const res = await fetch('http://localhost:3001/auth/me', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+>>>>>>> 6e979259137f5302fdf88b59ff903598e4df9096
     const resData = await res.json()
     this.me = resData
     console.log("User",this.me);
