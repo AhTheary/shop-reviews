@@ -34,7 +34,9 @@ export default {
 
         this.$router.push('/')
       } else {
+        this.message;
         console.log(res)
+        alert('ok')
       }
     },
   },
@@ -69,7 +71,7 @@ export default {
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
                       <label>Username</label>
                       <input
                         type="text"
@@ -81,7 +83,7 @@ export default {
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">
-                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
                       <label>Password</label>
                       <input
                         v-model="password"
@@ -91,6 +93,9 @@ export default {
                       />
                     </div>
                   </div>
+                </div>
+                <div   v-if="message" class="alert alert-danger" style="width: 350px; text-align:center ">
+                  {{message}}
                 </div>
                 <div>
                   <button class="btn btn-primary" style="width: 150px;">

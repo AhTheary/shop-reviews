@@ -46,7 +46,7 @@ const remove = async(id) => {
     console.log("Removed");
     return {
         success: true,
-        message: "Store is delete successfull",
+        message: "Comment user is delete successfull",
         data: removeStore,
     };
 };

@@ -43,7 +43,7 @@
               <i class="bx bxs-star-half"></i>
             </span>
             &nbsp; &nbsp; &nbsp;
-            <span>{{ item.countReview }} Review</span>
+            <span>{{ item.countReview }} Reviews</span>
           </div>
         </div>
       </div>

@@ -62,20 +62,6 @@ export default {
      
     }
   },
-  // async created() {
-  //   const res = await fetch("http://localhost:3001/store/all?page=1", {
-  //     method: "GET",
-  //     credentials: "include",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //   });
-
-  //   const resData = await res.json();
-
-  //   this.stores = resData.data.stores.docs;
-  //   console.log(this.resData.data.stores);
-  // },
 };
 </script>
 <style></style>

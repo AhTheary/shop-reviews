@@ -20,11 +20,16 @@ router.get('/all', async(req, res) => {
 
 router.post('/update-password', auth.ensureSignedIn, auth.currentUser, async(req, res, next) => {
     // to do
-    res.json({});
+    const { _id } = req.body;
+    const result = await userService.updatePass(_id);
+    res.json(result);
 })
 
 router.post('/update', auth.ensureSignedIn, async(req, res, next) => {
     // to do
+    const { _id } = req.body;
+    const result = await userService.update(_id);
+    res.json(result);
 })
 
 router.delete('/delete', auth.ensureSignedIn, async(req, res, next) => {

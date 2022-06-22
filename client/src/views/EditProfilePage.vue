@@ -86,7 +86,8 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Phone number</label>
-                    <input type="text" class="form-control" value="012345678" />
+                     {{ me.phone }}
+                    <input type="text" class="form-control" value="" />
                   </div>
                 </div>
               </div>

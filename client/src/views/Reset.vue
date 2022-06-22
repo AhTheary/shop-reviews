@@ -90,6 +90,7 @@ body {
   background: rgba(239, 239, 239, 0.746);
 }
 .main-div {
+  width: 350px;
   position: absolute;
   top: 50%;
   left: 50%;

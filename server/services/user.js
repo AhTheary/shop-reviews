@@ -14,12 +14,35 @@ const findAll = async() => {
     return await Users.find();
 }
 
-const updatePass = async() => {
-    // to do
+const updatePass = async(updateUserpass) => {
+    // to upate pass
+    const { _id, oldpassword, newpassword, confirmNewpass } = updateUserpass;
+    const updateUserpassnew = await Users.findByIdAndUpdate(_id, {
+        oldpassword: oldpassword,
+        newpassword: newpassword,
+        confirmNewpass: confirmNewpass,
+    });
+    return {
+        success: true,
+        message: "You updated your password!",
+        data: updateUserpassnew,
+    };
 }
 
-const update = async() => {
-    // to do
+const update = async(updateUserinfo) => {
+    // to info user
+    const { _id, firstName, lastName, email, phone } = updateUserinfo;
+    const updateUserInfo = await Users.findByIdAndUpdate(_id, {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+    });
+    return {
+        success: true,
+        message: "Now Store is updated",
+        data: updateUserInfo,
+    };
 }
 
 const remove = async(id) => {
