@@ -17,8 +17,8 @@
       </div>
       <div class="box_card_right">
         <div class="like">
-          <div class="icon" @click="fovorite">
-            <i class="bx bxs-heart" @click="fovorite"></i>
+          <div class="icon" @click="favorite(item._id)">
+            <i class="bx bxs-heart"></i>
           </div>
         </div>
         <div class="card-detail">
@@ -84,8 +84,35 @@ export default {
       alert("U wanna post somthing!");
       return this.inputcomment;
     },
-    fovorite() {
-      alert("You add me to Fovorite cart! ");
+
+
+
+    async favorite(store_id) {
+      const user = await fetch('http://localhost:3001/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+
+      const userData = await user.json(); 
+      
+      //add to favorite
+       const addFav = await fetch('http://localhost:3001/favorite/create', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          user: userData._id,
+          store: store_id
+        }),
+      })
+
+      const addFavData = await addFav.json()
+      console.log(addFavData)
     },
 
     

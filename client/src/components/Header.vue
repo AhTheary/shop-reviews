@@ -29,7 +29,7 @@
             <a class="user" @click="menuToggle">
               <i class="bx bxs-user-circle" style="color: white"></i>
             </a>
-            <a>
+            <a @click="getFavorite">
               <label for="slide-menu-right" class="menu-button">
                 <i class="bx bxs-heart"></i>
               </label>
@@ -79,22 +79,10 @@
       <input id="slide-menu-right" class="menu-toggle" type="checkbox" />
       <div class="menu-wrap">
         <h1 class="menu-title">Favorite</h1>
-        <div class="menu-list">
+        <div class="menu-list" style="color: white;">
           <ul>
-            <li>
-              <a href="#">Shop 1</a>
-            </li>
-            <li>
-              <a href="#">Shop 2</a>
-            </li>
-            <li>
-              <a href="#">Shop 3</a>
-            </li>
-            <li>
-              <a href="#">Shop 4</a>
-            </li>
-            <li>
-              <a href="#">Shop 5</a>
+            <li v-for="fav in favorites" :key="fav._id">
+              {{ fav.store.storeName }}
             </li>
           </ul>
         </div>
@@ -113,6 +101,7 @@ export default {
       username: "",
       logged: true,
       me: "",
+      favorites: []
     };
   },
 
@@ -126,6 +115,7 @@ export default {
     menuToggle() {
       const toggleMenu = document.querySelector(".menu");
       toggleMenu.classList.toggle("active");
+      this.getFavorite()
     },
      async onLogout() {
       console.log('test')
@@ -142,6 +132,47 @@ export default {
       console.log(resData)
       this.$router.go('/')
     },
+<<<<<<< HEAD
+
+    async getFavorite(){
+        const user = await fetch('http://localhost:3001/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+
+      const userData = await user.json();
+
+      const get_favorites = await fetch(`http://localhost:3001/favorite/all?user_id=${userData._id}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+
+      const favoritesData = await get_favorites.json();
+      console.log(favoritesData.data)
+      this.favorites = favoritesData.data
+      console.log('favorites', this.favorites)
+
+    }
+  },
+ async created() {
+
+    this.getFavorite()
+
+    const res = await fetch('http://localhost:3001/auth/me', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+=======
   },
  async created() {
     const res = await fetch('http://localhost:3001/auth/me', {
@@ -152,6 +183,7 @@ export default {
       },
     })
 
+>>>>>>> 6e979259137f5302fdf88b59ff903598e4df9096
     const resData = await res.json()
     this.me = resData
     console.log("User",this.me);
