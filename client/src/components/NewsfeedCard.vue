@@ -13,25 +13,20 @@
               </div>
               <div class="location">
 
-                <img 
-                  src="../assets/locator_post.png" 
-                  style="opacity: 50%; height: 25%" 
-                  alt="" 
-                />
-                <div
-                  style="
+                <img src="../assets/locator_post.png" style="opacity: 50%; height: 25%" alt="" />
+                <div style="
                     font-weight: 500;
                     font-size: 11px;
                     margin-left: 2px;
                     opacity: 50%;
-                  "
-                >
-                   {{ feedcard.location }}
+                  ">
+                  {{ feedcard.location }}
                 </div>
               </div>
             </div>
-            <div class="icon-like" @click="like">
-              <i class="bx bxs-like"></i>
+            <div class="icon-like">
+              <button :id="'like' + feedcard._id" class="btn" @click="like(feedcard._id)"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+              <!-- <button :id="'unlike' + feedcard._id" class="btn" @click="like(feedcard._id)"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button> -->
             </div>
           </div>
           <div class="descrition-post" style="margin-top: 4px">
@@ -40,11 +35,7 @@
             </span>
           </div>
           <div class="img-post">
-            <img 
-              :src="feedcard.image" 
-              alt="erorUserpost" 
-              style="width: 100%; height: 100%;" 
-              />
+            <img :src="feedcard.image" alt="erorUserpost" style="width: 100%; height: 100%;" />
           </div>
         </div>
         <div class="box_card_right">
@@ -55,13 +46,13 @@
             </div>
           </div>
           <div class="other-user-comment">
-            <div class="user-info"  v-for="comment in feedcard.comments" :key="comment._id">
+            <div class="user-info" v-for="comment in feedcard.comments" :key="comment._id">
               <div class="user-info-acc">
                 <div class="icon-user"><i class="bx bxs-user-circle"></i></div>
                 <span>{{ comment.usercommentId.username }}</span>
               </div>
               <div class="user-info-comment">
-                {{ comment.comment  }}
+                {{ comment.comment }}
               </div>
             </div>
           </div>
@@ -87,15 +78,15 @@ export default {
 
   watch: {
     posts: {
-      handler(posts){
+      handler(posts) {
         let all_posts = posts.reverse();
         console.log('watch post', posts)
-        for(let i =0; i< posts.length; i++){
+        for (let i = 0; i < posts.length; i++) {
           fetch(`http://localhost:3001/comment/all?userpostId=${posts[i]._id}`)
-          .then( async (res) => {
-            const resData = await res.json();
-            all_posts[i].comments = resData.data; 
-          })
+            .then(async (res) => {
+              const resData = await res.json();
+              all_posts[i].comments = resData.data;
+            })
         }
         this.postInfo = all_posts
       }, immediate: true,
@@ -103,8 +94,30 @@ export default {
   },
 
   methods: {
-    like() {
-      alert('Thanks for your like!')
+    like(id) {
+      console.log(id);
+      var btn1 = document.getElementById('like'+ id);
+      // var btn2 = document.getElementById('unlike'+ id);
+
+      btn1.addEventListener('click', function () {
+
+        // if (btn2.classList.contains('red')) {
+        //   btn2.classList.remove('red');
+        // }
+
+        btn1.classList.add('green');
+
+      });
+
+      // btn2.addEventListener('click', function () {
+
+      //   if (btn1.classList.contains('green')) {
+      //     btn1.classList.remove('green');
+      //   }
+      //   btn2.classList.add('red');
+
+      // });
+      // alert('Thanks for your like!')
     },
     commentPost() {
       return this.comment
@@ -113,7 +126,26 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+button {
+  cursor: pointer;
+  outline: 0;
+  color: #AAA;
+
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.green {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
 .wrapper_body_review {
   position: relative;
   margin: 12px auto;
