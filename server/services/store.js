@@ -10,7 +10,7 @@ const findAll = async(req, res) => {
     // } catch (error) {
     //     return ërror
     // }
-    const { page, item_per_page, category } = req.query;
+    const { page, item_per_page, category, name } = req.query;
 
     try {
         let populates = {
@@ -25,6 +25,10 @@ const findAll = async(req, res) => {
 
         let filter = {};
         if (category) filter.category = category;
+        if (name) {
+            const regex = new RegExp(name, "i");
+            filter.storeName = { $regex: regex }
+        }
 
         if (page) options.page = page;
         if (item_per_page) options.limit = item_per_page;
