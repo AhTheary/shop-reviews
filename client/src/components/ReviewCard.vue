@@ -150,12 +150,14 @@ export default {
 .box_card_review {
   margin: 0 auto;
   position: relative;
-  width: 100%;
+  width: 85%;
   height: 60vh;
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
   border: 1px solid #e5e5e5;
+    background-color: rgba(234, 234, 234, 0.303);
+
 }
 
 .box_card_left {

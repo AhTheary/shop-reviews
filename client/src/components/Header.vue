@@ -59,11 +59,6 @@
           <a href="/editprofile">Edit Profile</a>
         </li>
         <li>
-          <!-- <i class="bx bxs-meh-blank"></i>
-          &nbsp; -->
-          <a href="#">Dark Mode</a>
-        </li>
-        <li>
           <!-- <i class="bx bxs-contact"></i>
           &nbsp; -->
           <a href="/feedback">Feedback</a>

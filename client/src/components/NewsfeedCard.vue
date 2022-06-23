@@ -31,7 +31,8 @@
               </div>
             </div>
             <div class="icon-like" @click="like">
-              <i class="bx bxs-like"></i>
+              <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+              <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
             </div>
           </div>
           <div class="descrition-post" style="margin-top: 4px">
@@ -104,7 +105,26 @@ export default {
 
   methods: {
     like() {
-      alert('Thanks for your like!')
+      var btn1 = document.querySelector('#green');
+      var btn2 = document.querySelector('#red');
+
+      btn1.addEventListener('click', function () {
+
+        if (btn2.classList.contains('red')) {
+          btn2.classList.remove('red');
+        }
+        this.classList.toggle('green');
+
+      });
+      btn2.addEventListener('click', function () {
+
+        if (btn1.classList.contains('green')) {
+          btn1.classList.remove('green');
+        }
+        this.classList.toggle('red');
+
+      });
+
     },
     commentPost() {
       return this.comment
@@ -113,7 +133,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+button {
+  cursor: pointer;
+  outline: 0;
+  color: #AAA;
+
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.green {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
 .wrapper_body_review {
   position: relative;
   margin: 12px auto;
@@ -126,9 +164,10 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  width: 100%;
+  width: 80%;
   height: 60vh;
   margin-bottom: 15px;
+  margin: 0 auto;
   border: 1px solid #e5e5e5;
   background-color: #e6e6e641;
 }
