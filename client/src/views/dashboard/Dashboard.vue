@@ -29,6 +29,12 @@
               &nbsp; POST
             </router-link>
           </li>
+          <li>
+            <router-link to="/dashboard/feedback">
+              <span class="material-symbols-outlined">feedback</span>
+              &nbsp; Feedback
+            </router-link>
+          </li>
         </div>
         <div class="logout" @click="onLogout">
           <li>

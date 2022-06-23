@@ -4,6 +4,7 @@ import Dashboard from '../views/dashboard/Dashboard.vue';
 import Post from '../views/dashboard/pages/post.vue'
 import Store from '../views/dashboard/pages/store.vue'
 import Category from '../views/dashboard/pages/user.vue'
+import Feedback from '../views/dashboard/pages/feedback.vue'
 
 const router = createRouter({
     history: createWebHistory(
@@ -128,6 +129,11 @@ const router = createRouter({
                     path: 'post',
                     name: 'dashboard/post',
                     component: Post
+                },
+                {
+                    path: 'feedback',
+                    name: 'dashboard/feedback',
+                    component: Feedback
                 },
             ],
         }

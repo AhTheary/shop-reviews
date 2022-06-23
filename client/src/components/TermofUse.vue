@@ -1,4 +1,5 @@
 <template>
+ <div>
   <Header />
   <div class="class-name text-justify" style="margin-top:17vh; margin-left:10%; margin-right:5%">
     <h3  class=" primary--text d-flex justify-center">Terms & Conditions</h3>
@@ -76,6 +77,7 @@
     </div>
   </div>
    <Footer />
+   </div>
 </template>
 
 <script>

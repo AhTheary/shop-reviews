@@ -12,5 +12,6 @@ router.use('/review', require('./review'));
 router.use('/comment', require('./comment'));
 router.use('/upload', require('./external'));
 router.use('/favorite', require('./favorite'))
+router.use('/feedback', require('./feedback'))
 
 module.exports = router;
