@@ -126,7 +126,7 @@ export default {
             <div style="width : 93%"><span style="font-size:30px">REVIEW</span>
             </div>
            <div> 
-            <i class="bx bx-refresh fa-2x" onclick="location.reload();"></i>
+            <i class="bx bx-refresh fa-2x" onclick="location.reload();" style="cursor:pointer"></i>
           </div>
                   
           </div>
@@ -134,7 +134,7 @@ export default {
           <div class="user_comment_review" style = " overflow-y: scroll">
             <div class="comment-box" v-for="review in reviewUser" :key="review._id">
               <div class="username">
-                <i class="bx bxs-user-circle"></i>
+                <i class="bx bxs-user-circle" style="margin-top:4px"></i>&ensp;
                 <div v-if="review.userId">
                   <b>{{
                       review.userId.username ? review.userId.username : "User"
@@ -143,7 +143,7 @@ export default {
                 <div v-else><b>User is deleted!</b></div>
 
                 &emsp;<div class="star d-flex flex-row">
-                  <i class="bx bxs-star" v-for="i in parseInt(review.star)" :key="i"></i>
+                  <i class="bx bxs-star" style="color: #E9AB17" v-for="i in parseInt(review.star)" :key="i"></i>
                 </div>
               </div>
               <div class="comment">
@@ -314,7 +314,7 @@ textarea.review {
   padding: 10px;
   box-sizing: border-box;
   color: black;
-  border: 2px solid white;
+  border: 2px solid rgba(165, 165, 165, 0.542);
 }
 
 label.review {
