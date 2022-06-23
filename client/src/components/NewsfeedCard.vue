@@ -145,7 +145,6 @@ button {
 .red {
   color: red;
 }
-
 .wrapper_body_review {
   position: relative;
   margin: 12px auto;
@@ -158,9 +157,10 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  width: 100%;
+  width: 80%;
   height: 60vh;
   margin-bottom: 15px;
+  margin: 0 auto;
   border: 1px solid #e5e5e5;
   background-color: #e6e6e641;
 }

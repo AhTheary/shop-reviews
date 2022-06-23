@@ -218,7 +218,7 @@ export default {
 .btn_create_review {
   position: relative;
   margin: 17vh auto 16px;
-  width: 80%;
+  width: 64%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -236,7 +236,7 @@ export default {
 
 .btn_create_review input[type='text'] {
   position: relative;
-  width: 80%;
+  width: 70%;
   height: 40px;
   border: none;
   border-radius: 40px;

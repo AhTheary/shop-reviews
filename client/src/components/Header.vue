@@ -59,11 +59,6 @@
           <a href="/editprofile">Edit Profile</a>
         </li>
         <li>
-          <!-- <i class="bx bxs-meh-blank"></i>
-          &nbsp; -->
-          <a href="#">Dark Mode</a>
-        </li>
-        <li>
           <!-- <i class="bx bxs-contact"></i>
           &nbsp; -->
           <a href="/feedback">Feedback</a>
@@ -82,7 +77,7 @@
         <div class="menu-list" style="color: white;">
           <ul>
             <li v-for="fav in favorites" :key="fav._id">
-            <a :href="`/store/`+fav._id"> {{ fav.store.storeName }}</a> 
+            <a v-if="fav.store" :href="`/store/`+fav.store._id"> {{ fav.store.storeName }}</a> 
             </li>
           </ul>
         </div>
