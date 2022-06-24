@@ -12,8 +12,20 @@
           </router-link>
         </div>
         <div class="search_box">
-          <div class="search__container">
-            <input class="search__input" type="text" placeholder="Search" />
+          <div class="search__container" >
+            <input v-model="searchText" class="search__input" type="text" placeholder="Search" />
+            <div class="result" v-if="searchResult.length > 0" >
+              <ul style="list-style: none; padding-left: 0px; padding: 15px">
+                <li 
+                style="color: black; text-align: left; font-weight: 400; border-bottom: 1px black solid; cursor: pointer" v-for="store in searchResult" :key="store._id">
+                  <router-link :to="`/store/${store._id}`"> {{ store.storeName }} </router-link>
+                </li>
+              </ul>
+
+              <div @click="searchResult = []" style="position: absolute; top: 10px; right: 15px; cursor: pointer">
+                X
+              </div>
+            </div>
           </div>
         </div>
         <div class="user-info">
@@ -77,7 +89,7 @@
         <div class="menu-list" style="color: white;">
           <ul>
             <li v-for="fav in favorites" :key="fav._id">
-            <a v-if="fav.store" :href="`/store/`+fav.store._id"> {{ fav.store.storeName }}</a> 
+            <a v-if="fav.store" :href="`/store/`+fav.store._id"> {{ fav.store.storeName?fav.store.storeName : "" }}</a> 
             </li>
           </ul>
         </div>
@@ -96,8 +108,31 @@ export default {
       username: "",
       logged: true,
       me: "",
-      favorites: []
+      favorites: [],
+      searchResult: [],
+      searchText: ""
     };
+  },
+
+  watch: {
+   async searchText(text) {
+      console.log(text)
+       
+       if(!text) return
+
+       const res = await fetch(`http://localhost:3001/store/all?name=${text}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+
+      const resData = await res.json();
+      console.log(resData)
+
+      this.searchResult = resData.data.stores.docs
+    }
   },
 
   computed: {
@@ -172,4 +207,3 @@ export default {
   },
 };
 </script>
-<style></style>

@@ -50,11 +50,21 @@
     font-weight: 900;
     text-align: center;
     color: #ff8b88;
+    position: relative
+}
+
+.search_box .search__container .result {
+    position: fixed;
+    top: 60px;
+    margin-left: 15px;
+    width: 600px;
+    background: white;
+    border: 1px #eee solid;
 }
 
 .search_box .search__input {
     width: 100%;
-    padding: 12px 8px;
+    padding: 12px 28px;
     transition: transform 250ms ease-in-out;
     font-size: 14px;
     line-height: 18px;
@@ -79,7 +89,7 @@
 
 .search_box .search__input:hover,
 .search__input:focus {
-    padding: 12px 24px;
+    padding: 12px 14px;
     outline: 0;
     background-position: 100% center;
 }

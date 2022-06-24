@@ -36,7 +36,7 @@ export default {
       } else {
         this.message;
         console.log(res)
-        alert('ok')
+        alert(`User not found or incorrect!`)
       }
     },
   },

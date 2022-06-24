@@ -1,9 +1,10 @@
+const { options } = require("joi");
 const Favorites = require("../models/favorites");
 
 const findAll = async(req, res) => {
     const { user_id } = req.query;
     try {
-        const favorites = await Favorites.find({ user: user_id }).populate('store')
+        const favorites = await Favorites.find({ user: user_id }).populate({ path: "store" })
         console.log('favorites', favorites)
         return favorites;
     } catch (error) {

@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: red;  height: 100%;">
+  <div style="background-color: red; height: 100%;">
     <header-2 />
     <section class="py-5 my-5">
       <div class="container">
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div>
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" @click="submit">Submit</button>
                 <button class="btn btn-light">Cancel</button>
               </div>
             </div>
@@ -58,18 +58,33 @@
 </template>
 
 <script>
-import 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
 import Header2 from '../components/Header2.vue'
-// import 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js';
-// import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js';
 
 export default {
   components: { Header2 },
   name: 'EditProfile',
+  methods: {
+    async submit(){
+         const post_submit = await fetch('http://localhost:3001/post/create', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          subject: this.subject,
+          message: this.message
+        })
+      })
+       alert('Message sent successfully~')
+        this.$router.push('/')
+    }
+  },
   mounted() {
-    // let externalScript = document.createElement('script')
-    // externalScript.setAttribute('src', 'https://code.jquery.com/jquery-3.2.1.slim.min.js')
-    // document.head.appendChild(externalScript)
+
   },
 }
 </script>

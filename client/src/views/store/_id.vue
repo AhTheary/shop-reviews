@@ -68,6 +68,34 @@ export default {
 
       console.log("SAVED review", this.reviewUser);
     },
+
+    async favorite(store_id) {
+      const user = await fetch('http://localhost:3001/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+
+      const userData = await user.json(); 
+      
+      //add to favorite
+       const addFav = await fetch('http://localhost:3001/favorite/create', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          user: userData._id,
+          store: store_id
+        }),
+      })
+
+      const addFavData = await addFav.json()
+      console.log(addFavData)
+    },
   },
   async created() {
     this.getReview();
@@ -95,7 +123,7 @@ export default {
         <div class="store_card">
           <div class="icon">
             <i>  {{ store.storeName }} </i>
-            <i class="bx bx-heart">
+            <i @click="favorite(store._id)" style="cursor: pointer" class="bx bx-heart">
             </i>
           </div>
           <div class="img">
