@@ -86,8 +86,9 @@ export default {
 
 <style scoped>
   .main-dashboard-name h2 {
-    background-color: #edc912;
+    background-color: #fff;
     padding: 1em 0;
     text-align: center;
+    border-bottom:1px solid #eee ;
   }
 </style>

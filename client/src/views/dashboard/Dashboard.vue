@@ -19,19 +19,20 @@
             <router-link to="/dashboard/store">
               <span class="material-symbols-outlined">
                 &nbsp;&nbsp; add_business
+                
               </span>
               STORE
             </router-link>
           </li>
           <li>
             <router-link to="/dashboard/post">
-              <span class="material-symbols-outlined">post_add</span>
+              &nbsp; <span class="material-symbols-outlined">post_add</span>
               &nbsp; POST
             </router-link>
           </li>
           <li>
             <router-link to="/dashboard/feedback">
-              <span class="material-symbols-outlined">feedback</span>
+             &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span class="material-symbols-outlined">feedback</span>
               &nbsp; Feedback
             </router-link>
           </li>

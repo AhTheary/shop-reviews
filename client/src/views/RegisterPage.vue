@@ -86,7 +86,7 @@ export default {
                         v-model="lastName"
                         type="text"
                         class="form-control"
-                       
+                         required
                       />
                     </div>
                   </div>
@@ -98,19 +98,20 @@ export default {
                         v-model="username"
                         type="text"
                         class="form-control"
-                       
+                         required
                       />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <i class="fa fa-phone" aria-hidden="true"></i>&ensp;
-                      <label>Phone number</label>
+                      <label>Phone number (855)</label>
                       <input
                         v-model="phone"
                         type="text"
                         class="form-control"
-                        placeholder="855"
+                        placeholder="11 digits only"
+                        required
                       />
                     </div>
                   </div>
@@ -122,7 +123,7 @@ export default {
                         v-model="email"
                         type="email"
                         class="form-control"
-                       
+                        required
                       />
                     </div>
                   </div>
@@ -135,7 +136,7 @@ export default {
                         v-model="pwd"
                         type="password"
                         class="form-control"
-                      
+                       required
                       />
                     </div>
                   </div>
@@ -147,7 +148,7 @@ export default {
                         v-model="repeatPws"
                         type="password"
                         class="form-control"
-                       
+                        required
                       />
                     </div>
                   </div>
@@ -159,6 +160,7 @@ export default {
                     id="blankCheckbox"
                     value="option1"
                     aria-label="..."
+                     required
                   />
                   I agree all statements in
                   <a href="/terms">Terms of service</a>

@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: red; height: 100%;">
+  <div style="background-color:rgba(239, 239, 239, 0.746); height: 100%;">
     <header-2 />
     <section class="py-5 my-5">
       <div class="container">
@@ -17,31 +17,31 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" value="" />
+                    <input v-model="firstName" type="text" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" value="" />
+                    <input v-model="lastName" type="text" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" value="" />
+                    <input v-model="email" type="text" class="form-control"  />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Subject</label>
-                    <input type="text" class="form-control" value="" />
+                    <input v-model="subject" type="text" class="form-control"  />
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Message</label>
-                    <textarea class="form-control" rows="4"></textarea>
+                    <textarea v-model="message" class="form-control" rows="4"></textarea>
                   </div>
                 </div>
               </div>
@@ -63,24 +63,31 @@ import Header2 from '../components/Header2.vue'
 export default {
   components: { Header2 },
   name: 'EditProfile',
+  data() {
+    return {
+      feed: []
+    }
+  },
   methods: {
     async submit(){
-         const post_submit = await fetch('http://localhost:3001/post/create', {
+        const res = await fetch('http://localhost:3001/feedback/create', {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
+          email: this.email,
           firstName: this.firstName,
           lastName: this.lastName,
-          email: this.email,
           subject: this.subject,
           message: this.message
-        })
+        }),
       })
+       const resData = await res.json();
+       console.log(resData+'message');
        alert('Message sent successfully~')
-        this.$router.push('/')
+      this.$router.push('/')
     }
   },
   mounted() {
@@ -91,7 +98,7 @@ export default {
 
 <style scoped>
 .container {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

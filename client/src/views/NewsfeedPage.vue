@@ -24,7 +24,7 @@
             </header>
             <form @submit.prevent="post">
               <div class="content">
-                <img src="../assets/icons/logo.svg" alt="logo" />
+                <img src="../assets/user.png" alt="logo" />
                 <div class="details">
                   <p>{{ me.username }}</p>
                 </div>
@@ -41,8 +41,8 @@
                 <div @click="resetFile" style="position: absolute; top: 0; right: 0; cursor: pointer">X</div>
               </div>
               <div class="theme-emoji">
-                <img src="../assets/icons//theme.svg" alt="theme" />
-                <img src="../assets/icons//smile.svg" alt="smile" />
+                <!-- <img src="../assets/icons//theme.svg" alt="theme" />
+                <img src="../assets/icons//smile.svg" alt="smile" /> -->
               </div>
               <div class="options">
                 <p>Add to Your Post</p>
@@ -59,11 +59,11 @@
                     <img style="position: absolute;" src="../assets/icons/gallery.svg" alt="gallery" />
                   </li>
                   <!-- <li><img src="icons/tag.svg" alt="gallery" style="display: none;"></li> -->
-                  <li>
+                  <!-- <li>
                     <img src="../assets/icons//emoji.svg" alt="gallery" />
-                  </li>
-                  <li><img src="../assets/icons//mic.svg" alt="gallery" /></li>
-                  <li><img src="../assets/icons//more.svg" alt="gallery" /></li>
+                  </li> -->
+                  <!-- <li><img src="../assets/icons//mic.svg" alt="gallery" /></li>
+                  <li><img src="../assets/icons//more.svg" alt="gallery" /></li> -->
                 </ul>
               </div>
               <button type="submit">Post</button>

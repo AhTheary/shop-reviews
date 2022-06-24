@@ -8,7 +8,8 @@
           <div class="profile-tab-nav border-right">
             <div class="p-4">
               <div class="img-circle text-center mb-3">
-                <img src="@/assets/pf.png" alt="Image" class="shadow" />
+                <!-- <img src="@/assets/pf.png" alt="Image" class="shadow" /> -->
+                <img src="../assets/user.png" alt="logo" />
               </div>
               <h4 class="text-center">{{ me.username }}</h4>
             </div>
