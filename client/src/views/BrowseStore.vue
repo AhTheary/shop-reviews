@@ -42,11 +42,10 @@
           </div>
           <div class="star-review">
             <div class="star">
-              {{ store.rating }}
-              <i class="bx bx-star"></i>
+              <b style="color: red">Total user review : </b> 
             </div>
             <div class="count-review">
-              <span>21 Review</span>
+              <span> {{store.countReview}} Reviews</span>
             </div>
           </div>
           <div class="des">
@@ -78,6 +77,7 @@ export default {
       totalPage: 0,
       category: '',
       category_all:null,
+       stores: [],
     }
   },
   methods: {
@@ -132,7 +132,7 @@ export default {
   },
   mounted(){
     this.getCategory();
-  }
+  },
 }
 </script>
 
