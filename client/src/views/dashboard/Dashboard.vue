@@ -21,13 +21,13 @@
                 &nbsp;&nbsp; add_business
                 
               </span>
-              STORE
+              Store
             </router-link>
           </li>
           <li>
             <router-link to="/dashboard/post">
               &nbsp; <span class="material-symbols-outlined">post_add</span>
-              &nbsp; POST
+              &nbsp; Post
             </router-link>
           </li>
           <li>
@@ -37,7 +37,7 @@
             </router-link>
           </li>
         </div>
-        <div class="logout" @click="onLogout">
+        <div class="logout" @click="onLogout" style="cursor: pointer">
           <li>
             Logout &nbsp;
             <span class="material-symbols-outlined">logout</span>
@@ -120,19 +120,20 @@ a {
 } */
 .container {
 
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  /* display: flex;
+  transform: translate(-50%, -50%); */
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; */
+  flex-direction: column;
+  margin-top: 100px;
   background-color: #fff;
   max-width: 30%;
   border-radius: 10px;
-  border: 1px solid rgba(145, 145, 145, 0.557);
+  border: 3px solid rgba(145, 145, 145, 0.557);
   padding: 40px;
-  text-align: center;
+  text-align: left;
 }
 </style>

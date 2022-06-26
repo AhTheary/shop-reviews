@@ -34,7 +34,7 @@
               {{ feedcard.status }}
             </span>
           </div>
-          <div class="img-post">
+          <div class="img-post" >
             <img :src="feedcard.image" alt="erorUserpost" style="width: 100%; height: 100%;" />
           </div>
         </div>

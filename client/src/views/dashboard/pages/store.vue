@@ -25,7 +25,7 @@
           <td>{{ store.category.name }}</td>
           <td>{{ store.location }}</td>
           <td>
-            <img :src="store.imageUrl" alt="erorUserpost" style="width: 60%;" />
+            <img :src="store.imageUrl" alt="erorUserpost" style="width: 60%" />
           </td>
           <td>
             <a
@@ -33,11 +33,11 @@
               @click="editItem(store)"
               class="material-symbols-outlined"
             >
-              <span><i class="fas fa-edit" style="color: blue;"></i></span>
+              <span><i class="fas fa-edit" style="color: blue"></i></span>
             </a>
 
             <a @click="deleteItem(store)" class="material-symbols-outlined">
-              <span><i class="fas fa-trash-alt" style="color: red;"></i></span>
+              <span><i class="fas fa-trash-alt" style="color: red"></i></span>
             </a>
           </td>
         </tr>
@@ -47,6 +47,9 @@
     <div class="popup">
       <form @submit.prevent="storeActions">
         <div class="container-addStore">
+          <h3 style="padding: 15px; display: flex; justify-content: center">
+            Add New Store
+          </h3>
           <div class="upload-img">
             <input
               @input="handlerImage"
@@ -67,6 +70,7 @@
           </div>
           <div class="input-info">
             <input
+              class="input-value"
               required
               v-model="store.ownerName"
               type="text"
@@ -75,8 +79,9 @@
               placeholder="Owner's name"
             />
           </div>
-          <div class="input-info" style="margin-top: 15%;">
+          <div class="input-info" style="margin-top: 15%">
             <input
+              class="input-value"
               required
               v-model="store.storeName"
               type="text"
@@ -85,21 +90,22 @@
               placeholder="Store's name"
             />
           </div>
-          <div class="input-info" style="margin-top: 30%;">
+          <div class="input-info" style="margin-top: 30%">
             <select
+              style="width: 200px"
               name="categories"
               id="categories"
               v-model="store.category"
-              required
-            >
+              required>
               <option value="Select a category">Select a category</option>
               <option v-for="cat in categories" :key="cat._id" :value="cat._id">
                 {{ cat.name }}
               </option>
             </select>
           </div>
-          <div class="input-info" style="margin-top: 45%;">
+          <div class="input-info" style="margin-top: 40%">
             <input
+              class="input-value"
               type="location"
               id="location"
               name="location"
@@ -108,8 +114,9 @@
               required
             />
           </div>
-          <div class="input-info" style="margin-top: 60%;">
+          <div class="input-info" style="margin-top: 55%">
             <textarea
+              class="input-value"
               name="description"
               id="description"
               placeholder="Description"
@@ -117,8 +124,12 @@
               required
             ></textarea>
           </div>
-          <div class="input-info-sub" style="margin-top: 10%;">
-            <input type="submit" value="Confirm" />
+          <div class="input-info-sub" style="margin-top: 10%">
+            <input
+              type="submit"
+              style="background: #0e5fff; color: white; border: 1px solid grey"
+              value="Confirm"
+            />
             <input type="button" value="Cancel" @click="cancel" />
           </div>
         </div>
@@ -134,41 +145,41 @@ export default {
       stores: [],
       categories: [],
       store: {
-        storeName: '',
-        ownerName: '',
-        category: '',
-        location: '',
-        imageUrl: '',
-        desc: '',
+        storeName: "",
+        ownerName: "",
+        category: "",
+        location: "",
+        imageUrl: "",
+        desc: "",
       },
-      action: '',
-    }
+      action: "",
+    };
   },
   methods: {
     async getStore() {
-      const res = await fetch('http://localhost:3001/store/all', {
-        method: 'GET',
-        credentials: 'include',
+      const res = await fetch("http://localhost:3001/store/all", {
+        method: "GET",
+        credentials: "include",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
-      })
+      });
 
-      const resData = await res.json()
-      this.stores = resData.data.stores.docs
-      console.log(this.stores)
+      const resData = await res.json();
+      this.stores = resData.data.stores.docs;
+      console.log(this.stores);
     },
 
     addStore() {
-      const openpopup = document.querySelector('.popup')
-      openpopup.classList.add('popup-open')
-      this.action = 'create'
+      const openpopup = document.querySelector(".popup");
+      openpopup.classList.add("popup-open");
+      this.action = "create";
     },
 
     editItem(store) {
-      const openpopup = document.querySelector('.popup')
-      openpopup.classList.add('popup-open')
-      ;(this.store = {
+      const openpopup = document.querySelector(".popup");
+      openpopup.classList.add("popup-open");
+      (this.store = {
         _id: store._id,
         storeName: store.storeName,
         ownerName: store.ownerName,
@@ -177,104 +188,104 @@ export default {
         imageUrl: store.imageUrl,
         category: store.category._id,
       }),
-        (this.action = 'update')
+        (this.action = "update");
     },
 
     cancel() {
-      const closePopup = document.querySelector('.popup')
-      closePopup.classList.remove('popup-open')
+      const closePopup = document.querySelector(".popup");
+      closePopup.classList.remove("popup-open");
       //reset file image value
-      document.getElementById('img').value = ''
+      document.getElementById("img").value = "";
       //reset data form
       this.store = {
-        storeName: '',
-        ownerName: '',
-        category: '',
-        location: '',
-        imageUrl: '',
-        desc: '',
-      }
+        storeName: "",
+        ownerName: "",
+        category: "",
+        location: "",
+        imageUrl: "",
+        desc: "",
+      };
     },
 
     async storeActions() {
-      let url = ''
-      if (this.action == 'create') url = 'http://localhost:3001/store/create'
-      else url = 'http://localhost:3001/store/update'
+      let url = "";
+      if (this.action == "create") url = "http://localhost:3001/store/create";
+      else url = "http://localhost:3001/store/update";
 
-      console.log('create store')
-      console.log(this.store)
+      console.log("create store");
+      console.log(this.store);
 
       const res = await fetch(url, {
-        method: 'POST',
-        credentials: 'include',
+        method: "POST",
+        credentials: "include",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(this.store),
-      })
+      });
 
-      const res_data = await res.json()
-      console.log('createStore', res_data)
-      this.getStore()
-      this.cancel()
+      const res_data = await res.json();
+      console.log("createStore", res_data);
+      this.getStore();
+      this.cancel();
     },
 
     async deleteItem(store) {
-      console.log('delete item', store)
-      const res = await fetch('http://localhost:3001/store/delete', {
-        method: 'DELETE',
-        credentials: 'include',
+      console.log("delete item", store);
+      const res = await fetch("http://localhost:3001/store/delete", {
+        method: "DELETE",
+        credentials: "include",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
         body: JSON.stringify({ _id: store._id }),
-      })
+      });
 
-      const resData = await res.json()
-      console.log('delete store', resData)
+      const resData = await res.json();
+      console.log("delete store", resData);
 
-      this.getStore()
+      this.getStore();
     },
 
     async handlerImage(e) {
-      console.log('file', e.target.files[0])
+      console.log("file", e.target.files[0]);
 
       //upload image
-      let formData = new FormData()
-      formData.append('file', e.target.files[0])
+      let formData = new FormData();
+      formData.append("file", e.target.files[0]);
 
-      const upload_image = await fetch('http://localhost:3001/upload/image', {
-        method: 'POST',
-        credentials: 'include',
+      const upload_image = await fetch("http://localhost:3001/upload/image", {
+        method: "POST",
+        credentials: "include",
         body: formData,
-      })
+      });
 
-      const upload_image_data = await upload_image.json()
-      console.log('upload image', upload_image_data)
+      const upload_image_data = await upload_image.json();
+      console.log("upload image", upload_image_data);
 
-      this.store.imageUrl = upload_image_data.data
+      this.store.imageUrl = upload_image_data.data;
     },
 
     async getCategories() {
-      const res = await fetch('http://localhost:3001/category/all', {
-        method: 'GET',
-        credentials: 'include',
+      const res = await fetch("http://localhost:3001/category/all", {
+        method: "GET",
+        credentials: "include",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
-      })
+      });
 
-      const resData = await res.json()
-      this.categories = resData
-      console.log('get categories', this.categories)
+      const resData = await res.json();
+      this.categories = resData;
+      console.log("get categories", this.categories);
     },
   },
 
   created() {
-    this.getStore()
-    this.getCategories()
+    this.getStore();
+    this.getCategories();
   },
-}
+};
 </script>
 
 <style scoped>
@@ -302,75 +313,84 @@ form {
   background-color: white;
   /* text-align: center; */
 }
- .container-addStore {
-            position: absolute;
-            width: 576px;
-            height: 676px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: #ffffff;
-            border: 1px solid #000000;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-        }
-        
-        .upload-img {
-            position: relative;
-            width: 476px;
-            height: 150px;
-            top: 10px;
-            left: 8.5%;
-            /* left: 50%;
+
+.btn {
+  border: 2px solid black;
+}
+.container-addStore {
+  position: absolute;
+  width: 576px;
+  height: 750px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+    0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.upload-img {
+  position: relative;
+  width: 476px;
+  height: 150px;
+  top: 10px;
+  left: 8.5%;
+  /* left: 50%;
             top: 50%;
             transform: translate(-50%, -50%); */
-            background: #ffffff;
-            border: 2px dashed #000000;
-            border-radius: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .upload-img img {
-            width: 25%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .input-info {
-            top: 30px;
-            position: relative;
-            left: 8.5%;
-        }
-        
-        .input-info input,
-        .input-info select,
-        .input-info option {
-            position: absolute;
-            width: 476px;
-            height: 66px;
-            background: #ffffff;
-            border: 1px solid #000000;
-            border-radius: 10px;
-        }
-        
-        .input-info-sub {
-            position: relative;
-            left: 8.5%;
-        }
-         .input-info-sub input{
-            width: 76px;
-            height: 36px;
-            margin-right: 3%;
-         }
-        
-        textarea {
-            width: 276px;
-            height: 67px;
-            background: #FFFFFF;
-            border: 1px solid #000000;
-            border-radius: 10px;
-        }
+  background: #ffffff;
+  border: 2px dashed #000000;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-img img {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-info {
+  top: 25px;
+  position: relative;
+  left: 8.5%;
+}
+
+.input-info input,
+.input-info select,
+.input-info option {
+  position: absolute;
+  width: 476px;
+  height: 66px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+.input-info-sub {
+  position: relative;
+  left: 8.5%;
+}
+.input-info-sub input {
+  width: 76px;
+  height: 36px;
+  margin-right: 3%;
+}
+
+.input-value {
+  padding-left: 20px;
+}
+
+textarea {
+  width: 276px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
 </style>

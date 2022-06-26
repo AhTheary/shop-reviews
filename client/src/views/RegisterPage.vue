@@ -110,7 +110,7 @@ export default {
                         v-model="phone"
                         type="text"
                         class="form-control"
-                        placeholder="11 digits only"
+                        placeholder="Must be 11 digits"
                         required
                       />
                     </div>

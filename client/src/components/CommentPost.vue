@@ -1,6 +1,6 @@
 <template>
   <div class="input-comment">
-    <input type="text" class="text-area"  placeholder="What are you thinking?" v-model="comment" />
+    <input type="text" class="text-area"  placeholder="Write your comment" v-model="comment" />
     <input type="submit" class="sub-button" @click="subComment" />
   </div>
 </template>
