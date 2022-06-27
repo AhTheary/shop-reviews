@@ -9,12 +9,16 @@ export default {
       username: '',
       password: '',
       message: '',
+      //diplay message after logged
+      color: '',
+      message: false,
+      text: '',
     }
   },
   methods: {
     async onSubmit(e) {
       e.preventDefault()
-
+      this.message = false
       const res = await fetch('http://localhost:3001/auth/login', {
         method: 'POST',
         credentials: 'include',
@@ -31,12 +35,11 @@ export default {
       if (resData.success == true) {
         //change status user logged in
         this.$store.commit('setUserLoggedIn', true)
-
         this.$router.push('/')
       } else {
-        this.message;
-        console.log(res)
-        alert(`User not found or incorrect!`)
+        this.text = resData.message
+        this.message = true
+        this.color = 'red'
       }
     },
   },
@@ -71,7 +74,8 @@ export default {
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
-                      <i class="fa fa-user" aria-hidden="true"></i>&ensp;
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      &ensp;
                       <label>Username</label>
                       <input
                         type="text"
@@ -83,7 +87,8 @@ export default {
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">
-                      <i class="fa fa-lock" aria-hidden="true"></i>&ensp;
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      &ensp;
                       <label>Password</label>
                       <input
                         v-model="password"
@@ -94,15 +99,21 @@ export default {
                     </div>
                   </div>
                 </div>
-                <div   v-if="message" class="alert alert-danger" style="width: 350px; text-align:center ">
-                  {{message}}
+                <div
+                  v-if="message"
+                  :style="`color: white;font-weight: 700; height: 40px; width: 100%; margin-top: 15px; background-color: ${color}`"
+                  class="d-flex justify-content-center align-items-center"
+                >
+                  {{ text }}
                 </div>
+                <br />
                 <div>
                   <button class="btn btn-primary" style="width: 150px;">
                     Log in
                   </button>
                   <div class="mt-3">
-                    <a href="/forget">Forgot account?</a> |
+                    <a href="/forget">Forgot account?</a>
+                    |
                     <a href="/register">Not our member yet?</a>
                   </div>
                 </div>

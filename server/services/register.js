@@ -23,13 +23,14 @@ const register = async(params) => {
         const createdUser = await Users.create(newUser);
         return {
             success: true,
+            message: "You are register successfull",
             data: createdUser
         }
     } catch (err) {
         console.log(err);
         return {
             success: false,
-            error: JSON.stringify(err) || 'error'
+            message: err.details.message,
         }
     }
 }

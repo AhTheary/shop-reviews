@@ -1,6 +1,7 @@
 const Users = require("../models/users");
 const { id } = require("../schemas/signUp");
 
+
 const findById = async(id) => {
     try {
         const user = await Users.findById(id);
@@ -14,19 +15,31 @@ const findAll = async() => {
     return await Users.find();
 }
 
-const updatePass = async(updateUserpass) => {
-    // to upate pass
-    const { _id, oldpassword, newpassword, confirmNewpass } = updateUserpass;
-    const updateUserpassnew = await Users.findByIdAndUpdate(_id, {
-        oldpassword: oldpassword,
-        newpassword: newpassword,
-        confirmNewpass: confirmNewpass,
-    });
-    return {
-        success: true,
-        message: "You updated your password!",
-        data: updateUserpassnew,
-    };
+const updatePass = async(updateUserpass, userId) => {
+    const { oldpassword, newpassword, confirmNewpass } = updateUserpass;
+    try {
+        let updateUserInfo = await Users.findById(userId);
+        if (updateUserInfo.matchesPassword(oldpassword)) {
+            if (newpassword == confirmNewpass) {
+                updateUserInfo.password = newpassword
+            } else {
+                throw "Password is not match"
+            }
+        } else {
+            throw "Old password is incorrect"
+        }
+        await updateUserInfo.save()
+
+        return {
+            success: true,
+            message: "Update password successfull",
+        };
+    } catch (error) {
+        return {
+            success: false,
+            message: error,
+        }
+    }
 }
 
 const update = async(updateUserinfo) => {
@@ -43,7 +56,7 @@ const update = async(updateUserinfo) => {
 
     return {
         success: true,
-        message: "Now Store is updated",
+        message: "User is updated",
         data: updateUserInfo,
     };
 }

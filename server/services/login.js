@@ -24,7 +24,7 @@ const login = async(username, password) => {
         console.log(err);
         return {
             success: false,
-            error: err || 'error'
+            message: err,
         }
     }
 }

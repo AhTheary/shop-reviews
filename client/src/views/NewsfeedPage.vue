@@ -36,33 +36,59 @@
                 id="status"
                 name="status"
               ></textarea>
-              <div v-if="image" style="position: relative; width: 200px">
-                <img width="200" :src="image" alt="preview">
-                <div @click="resetFile" style="position: absolute; top: 0; right: 0; cursor: pointer">X</div>
+              <div v-if="image" style="position: relative; width: 200px;">
+                <img width="200" :src="image" alt="preview" />
+                <div
+                  @click="resetFile"
+                  style="position: absolute; top: 0; right: 0; cursor: pointer;"
+                >
+                  X
+                </div>
               </div>
               <div class="theme-emoji">
                 <!-- <img src="../assets/icons//theme.svg" alt="theme" />
                 <img src="../assets/icons//smile.svg" alt="smile" /> -->
               </div>
               <div class="options">
-               <input type="text" spellcheck="false"
-                required
-                id="location"
-                name="location" placeholder="Add Location" style="width:100%; height:100%; outline: none; border: none;">
+                <input
+                  type="text"
+                  spellcheck="false"
+                  required
+                  id="location"
+                  name="location"
+                  placeholder="Add Location"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                  "
+                />
               </div>
               <div class="options">
                 <p>Add to Your Post</p>
                 <ul class="list">
-                  <li style="position: relative">
-                    <input 
-                    @input="handlerImage" 
-                    style="position: absolute; opacity: 0; width: 100%; height: 100%; border: 1px solid; z-index: 10" 
-                    accept="image/*"   
-                    type="file"
-                    name="image"
-                    id="imageUpload"
-                    >
-                    <img style="position: absolute;" src="../assets/icons/gallery.svg" alt="gallery" />
+                  <li style="position: relative;">
+                    <input
+                      @input="handlerImage"
+                      style="
+                        position: absolute;
+                        opacity: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: 1px solid;
+                        z-index: 10;
+                      "
+                      accept="image/*"
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                    />
+                    <img
+                      style="position: absolute;"
+                      src="../assets/icons/gallery.svg"
+                      alt="gallery"
+                    />
                   </li>
                   <!-- <li><img src="icons/tag.svg" alt="gallery" style="display: none;"></li> -->
                   <!-- <li>
@@ -96,11 +122,11 @@ export default {
       username: '',
       fileImage: '',
       image: '',
-      location:''
+      location: '',
     }
   },
   methods: {
-   async getPosts(){
+    async getPosts() {
       const res = await fetch('http://localhost:3001/post/all', {
         method: 'GET',
         credentials: 'include',
@@ -131,7 +157,7 @@ export default {
       let location = e.target.location.value
       let image = this.image
 
-      //get user 
+      //get user
       const user = await fetch('http://localhost:3001/auth/me', {
         method: 'GET',
         credentials: 'include',
@@ -144,8 +170,6 @@ export default {
       console.log('user', userData)
       const user_id = userData._id
 
-      
-
       console.log('data', status, image)
 
       //upload image
@@ -155,48 +179,56 @@ export default {
       const upload_image = await fetch('http://localhost:3001/upload/image', {
         method: 'POST',
         credentials: 'include',
-        body: formData
+        body: formData,
       })
 
-      const upload_image_data = await upload_image.json();
+      const upload_image_data = await upload_image.json()
       console.log('upload image', upload_image_data)
 
       let body = {
-        "userId": user_id,
-        "status": status,
-        "image": upload_image_data.data,
-        "location": location
+        userId: user_id,
+        status: status,
+        image: upload_image_data.data,
+        location: location,
       }
 
       //http://localhost:3001/post/create
-       const post_create = await fetch('http://localhost:3001/post/create', {
+      const post_create = await fetch('http://localhost:3001/post/create', {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       })
 
-      const post_create_data = await post_create.json();
+      const post_create_data = await post_create.json()
       console.log('post create', post_create_data)
-      this.closePopup();
-      this.getPosts();
-      alert('Successfully Post. Please wait...')
+      this.closePopup()
+      this.getPosts()
+      // alert('Successfully Post. Please wait...')
+       var loading = (value) => {
+            if (value == 'true') {
+                document.getElementsByClassName('loading')[0].style.display = 'none'
+            } else {
+                document.getElementsByClassName('loading')[0].style.display = 'flex';
+            }
+        }
+        loading("true");
     },
 
     handlerImage(e) {
       console.log('handler image', e.target.files)
-      const image_url = URL.createObjectURL(e.target.files[0]);
+      const image_url = URL.createObjectURL(e.target.files[0])
       this.image = image_url
       this.fileImage = e.target.files[0]
     },
 
-    resetFile(){
-      let ele = document.getElementById("imageUpload");
-      ele.value = "";
-      this.image = "";
-    }
+    resetFile() {
+      let ele = document.getElementById('imageUpload')
+      ele.value = ''
+      this.image = ''
+    },
   },
   async mounted() {
     this.getPosts()
@@ -480,5 +512,5 @@ form textarea:valid ~ button:hover {
   top: 0px;
   left: 0px;
   z-index: 999;
-} 
+}
 </style>

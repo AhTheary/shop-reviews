@@ -5,6 +5,8 @@ const {} = require('../schemas');
 var router = express.Router();
 const userService = require('../services/user');
 const forgotService = require('../services/forgot')
+const Jwt = require("jsonwebtoken");
+
 
 router.get('/id/:id', async function(req, res, next) {
     const { id } = req.params;
@@ -18,10 +20,10 @@ router.get('/all', async(req, res) => {
     res.json(result);
 })
 
-router.post('/update-password', auth.ensureSignedIn, auth.currentUser, async(req, res, next) => {
+router.post('/update-password', auth.ensureSignedIn, async(req, res, next) => {
+    const user = Jwt.verify(req.session.jwt, "jwt-secret");
     // to do
-    const { _id } = req.body;
-    const result = await userService.updatePass(_id);
+    const result = await userService.updatePass(req.body, user._id);
     res.json(result);
 })
 

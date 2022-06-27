@@ -69,13 +69,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Last Name</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    v-model="me.lastName"
-                    name="lastName"
-                    id="lastName"
-                     />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="me.lastName"
+                      name="lastName"
+                      id="lastName"
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -92,10 +92,10 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Phone number</label>
-                    <input 
-                      type="number" 
-                      class="form-control" 
-                      :value="me.phone" 
+                    <input
+                      type="number"
+                      class="form-control"
+                      :value="me.phone"
                       readonly
                       name="phone"
                       id="phone"
@@ -104,7 +104,9 @@
                 </div>
               </div>
               <div>
-                <button @click="updateUser" class="btn btn-primary">Update</button>
+                <button @click="updateUser" class="btn btn-primary">
+                  Update
+                </button>
                 <button class="btn btn-light">Cancel</button>
               </div>
             </div>
@@ -119,7 +121,11 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Old password</label>
-                    <input type="password" class="form-control" />
+                    <input
+                      v-model="pass.old"
+                      type="password"
+                      class="form-control"
+                    />
                   </div>
                 </div>
               </div>
@@ -127,23 +133,41 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>New password</label>
-                    <input type="password" class="form-control" />
+                    <input
+                      v-model="pass.new"
+                      type="password"
+                      class="form-control"
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Confirm new password</label>
-                    <input type="password" class="form-control" />
+                    <input
+                      @keyup.enter="updatePasswordUser"
+                      v-model="pass.confirm"
+                      type="password"
+                      class="form-control"
+                    />
                   </div>
                 </div>
               </div>
               <div>
                 <button class="btn btn-primary">
-                  <a href="/" style="color: white;">Update</a>
+                  <a style="color: white;" @click="updatePasswordUser">
+                    Update
+                  </a>
                 </button>
                 <button class="btn btn-light">
                   <a href="/" style="color: black;">Cancel</a>
                 </button>
+                <div
+                  v-if="message"
+                  :style="`color: white;font-weight: 700; height: 40px; width: 100%; margin-top: 15px; background-color: ${color}`"
+                  class="d-flex justify-content-center align-items-center"
+                >
+                  {{ text }}
+                </div>
               </div>
             </div>
           </div>
@@ -164,40 +188,81 @@ export default {
     return {
       me: '',
       username: '',
+      pass: {
+        old: '',
+        new: '',
+        confirm: '',
+      },
+
+      //diplay message after change pasword
+      color: '',
+      message: false,
+      text: '',
     }
   },
   methods: {
+    //update paasword user
+    async updatePasswordUser() {
+      this.message = false
+      const res = await fetch('http://localhost:3001/user/update-password', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          oldpassword: this.pass.old,
+          newpassword: this.pass.new,
+          confirmNewpass: this.pass.confirm,
+        }),
+      })
+      const resData = await res.json()
+      if (resData.success) {
+        this.text = resData.message
+        this.message = true
+        this.color = 'green'
+        this.pass = {
+          old: '',
+          new: '',
+          confirm: ''
+        }
+      } else {
+        this.text = resData.message
+        this.message = true
+        this.color = 'red'
+      }
+    },
     async updateUser() {
       console.log('update user', this.me)
       const res = await fetch('http://localhost:3001/user/update', {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
         },
         body: JSON.stringify({
           _id: this.me._id,
           firstName: this.me.firstName,
-          lastName: this.me.lastName
-        })
-      }) 
+          lastName: this.me.lastName,
+        }),
+      })
       console.log(res.json())
       this.getMe()
     },
 
-   async  getMe(){
-const res = await fetch('http://localhost:3001/auth/me', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
+    async getMe() {
+      const res = await fetch('http://localhost:3001/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
 
-    const resData = await res.json()
-    this.me = resData
-    console.log('User', this.me)
-    }
+      const resData = await res.json()
+      this.me = resData
+      console.log('User', this.me)
+    },
   },
   mounted() {},
   async created() {

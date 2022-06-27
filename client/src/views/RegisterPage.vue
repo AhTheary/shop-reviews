@@ -14,12 +14,16 @@ export default {
       pwd: '',
       repeatPws: '',
       phone: '',
+       //diplay message after register
+      color: '',
+      message: false,
+      text: '',
     }
   },
   methods: {
     async onSubmit(e) {
       e.preventDefault()
-
+      this.message = false
       const res = await fetch('http://localhost:3001/auth/register', {
         method: 'POST',
         headers: {
@@ -36,9 +40,16 @@ export default {
         }),
       })
       const resData = await res.json()
+      if (resData.success == true) {
       console.log(resData)
       this.$router.push('/login')
       alert('Successfully registered~')
+      } else {
+        console.log(resData);
+      this.text = resData.error.details[0].message
+       this.message = true  
+       this.color = 'red'
+      }
     },
   },
 }
@@ -153,6 +164,14 @@ export default {
                     </div>
                   </div>
                 </div>
+                <div
+                  v-if="message"
+                  :style="`color: white;font-weight: 700; height: 40px; width: 100%; margin-top: 15px; background-color: ${color}`"
+                  class="d-flex justify-content-center align-items-center"
+                >
+                {{ text }}
+                </div>
+                <br>
                 <div class="form-check">
                   <input
                     class="form-check-input position-static"
@@ -160,7 +179,7 @@ export default {
                     id="blankCheckbox"
                     value="option1"
                     aria-label="..."
-                     required
+                   
                   />
                   I agree all statements in
                   <a href="/terms">Terms of service</a>
