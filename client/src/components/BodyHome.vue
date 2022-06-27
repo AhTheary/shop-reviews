@@ -6,7 +6,7 @@
       </div>
       <div class="box-card">
                 <div class="box category-card">
-          <router-link to="/browse?page=1&category=62a4ada495dc33bb12c22139">
+          <router-link to="/browse?page=1&category=62b5e903fd98c870c4bdc7a6">
             <img
               src="../assets/Home/cutlery.png"
               alt="eror"
@@ -15,7 +15,7 @@
           </router-link>
         </div>
         <div class="box category-card">
-          <router-link to="/browse?page=1&category=62a4ac7795dc33bb12c22131">
+          <router-link to="/browse?page=1&category=62b486206e703ac518128539">
             <img
               src="../assets/Home/shirt.png"
               alt="eror"
@@ -24,7 +24,7 @@
           </router-link>
         </div>
         <div class="box category-card">
-            <router-link to="/browse?page=1&category=">
+            <router-link to="/browse?page=1&category=62b5e93dfd98c870c4bdc7aa">
               <img
               src="../assets/Home/supermarket.png"
               alt="eror"
@@ -33,7 +33,7 @@
             </router-link>
         </div>
         <div class="box category-card">
-          <router-link to="/browse?page=1&category=62a37882f8a5452ae500eae9">
+          <router-link to="/browse?page=1&category=62b5e921fd98c870c4bdc7a8">
             <img
               src="../assets/Home/sports.png"
               alt="eror"

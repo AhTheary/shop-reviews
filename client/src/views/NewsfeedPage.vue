@@ -45,6 +45,12 @@
                 <img src="../assets/icons//smile.svg" alt="smile" /> -->
               </div>
               <div class="options">
+               <input type="text" spellcheck="false"
+                required
+                id="location"
+                name="location" placeholder="Add Location" style="width:100%; height:100%; outline: none; border: none;">
+              </div>
+              <div class="options">
                 <p>Add to Your Post</p>
                 <ul class="list">
                   <li style="position: relative">
@@ -90,6 +96,7 @@ export default {
       username: '',
       fileImage: '',
       image: '',
+      location:''
     }
   },
   methods: {
@@ -121,6 +128,7 @@ export default {
 
     async post(e) {
       let status = e.target.status.value
+      let location = e.target.location.value
       let image = this.image
 
       //get user 
@@ -156,7 +164,8 @@ export default {
       let body = {
         "userId": user_id,
         "status": status,
-        "image": upload_image_data.data
+        "image": upload_image_data.data,
+        "location": location
       }
 
       //http://localhost:3001/post/create
@@ -173,6 +182,7 @@ export default {
       console.log('post create', post_create_data)
       this.closePopup();
       this.getPosts();
+      alert('Successfully Post. Please wait...')
     },
 
     handlerImage(e) {
@@ -470,5 +480,5 @@ form textarea:valid ~ button:hover {
   top: 0px;
   left: 0px;
   z-index: 999;
-}
+} 
 </style>

@@ -40,8 +40,13 @@
     width: 10%;
 }
 
-.store_card .icon .bx-heart {
+.store_card .icon .bxs-heart {
+    color: grey;
     width: 10%;
+}
+
+.store_card .icon .bxs-heart:hover {
+    color: rgb(247, 73, 73);
 }
 
 .store_card .img {

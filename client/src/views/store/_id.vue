@@ -70,6 +70,7 @@ export default {
     },
 
     async favorite(store_id) {
+      alert('Add to favorite successfully')
       const user = await fetch('http://localhost:3001/auth/me', {
         method: 'GET',
         credentials: 'include',
@@ -123,7 +124,7 @@ export default {
         <div class="store_card">
           <div class="icon">
             <i>  {{ store.storeName }} </i>
-            <i @click="favorite(store._id)" style="cursor: pointer" class="bx bx-heart">
+            <i @click="favorite(store._id)" style="cursor: pointer; " class='bx bxs-heart' >
             </i>
           </div>
           <div class="img">

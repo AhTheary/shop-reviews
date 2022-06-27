@@ -19,8 +19,8 @@
             <router-link to="/dashboard/store">
               <span class="material-symbols-outlined">
                 &nbsp;&nbsp; add_business
-                
               </span>
+               &nbsp; 
               Store
             </router-link>
           </li>
@@ -28,11 +28,11 @@
             <router-link to="/dashboard/post">
               &nbsp; <span class="material-symbols-outlined">post_add</span>
               &nbsp; Post
-            </router-link>
+            </router-link> &nbsp;
           </li>
           <li>
             <router-link to="/dashboard/feedback">
-             &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span class="material-symbols-outlined">feedback</span>
+             &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <span class="material-symbols-outlined">feedback</span>
               &nbsp; Feedback
             </router-link>
           </li>

@@ -122,7 +122,7 @@ export default {
       handler(query) {
         // console.log(query);
         this.category = query.category
-        console.log(this.category);
+        console.log('abc',this.category);
 
         this.getStore(query.page, query.category);
       },

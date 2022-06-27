@@ -59,6 +59,16 @@ li {
     box-shadow: 0 4px 1px 0 rgb(127, 122, 122);
 }
 
+.navigation li a.router-link-exact-active {
+    color: white;
+    border-bottom: 4px solid #fff;
+}
+
+.navigation li a:hover {
+    background: rgb(89, 87, 87);
+    color: white;
+}
+
 .navigation li:hover {
     background: rgb(89, 87, 87);
     color: rgb(255, 255, 255);
