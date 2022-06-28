@@ -157,7 +157,7 @@ export default {
   },
   methods: {
     async getStore() {
-      const res = await fetch("http://localhost:3001/store/all", {
+      const res = await fetch("http://localhost:3001/store/all?item_per_page=1000", {
         method: "GET",
         credentials: "include",
         headers: {
