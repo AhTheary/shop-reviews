@@ -41,7 +41,7 @@ router.post(
     async(req, res, next) => {
         const { username, password } = req.body
         const result = await login(username, password)
-            // req.session.jwt = result.data.token
+        if (result.success) req.session.jwt = result.data.token
         res.json(result)
     },
 )

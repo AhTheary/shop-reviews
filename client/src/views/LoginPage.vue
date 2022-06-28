@@ -101,7 +101,7 @@ export default {
                 </div>
                 <div
                   v-if="message"
-                  :style="`color: white;font-weight: 700; height: 40px; width: 100%; margin-top: 15px; background-color: ${color}`"
+                  :style="`color: white;font-weight: 700; height: 40px; width: 73%; margin-top: 15px; background-color: ${color}`"
                   class="d-flex justify-content-center align-items-center"
                 >
                   {{ text }}
