@@ -18,8 +18,18 @@
           <!-- Categorites drop down -->
           <!-- Updated -->
           <label for="categories">Categories</label>
-          <select name="categories" id="categories" v-model="category" @change="getStore(page, category)">
-           <option v-for="item in category_all" :text="item.name" :value="item._id" :key="item._id"></option>
+          <select
+            name="categories"
+            id="categories"
+            v-model="category"
+            @change="getStore(page, category)"
+          >
+            <option
+              v-for="item in category_all"
+              :text="item.name"
+              :value="item._id"
+              :key="item._id"
+            ></option>
             <!-- <option text="clothes" value="62a4ac7795dc33bb12c22131">Clothes</option>
             <option text="restaurant" value="62a4ada495dc33bb12c22139">Restaurant</option>
             <option text="supermartket" value="62a8da5f1830d362f6816cca"> Supermartket</option>
@@ -37,28 +47,44 @@
               <i class="bx bxs-heart" @click="addFovorite"></i>
             </div>
           </div>
-          <div class="img">
-            <img :src="store.imageUrl" alt="erorUserpost" style="width: 100%; height: 100%;" />
-          </div>
+          <a :href="`http://localhost:3000/store/${store._id}`">
+            <div class="img">
+              <img
+                :src="store.imageUrl"
+                alt="erorUserpost"
+                style="width: 100%; height: 100%;"
+              />
+            </div>
+          </a>
           <div class="star-review">
             <div class="star">
-              <b style="color: red">Total user review : </b> 
+              <b style="color: red;">Total user review :</b>
             </div>
             <div class="count-review">
-              <span> {{store.countReview}} Reviews</span>
+              <span>{{ store.countReview }} Reviews</span>
             </div>
           </div>
           <div class="des">
             <div class="line-clamp">Des: {{ store.desc }}</div>
             <div>Location: {{ store.location }}</div>
-            <div><a href="#seemore">see more</a></div>
+            <div>
+              <a :href="`http://localhost:3000/store/${store._id}`">see more</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="page">
       <a href="#" class="previous">&laquo; Previous</a>
-      <a href="#" v-for="i in totalPage" :key="i" @click="getPage(i)" class="previous">{{ i }}</a>
+      <a
+        href="#"
+        v-for="i in totalPage"
+        :key="i"
+        @click="getPage(i)"
+        class="previous"
+      >
+        {{ i }}
+      </a>
       <a href="#" class="previous">Next &raquo;</a>
       <a href="#" class="next">End</a>
     </div>
@@ -76,8 +102,8 @@ export default {
       page: 1,
       totalPage: 0,
       category: '',
-      category_all:null,
-       stores: [],
+      category_all: null,
+      stores: [],
     }
   },
   methods: {
@@ -86,7 +112,7 @@ export default {
       this.$router.push(`/browse?page=${page}&category=${this.category}`)
     },
 
-//Updated by Nak 15/06
+    //Updated by Nak 15/06
     async getCategory() {
       const res = await fetch(`http://localhost:3001/category/all`, {
         method: 'GET',
@@ -95,43 +121,46 @@ export default {
           'Content-type': 'application/json',
         },
       })
-      this.category_all = await res.json();
-      console.log(this.category_all[1]);
+      this.category_all = await res.json()
+      console.log(this.category_all[1])
     },
 
     //get all store by cate with page
     async getStore(page, category) {
-      console.log("TEST" + category);
-      const res = await fetch(`http://localhost:3001/store/all?page=${page}&category=${category}`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-type': 'application/json',
+      console.log('TEST' + category)
+      const res = await fetch(
+        `http://localhost:3001/store/all?page=${page}&category=${category}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-type': 'application/json',
+          },
         },
-      })
+      )
 
       const resData = await res.json()
 
       this.totalPage = resData.data.stores.totalPages
-      console.log(this.totalPage);
+      console.log(this.totalPage)
       this.stores = resData.data.stores.docs
-    }
+    },
   },
   watch: {
     '$route.query': {
       handler(query) {
         // console.log(query);
         this.category = query.category
-        console.log('abc',this.category);
+        console.log('abc', this.category)
 
-        this.getStore(query.page, query.category);
+        this.getStore(query.page, query.category)
       },
       immediate: true,
-      deep: true
-    }
+      deep: true,
+    },
   },
-  mounted(){
-    this.getCategory();
+  mounted() {
+    this.getCategory()
   },
 }
 </script>
