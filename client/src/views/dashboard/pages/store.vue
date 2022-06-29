@@ -60,6 +60,7 @@
                 height: 70%;
                 border: 1px solid;
                 z-index: 99;
+                cursor: pointer;
               "
               accept="image/*"
               type="file"
@@ -297,6 +298,7 @@ export default {
   top: 0px;
   left: 0px;
   visibility: hidden;
+  z-index: 99;
 }
 .popup.popup-open {
   visibility: visible;

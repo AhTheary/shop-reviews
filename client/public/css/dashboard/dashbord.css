@@ -101,6 +101,7 @@ li {
     align-items: center;
     justify-content: center;
     box-shadow: 2px 1px rgba(0, 0, 0, 0.2);
+    z-index: 99;
 }
 
 .main-dashboard .main-header .main-dashboard-name {
@@ -123,6 +124,7 @@ li {
     display: flex;
     align-items: top;
     justify-content: center;
+
 }
 
 .table-store table {
