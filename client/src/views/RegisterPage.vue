@@ -179,6 +179,7 @@ export default {
                     id="blankCheckbox"
                     value="option1"
                     aria-label="..."
+                    required
                    
                   />
                   I agree all statements in

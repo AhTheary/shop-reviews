@@ -83,6 +83,7 @@
                       type="file"
                       name="image"
                       id="imageUpload"
+                      required
                     />
                     <img
                       style="position: absolute;"
@@ -112,8 +113,10 @@
 import Header from '../components/Header.vue'
 import NewsfeedCard from '../components/NewsfeedCard.vue'
 import Footer from '../components/Footer.vue'
+import LoadingComponent from '../components/LoadingComponent.vue'
+
 export default {
-  components: { Header, NewsfeedCard, Footer },
+  components: { Header, NewsfeedCard, Footer, LoadingComponent },
   name: 'HomePage',
   data() {
     return {
@@ -123,6 +126,7 @@ export default {
       fileImage: '',
       image: '',
       location: '',
+      isLoading: false
     }
   },
   methods: {
@@ -153,6 +157,7 @@ export default {
     },
 
     async post(e) {
+      alert('Your post successfully')
       let status = e.target.status.value
       let location = e.target.location.value
       let image = this.image
@@ -214,7 +219,7 @@ export default {
                 document.getElementsByClassName('loading')[0].style.display = 'flex';
             }
         }
-        loading("true");
+        loading("true"); 
     },
 
     handlerImage(e) {
