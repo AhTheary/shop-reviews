@@ -57,9 +57,10 @@
     position: fixed;
     top: 60px;
     margin-left: 15px;
-    width: 600px;
+    width: 555px;
     background: white;
     border: 1px #eee solid;
+    border-radius: 10px;
 }
 
 .search_box .search__input {

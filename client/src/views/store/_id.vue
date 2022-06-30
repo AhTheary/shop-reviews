@@ -155,7 +155,7 @@ export default {
             <div style="width : 93%"><span style="font-size:30px">REVIEW</span>
             </div>
            <div> 
-            <i class="bx bx-refresh fa-2x" onclick="location.reload();" style="cursor:pointer"></i>
+            <i class="bx bx-refresh fa-2x" onclick="location.reload();" style="cursor:pointer; z-index: 999;"></i>
           </div>
                   
           </div>

@@ -293,7 +293,7 @@ button {
 
 .box_card_left .descrition-post {
   width: 100%;
-  height: 15%;
+  height: 10%;
   padding-left: 30px;
 }
 

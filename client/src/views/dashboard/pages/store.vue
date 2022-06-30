@@ -67,7 +67,17 @@
               name="image"
               id="imageUpload"
             />
-            <img src="../../../assets/img-acc/cloud-computing.png" alt="" />
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              "
+            >
+              <img v-if="!store.imageUrl" src="../../../assets/img-acc/cloud-computing.png" alt="" />
+              <img v-else style="width: 190px !important; height: 120px !important;" :src="store.imageUrl" alt=""/>
+            </div>
           </div>
           <div class="input-info">
             <input
@@ -97,7 +107,8 @@
               name="categories"
               id="categories"
               v-model="store.category"
-              required>
+              required
+            >
               <option value="Select a category">Select a category</option>
               <option v-for="cat in categories" :key="cat._id" :value="cat._id">
                 {{ cat.name }}
@@ -158,13 +169,16 @@ export default {
   },
   methods: {
     async getStore() {
-      const res = await fetch("http://localhost:3001/store/all?item_per_page=1000", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "http://localhost:3001/store/all?item_per_page=1000",
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       const resData = await res.json();
       this.stores = resData.data.stores.docs;
@@ -196,7 +210,7 @@ export default {
       const closePopup = document.querySelector(".popup");
       closePopup.classList.remove("popup-open");
       //reset file image value
-      document.getElementById("img").value = "";
+      // document.getElementById("img").value = "";
       //reset data form
       this.store = {
         storeName: "",
