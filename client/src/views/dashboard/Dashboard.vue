@@ -55,7 +55,7 @@
         <div class="container">
           <h2>Sorry, you are not admin</h2>
           <img
-            src="../../assets/img-acc/Online Review-bro.png"
+            src=""
             alt=""
             width="300"
             height="300"

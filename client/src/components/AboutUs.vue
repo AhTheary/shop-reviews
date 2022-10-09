@@ -7,7 +7,7 @@
       <div class="card">
         <div class="face face1">
           <div class="content">
-            <img src="../assets/Home/store.png" />
+            <img src="" />
             <h3>Browse</h3>
             <h3>Store</h3>
           </div>
@@ -35,7 +35,7 @@
       <div class="card">
         <div class="face face1">
           <div class="content">
-            <img src="../assets/Home/review.png" />
+            <img src="" />
             <h3>Review</h3>
             <h3>Store</h3>
           </div>
@@ -50,7 +50,7 @@
       <div class="card">
         <div class="face face1">
           <div class="content">
-            <img src="../assets/Home/location.png" />
+            <img src="" />
             <h3>Locate</h3>
             <h3>Store</h3>
           </div>
