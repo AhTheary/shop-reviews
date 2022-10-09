@@ -114,7 +114,7 @@ export default {
 
     //Updated by Nak 15/06
     async getCategory() {
-      const res = await fetch(`http://3.92.58.10:3001/category/all`, {
+      const res = await fetch(`http://54.83.141.77:3001/category/all`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -129,7 +129,7 @@ export default {
     async getStore(page, category) {
       console.log('TEST' + category)
       const res = await fetch(
-        `http://3.92.58.10:3001/store/all?page=${page}&category=${category}`,
+        `http://54.83.141.77:3001/store/all?page=${page}&category=${category}`,
         {
           method: 'GET',
           credentials: 'include',
