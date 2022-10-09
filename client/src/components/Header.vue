@@ -89,7 +89,7 @@
         <div class="menu-list" style="color: white;">
           <ul>
             <li v-for="fav in favorites" :key="fav._id">
-            <a v-if="fav.store" :href="`/store/`+fav.store._id"> {{ fav.store.storeName?fav.store.storeName : "" }}</a> 
+            <router-link v-if="fav.store" :to="`/store/`+fav.store._id"> {{ fav.store.storeName?fav.store.storeName : "" }}</router-link> 
             </li>
           </ul>
         </div>

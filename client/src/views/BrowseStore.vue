@@ -47,7 +47,7 @@
               <i class="bx bxs-heart" @click="addFovorite"></i>
             </div>
           </div>
-          <router-link :to="`http://3.92.58.10:3000/store/${store._id}`">
+          <router-link :to="`http://54.83.141.77:3001/store/${store._id}`">
             <div class="img">
               <img
                 :src="store.imageUrl"
@@ -68,7 +68,7 @@
             <div class="line-clamp">Des: {{ store.desc }}</div>
             <div>Location: {{ store.location }}</div>
             <div>
-              <router-link :to="`http://3.92.58.10:3000/store/${store._id}`">see more</router-link>
+              <router-link :to="`http://54.83.141.77:3001/store/${store._id}`">see more</router-link>
             </div>
           </div>
         </div>
