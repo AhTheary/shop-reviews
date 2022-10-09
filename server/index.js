@@ -4,7 +4,10 @@ const cors = require('cors')
 const app = express();
 const path = require("path");
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://3.92.58.10',
+    credentials: true
+}))
 
 var cookieParser = require('cookie-parser')
 app.use(cookieParser())
