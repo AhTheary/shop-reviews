@@ -5,7 +5,7 @@ const app = express();
 const path = require("path");
 
 app.use(cors({
-    origin: 'http://3.92.58.10:3000',
+    origin: '*',
     credentials: true
 }))
 
