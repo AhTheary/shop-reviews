@@ -183,14 +183,14 @@ export default {
                    
                   />
                   I agree all statements in
-                  <a href="/terms">Terms of service</a>
+                  <router-link to="/terms">Terms of service</router-link>
                 </div>
                 <div class="mt-2">
                   <button class="btn btn-primary" style="width: 150px;">
                     Register
                   </button>
                   <div class="mt-2">
-                    <a href="/login">Already have an account?</a>
+                    <router-link to="/login">Already have an account?</router-link>
                   </div>
                 </div>
               </div>

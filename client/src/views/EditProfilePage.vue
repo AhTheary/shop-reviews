@@ -159,7 +159,7 @@
                   </a>
                 </button>
                 <button class="btn btn-light">
-                  <a href="/" style="color: black;">Cancel</a>
+                  <router-link to="/" style="color: black;">Cancel</router-link>
                 </button>
                 <div
                   v-if="message"

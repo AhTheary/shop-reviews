@@ -47,7 +47,7 @@
               <i class="bx bxs-heart" @click="addFovorite"></i>
             </div>
           </div>
-          <a :href="`http://3.92.58.10:3000/store/${store._id}`">
+          <router-link :to="`http://3.92.58.10:3000/store/${store._id}`">
             <div class="img">
               <img
                 :src="store.imageUrl"
@@ -55,7 +55,7 @@
                 style="width: 100%; height: 100%;"
               />
             </div>
-          </a>
+          </router-link>
           <div class="star-review">
             <div class="star">
               <b style="color: red;">Total user review :</b>
@@ -68,14 +68,14 @@
             <div class="line-clamp">Des: {{ store.desc }}</div>
             <div>Location: {{ store.location }}</div>
             <div>
-              <a :href="`http://3.92.58.10:3000/store/${store._id}`">see more</a>
+              <router-link :to="`http://3.92.58.10:3000/store/${store._id}`">see more</router-link>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="page">
-      <a href="#" class="previous">&laquo; Previous</a>
+      <router-link to="#" class="previous">&laquo; Previous</router-link>
       <a
         href="#"
         v-for="i in totalPage"

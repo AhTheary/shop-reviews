@@ -112,9 +112,9 @@ export default {
                     Log in
                   </button>
                   <div class="mt-3">
-                    <a href="/forget">Forgot account?</a>
+                    <router-link  to="/forget">Forgot account?</router-link>
                     |
-                    <a href="/register">Not our member yet?</a>
+                    <router-link to="/register">Not our member yet?</router-link>
                   </div>
                 </div>
               </div>

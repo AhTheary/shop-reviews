@@ -14,7 +14,7 @@
       class="mySwiper"
     >
       <swiper-slide v-for="item in stores" :key="item._id">
-        <a :href="`/store/${item._id}`" class="box">
+        <router-link :to="`/store/${item._id}`" class="box">
           <div class="user-name">
             <div class="profile-card">
               <span>{{ item.storeName }}</span>
@@ -42,9 +42,9 @@
           <div class="des">
             <div>Des: {{ item.desc }}</div>
             <div>Location: {{ item.location }}</div>
-            <div><a :href="`/store/${item._id}`">see more</a></div>
+            <div><router-link :to="`/store/${item._id}`">see more</router-link></div>
           </div>
-        </a>
+        </router-link>
       </swiper-slide>
     </swiper>
   </div>

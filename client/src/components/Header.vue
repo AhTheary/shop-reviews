@@ -68,12 +68,12 @@
         <li>
           <!-- <i class="bx bx-edit-alt"></i>
           &nbsp; -->
-          <a href="/editprofile">Edit Profile</a>
+          <router-link to="/editprofile">Edit Profile</router-link>
         </li>
         <li>
           <!-- <i class="bx bxs-contact"></i>
           &nbsp; -->
-          <a href="/feedback">Feedback</a>
+          <router-link to="/feedback">Feedback</router-link>
         </li>
         <li>
           <!-- <i class="bx bx-log-out"></i>

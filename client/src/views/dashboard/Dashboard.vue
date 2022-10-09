@@ -62,7 +62,7 @@
           />
           <br>
           <button type="submit" class="btn btn-primary">
-            <a href="/" style="color: white;">GO BACK</a>
+            <router-link to="/" style="color: white;">GO BACK</router-link>
           </button>
         </div>
       </div>

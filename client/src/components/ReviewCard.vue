@@ -27,7 +27,7 @@
             <br />
             <span>
               {{ item.desc }}
-              <a :href="'/store/' + item._id">see more</a>
+              <router-link :to="'/store/' + item._id">see more</router-link>
             </span>
           </div>
           <div class="location-news">
@@ -45,22 +45,22 @@
       </div>
     </div>
     <div class="page">
-      <a class="previous">&laquo; Previous</a>
-      <a
+      <router-link class="previous">&laquo; Previous</router-link>
+      <router-link
         href="#"
         class="previous"
         v-for="i in totalPage"
         :key="i"
         @click="$router.push(`/review?page=${i}`)"
-        >{{ i }}</a
+        >{{ i }}</router-link
       >
 
-      <a href="#" class="previous">Next &raquo;</a>
-      <a
+      <router-link to="#" class="previous">Next &raquo;</router-link>
+      <router-link
         href="#"
         class="next"
         @click="$router.push(`/review?page=${totalPage}`)"
-        >End</a
+        >End</router-link
       >
     </div>
   </div>
